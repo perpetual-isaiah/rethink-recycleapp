@@ -1,0 +1,21 @@
+# Node modules
+node_modules/
+
+# Logs
+*.log
+
+# Environment files
+.env
+.env.*
+
+# React Native / Expo
+android/
+ios/
+.expo/
+.expo-shared/
+
+# Misc
+*.DS_Store
+coverage/
+.idea/
+.vscode/
