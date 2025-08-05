@@ -1,0 +1,672 @@
+[{
+  "_id": {
+    "$oid": "68875e7d48d618ec13c2e7c9"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "challengeId": {
+    "$oid": "68875db548d618ec13c2e7a0"
+  },
+  "label": "Welcome bonus",
+  "stars": 1,
+  "sticker": "♻️",
+  "createdAt": {
+    "$date": "2025-07-28T11:26:53.493Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-28T11:26:53.493Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68877a59c4996c61322e8a3a"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "challengeId": {
+    "$oid": "68877a33c4996c61322e8a30"
+  },
+  "label": "Welcome bonus",
+  "stars": 1,
+  "sticker": "🌎",
+  "createdAt": {
+    "$date": "2025-07-28T13:25:45.768Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-28T13:25:45.768Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68877c98ed840d55dd2eabf1"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "challengeId": {
+    "$oid": "68877b02c4996c61322e8a44"
+  },
+  "label": "Welcome bonus",
+  "stars": 1,
+  "sticker": "🌎",
+  "createdAt": {
+    "$date": "2025-07-28T13:35:20.892Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-28T13:35:20.892Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68888147493c87a53beda440"
+  },
+  "userId": {
+    "$oid": "68678c7c0aee978992f3124a"
+  },
+  "challengeId": {
+    "$oid": "68877b02c4996c61322e8a44"
+  },
+  "label": "Welcome bonus",
+  "stars": 1,
+  "sticker": "🌟",
+  "createdAt": {
+    "$date": "2025-07-29T08:07:35.687Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-29T08:07:35.687Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "688883d3493c87a53beda4ee"
+  },
+  "userId": {
+    "$oid": "68678c7c0aee978992f3124a"
+  },
+  "challengeId": {
+    "$oid": "6887732a1ade2608326f825f"
+  },
+  "label": "Welcome bonus",
+  "stars": 1,
+  "sticker": "🌟",
+  "createdAt": {
+    "$date": "2025-07-29T08:18:27.118Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-29T08:18:27.118Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888886e493c87a53beda624"
+  },
+  "userId": {
+    "$oid": "68678c7c0aee978992f3124a"
+  },
+  "challengeId": {
+    "$oid": "68877a33c4996c61322e8a30"
+  },
+  "label": "Welcome bonus",
+  "stars": 1,
+  "sticker": "🌱",
+  "createdAt": {
+    "$date": "2025-07-29T08:38:06.167Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-29T08:38:06.167Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "688888fb493c87a53beda68b"
+  },
+  "userId": {
+    "$oid": "68678c7c0aee978992f3124a"
+  },
+  "challengeId": {
+    "$oid": "687f7ea2d030b9f8bfe02794"
+  },
+  "label": "Welcome bonus",
+  "stars": 1,
+  "sticker": "♻️",
+  "createdAt": {
+    "$date": "2025-07-29T08:40:27.226Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-29T08:40:27.226Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888a756493c87a53beda95d"
+  },
+  "userId": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "challengeId": {
+    "$oid": "68877b02c4996c61322e8a44"
+  },
+  "label": "Welcome bonus",
+  "stars": 1,
+  "sticker": "🌱",
+  "createdAt": {
+    "$date": "2025-07-29T10:49:58.477Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-29T10:49:58.477Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888a7e4493c87a53beda9aa"
+  },
+  "userId": {
+    "$oid": "68678c7c0aee978992f3124a"
+  },
+  "challengeId": {
+    "$oid": "6887700b1ade2608326f8236"
+  },
+  "label": "Welcome bonus",
+  "stars": 1,
+  "sticker": "🌱",
+  "createdAt": {
+    "$date": "2025-07-29T10:52:20.264Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-29T10:52:20.264Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888a8f8df8248db8c5edd5d"
+  },
+  "userId": {
+    "$oid": "68678c7c0aee978992f3124a"
+  },
+  "challengeId": {
+    "$oid": "68875db548d618ec13c2e7a0"
+  },
+  "label": "Welcome bonus",
+  "stars": 1,
+  "sticker": "♻️",
+  "createdAt": {
+    "$date": "2025-07-29T10:56:56.040Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-29T10:56:56.040Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888d4df2036cc12c781c9e5"
+  },
+  "userId": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "challengeId": {
+    "$oid": "68877a33c4996c61322e8a30"
+  },
+  "label": "Welcome bonus",
+  "stars": 1,
+  "sticker": "🌎",
+  "createdAt": {
+    "$date": "2025-07-29T14:04:15.235Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-29T14:04:15.235Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888d58f2036cc12c781ca24"
+  },
+  "userId": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "challengeId": {
+    "$oid": "687f799267b9bd51afe31f37"
+  },
+  "label": "Welcome bonus",
+  "stars": 1,
+  "sticker": "🌟",
+  "createdAt": {
+    "$date": "2025-07-29T14:07:11.437Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-29T14:07:11.437Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888d65e2036cc12c781caa7"
+  },
+  "userId": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "challengeId": {
+    "$oid": "687f7ea2d030b9f8bfe02794"
+  },
+  "label": "Welcome bonus",
+  "stars": 1,
+  "sticker": "🌎",
+  "createdAt": {
+    "$date": "2025-07-29T14:10:38.040Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-29T14:10:38.040Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888d6612036cc12c781cab3"
+  },
+  "userId": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "challengeId": {
+    "$oid": "687f7c5767b9bd51afe31f82"
+  },
+  "label": "Welcome bonus",
+  "stars": 1,
+  "sticker": "♻️",
+  "createdAt": {
+    "$date": "2025-07-29T14:10:41.695Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-29T14:10:41.695Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888d6f82036cc12c781cb02"
+  },
+  "userId": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "challengeId": {
+    "$oid": "68875db548d618ec13c2e7a0"
+  },
+  "label": "Welcome bonus",
+  "stars": 1,
+  "sticker": "🌎",
+  "createdAt": {
+    "$date": "2025-07-29T14:13:12.108Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-29T14:13:12.108Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888d6f92036cc12c781cb0e"
+  },
+  "userId": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "challengeId": {
+    "$oid": "6887732a1ade2608326f825f"
+  },
+  "label": "Welcome bonus",
+  "stars": 1,
+  "sticker": "🌟",
+  "createdAt": {
+    "$date": "2025-07-29T14:13:13.833Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-29T14:13:13.833Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888dbd8d7d3ca90e441dceb"
+  },
+  "userId": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "challengeId": {
+    "$oid": "6887700b1ade2608326f8236"
+  },
+  "label": "Welcome bonus",
+  "stars": 1,
+  "sticker": "🌱",
+  "createdAt": {
+    "$date": "2025-07-29T14:34:00.268Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-29T14:34:00.268Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6889d2c6476b0749f3a695aa"
+  },
+  "userId": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "challengeId": {
+    "$oid": "6889d1c6476b0749f3a69505"
+  },
+  "label": "Welcome bonus",
+  "stars": 1,
+  "sticker": "🌎",
+  "createdAt": {
+    "$date": "2025-07-30T08:07:34.850Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-30T08:07:34.850Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6889d85f476b0749f3a696c3"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "challengeId": {
+    "$oid": "6889d1c6476b0749f3a69505"
+  },
+  "label": "Welcome bonus",
+  "stars": 1,
+  "sticker": "🌱",
+  "createdAt": {
+    "$date": "2025-07-30T08:31:27.966Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-30T08:31:27.966Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6889df99195d00bacb9ebca8"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "challengeId": {
+    "$oid": "6889d1a0476b0749f3a694ea"
+  },
+  "label": "Welcome bonus",
+  "stars": 1,
+  "sticker": "🌎",
+  "createdAt": {
+    "$date": "2025-07-30T09:02:17.443Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-30T09:02:17.443Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6889e73006ee8c9101bb3938"
+  },
+  "userId": {
+    "$oid": "6889e70506ee8c9101bb3901"
+  },
+  "challengeId": {
+    "$oid": "6889d1a0476b0749f3a694ea"
+  },
+  "label": "Welcome bonus",
+  "stars": 1,
+  "sticker": "♻️",
+  "createdAt": {
+    "$date": "2025-07-30T09:34:40.293Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-30T09:34:40.293Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "688a092b365b3825b3efd565"
+  },
+  "userId": {
+    "$oid": "6889e70506ee8c9101bb3901"
+  },
+  "challengeId": {
+    "$oid": "68877a33c4996c61322e8a30"
+  },
+  "label": "Welcome bonus",
+  "stars": 1,
+  "sticker": "🌟",
+  "createdAt": {
+    "$date": "2025-07-30T11:59:39.744Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-30T11:59:39.744Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "688b0d9f4f91180d328cc1cd"
+  },
+  "userId": {
+    "$oid": "6889e70506ee8c9101bb3901"
+  },
+  "challengeId": {
+    "$oid": "687f7ea2d030b9f8bfe02794"
+  },
+  "label": "Welcome bonus",
+  "stars": 1,
+  "sticker": "🌟",
+  "createdAt": {
+    "$date": "2025-07-31T06:30:55.620Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-31T06:30:55.620Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "688b10d74f91180d328cc25e"
+  },
+  "userId": {
+    "$oid": "6889e70506ee8c9101bb3901"
+  },
+  "challengeId": {
+    "$oid": "687f7c5767b9bd51afe31f82"
+  },
+  "label": "Welcome bonus",
+  "stars": 1,
+  "sticker": "♻️",
+  "createdAt": {
+    "$date": "2025-07-31T06:44:39.448Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-31T06:44:39.448Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "688fcc43b2b7326c23e097b8"
+  },
+  "userId": {
+    "$oid": "687137919eeae1ff1cf08320"
+  },
+  "challengeId": {
+    "$oid": "687f7c5767b9bd51afe31f82"
+  },
+  "label": "Welcome bonus",
+  "stars": 1,
+  "sticker": "🌱",
+  "createdAt": {
+    "$date": "2025-08-03T20:53:23.406Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-03T20:53:23.406Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "689050eba10d29034af2a7a0"
+  },
+  "userId": {
+    "$oid": "6889e70506ee8c9101bb3901"
+  },
+  "challengeId": {
+    "$oid": "68877b02c4996c61322e8a44"
+  },
+  "label": "Welcome bonus",
+  "stars": 1,
+  "sticker": "🌱",
+  "createdAt": {
+    "$date": "2025-08-04T06:19:23.700Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-04T06:19:23.700Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68906614a10d29034af2ae47"
+  },
+  "userId": {
+    "$oid": "68905e19a10d29034af2ac41"
+  },
+  "challengeId": {
+    "$oid": "68877b02c4996c61322e8a44"
+  },
+  "label": "Welcome bonus",
+  "stars": 1,
+  "sticker": "♻️",
+  "createdAt": {
+    "$date": "2025-08-04T07:49:40.722Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-04T07:49:40.722Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6890744ab25d582fcce7a58a"
+  },
+  "userId": {
+    "$oid": "68907412b25d582fcce7a523"
+  },
+  "challengeId": {
+    "$oid": "687f7c5767b9bd51afe31f82"
+  },
+  "label": "Welcome bonus",
+  "stars": 1,
+  "sticker": "🌎",
+  "createdAt": {
+    "$date": "2025-08-04T08:50:18.109Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-04T08:50:18.109Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6890a49a41d7b31740b12bd5"
+  },
+  "userId": {
+    "$oid": "6890a44d41d7b31740b12b88"
+  },
+  "challengeId": {
+    "$oid": "68877b02c4996c61322e8a44"
+  },
+  "label": "Welcome bonus",
+  "stars": 1,
+  "sticker": "🌎",
+  "createdAt": {
+    "$date": "2025-08-04T12:16:26.261Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-04T12:16:26.261Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68919b20c71c162e81bc0765"
+  },
+  "userId": {
+    "$oid": "68907412b25d582fcce7a523"
+  },
+  "challengeId": {
+    "$oid": "68877b02c4996c61322e8a44"
+  },
+  "label": "Welcome bonus",
+  "stars": 1,
+  "sticker": "🌱",
+  "createdAt": {
+    "$date": "2025-08-05T05:48:16.465Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-05T05:48:16.465Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6891e2dc1902ae02375e29ec"
+  },
+  "userId": {
+    "$oid": "6891a11ec71c162e81bc08bf"
+  },
+  "challengeId": {
+    "$oid": "68877b02c4996c61322e8a44"
+  },
+  "label": "Welcome bonus",
+  "stars": 1,
+  "sticker": "🌱",
+  "createdAt": {
+    "$date": "2025-08-05T10:54:20.525Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-05T10:54:20.525Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6891e477f4220d843e036db2"
+  },
+  "userId": {
+    "$oid": "68907412b25d582fcce7a523"
+  },
+  "challengeId": {
+    "$oid": "68877a33c4996c61322e8a30"
+  },
+  "label": "Welcome bonus",
+  "stars": 1,
+  "sticker": "🌎",
+  "createdAt": {
+    "$date": "2025-08-05T11:01:11.632Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-05T11:01:11.632Z"
+  },
+  "__v": 0
+}]

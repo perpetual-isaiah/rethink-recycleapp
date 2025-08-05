@@ -1,0 +1,2186 @@
+[{
+  "_id": {
+    "$oid": "687f799267b9bd51afe31f39"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "message": "Your challenge \"30-Day Fitness Challenge\" has been created and is pending approval.",
+  "link": "/challenges/687f799267b9bd51afe31f37",
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-22T11:44:18.784Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687f7a4767b9bd51afe31f44"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "message": "Your challenge \"30-Day Fitness Challenge\" has been approved!",
+  "link": "/challenges/687f799267b9bd51afe31f37",
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-22T11:47:19.108Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687f7a8067b9bd51afe31f68"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "message": "You successfully joined the challenge: \"30-Day Fitness Challenge\"!",
+  "link": "/challenges/687f799267b9bd51afe31f37",
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-22T11:48:16.207Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687f7c5767b9bd51afe31f84"
+  },
+  "userId": {
+    "$oid": "687633c4214ebe1393b527c1"
+  },
+  "message": "Your challenge \"Eco-Friendly Lifestyle Challenge\" has been created and is pending approval.",
+  "link": "/challenges/687f7c5767b9bd51afe31f82",
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-22T11:56:07.659Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687f7d5a67b9bd51afe31f89"
+  },
+  "userId": {
+    "$oid": "687633c4214ebe1393b527c1"
+  },
+  "message": "Your challenge \"Eco-Friendly Lifestyle Challenge\" has been approved!",
+  "link": "/challenges/687f7c5767b9bd51afe31f82",
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-22T12:00:26.012Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687f7ea2d030b9f8bfe02796"
+  },
+  "userId": {
+    "$oid": "687633c4214ebe1393b527c1"
+  },
+  "message": "Your challenge \"Zero Waste September\" has been created and approved.",
+  "link": "/challenges/687f7ea2d030b9f8bfe02794",
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-22T12:05:54.494Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687f80fad030b9f8bfe027a4"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "message": "You successfully joined the challenge: \"Zero Waste September\"!",
+  "link": "/challenges/687f7ea2d030b9f8bfe02794",
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-22T12:15:54.829Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687f817cd030b9f8bfe027a9"
+  },
+  "userId": {
+    "$oid": "687633c4214ebe1393b527c1"
+  },
+  "message": "undefined liked your challenge \"Zero Waste September\".",
+  "link": "/challenges/687f7ea2d030b9f8bfe02794",
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-22T12:18:04.625Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687f82ced030b9f8bfe027b3"
+  },
+  "userId": {
+    "$oid": "687633c4214ebe1393b527c1"
+  },
+  "message": "undefined commented on your challenge \"Zero Waste September\".",
+  "link": "/challenges/687f7ea2d030b9f8bfe02794",
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-22T12:23:42.504Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6880d2c54c44cb7bd5344623"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "message": "You successfully joined the challenge: \"Eco-Friendly Lifestyle Challenge\"!",
+  "link": "/challenges/687f7c5767b9bd51afe31f82",
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-23T12:17:09.006Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68836c85595d7e8adcd51b2d"
+  },
+  "userId": {
+    "$oid": "68836c39595d7e8adcd51b0f"
+  },
+  "type": "join",
+  "message": "You successfully joined the challenge: \"Zero Waste September\"!",
+  "link": "/challenges/687f7ea2d030b9f8bfe02794",
+  "referenceId": {
+    "$oid": "687f7ea2d030b9f8bfe02794"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-25T11:37:41.872Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68875db648d618ec13c2e7a2"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "type": "generic",
+  "message": "Your challenge \"7 day challenge\" has been created and is pending approval.",
+  "link": "/challenges/68875db548d618ec13c2e7a0",
+  "referenceId": {
+    "$oid": "68875db548d618ec13c2e7a0"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-28T11:23:34.011Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68875e2a48d618ec13c2e7b1"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "type": "approved",
+  "message": "Your challenge \"7 day challenge\" has been approved!",
+  "link": "/challenges/68875db548d618ec13c2e7a0",
+  "referenceId": {
+    "$oid": "68875db548d618ec13c2e7a0"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-28T11:25:30.783Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68875e7d48d618ec13c2e7ce"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "type": "join",
+  "message": "You successfully joined the challenge: \"7 day challenge\"!",
+  "link": "/challenges/68875db548d618ec13c2e7a0",
+  "referenceId": {
+    "$oid": "68875db548d618ec13c2e7a0"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-28T11:26:53.884Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6887700b1ade2608326f8238"
+  },
+  "userId": {
+    "$oid": "687633c4214ebe1393b527c1"
+  },
+  "type": "generic",
+  "message": "Your challenge \"2day marathon\" has been created and approved.",
+  "link": "/challenges/6887700b1ade2608326f8236",
+  "referenceId": {
+    "$oid": "6887700b1ade2608326f8236"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-28T12:41:47.372Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6887732a1ade2608326f8261"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "type": "generic",
+  "message": "Your challenge \"30-day Plastic-Free July\" has been created and is pending approval.",
+  "link": "/challenges/6887732a1ade2608326f825f",
+  "referenceId": {
+    "$oid": "6887732a1ade2608326f825f"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-28T12:55:06.592Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "688773f71ade2608326f826d"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "type": "approved",
+  "message": "Your challenge \"30-day Plastic-Free July\" has been approved!",
+  "link": "/challenges/6887732a1ade2608326f825f",
+  "referenceId": {
+    "$oid": "6887732a1ade2608326f825f"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-28T12:58:31.494Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68877a33c4996c61322e8a32"
+  },
+  "userId": {
+    "$oid": "687633c4214ebe1393b527c1"
+  },
+  "type": "generic",
+  "message": "Your challenge \"30 days\" has been created and approved.",
+  "link": "/challenges/68877a33c4996c61322e8a30",
+  "referenceId": {
+    "$oid": "68877a33c4996c61322e8a30"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-28T13:25:07.866Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68877a59c4996c61322e8a3c"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "type": "join",
+  "message": "You joined the challenge: \"30 days\"",
+  "link": "/challenges/68877a33c4996c61322e8a30",
+  "referenceId": {
+    "$oid": "68877a33c4996c61322e8a30"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-28T13:25:45.770Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68877b02c4996c61322e8a46"
+  },
+  "userId": {
+    "$oid": "687633c4214ebe1393b527c1"
+  },
+  "type": "generic",
+  "message": "Your challenge \"10\" has been created and approved.",
+  "link": "/challenges/68877b02c4996c61322e8a44",
+  "referenceId": {
+    "$oid": "68877b02c4996c61322e8a44"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-28T13:28:34.117Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68877c98ed840d55dd2eabf5"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "type": "join",
+  "message": "You joined the challenge: \"10\"",
+  "link": "/challenges/68877b02c4996c61322e8a44",
+  "referenceId": {
+    "$oid": "68877b02c4996c61322e8a44"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-28T13:35:20.902Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68888147493c87a53beda444"
+  },
+  "userId": {
+    "$oid": "68678c7c0aee978992f3124a"
+  },
+  "type": "join",
+  "message": "You joined the challenge: \"10\"",
+  "link": "/challenges/68877b02c4996c61322e8a44",
+  "referenceId": {
+    "$oid": "68877b02c4996c61322e8a44"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-29T08:07:35.740Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "688882d7493c87a53beda4be"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "type": "comment",
+  "message": "Not Bot  commented on your challenge \"30-Day Fitness Challenge\".",
+  "link": "/challenges/687f799267b9bd51afe31f37",
+  "referenceId": {
+    "$oid": "687f799267b9bd51afe31f37"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-29T08:14:15.546Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "688883d3493c87a53beda4f2"
+  },
+  "userId": {
+    "$oid": "68678c7c0aee978992f3124a"
+  },
+  "type": "join",
+  "message": "You joined the challenge: \"30-day Plastic-Free July\"",
+  "link": "/challenges/6887732a1ade2608326f825f",
+  "referenceId": {
+    "$oid": "6887732a1ade2608326f825f"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-29T08:18:27.131Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888857a493c87a53beda553"
+  },
+  "userId": {
+    "$oid": "687633c4214ebe1393b527c1"
+  },
+  "type": "generic",
+  "message": "Not Bot  liked your challenge \"Eco-Friendly Lifestyle Challenge\".",
+  "link": "/challenges/687f7c5767b9bd51afe31f82",
+  "referenceId": {
+    "$oid": "687f7c5767b9bd51afe31f82"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-29T08:25:30.207Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68888585493c87a53beda575"
+  },
+  "userId": {
+    "$oid": "687633c4214ebe1393b527c1"
+  },
+  "type": "generic",
+  "message": "Not Bot  liked your challenge \"Eco-Friendly Lifestyle Challenge\".",
+  "link": "/challenges/687f7c5767b9bd51afe31f82",
+  "referenceId": {
+    "$oid": "687f7c5767b9bd51afe31f82"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-29T08:25:41.226Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68888586493c87a53beda57d"
+  },
+  "userId": {
+    "$oid": "687633c4214ebe1393b527c1"
+  },
+  "type": "generic",
+  "message": "Not Bot  liked your challenge \"Eco-Friendly Lifestyle Challenge\".",
+  "link": "/challenges/687f7c5767b9bd51afe31f82",
+  "referenceId": {
+    "$oid": "687f7c5767b9bd51afe31f82"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-29T08:25:42.733Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68888590493c87a53beda59f"
+  },
+  "userId": {
+    "$oid": "687633c4214ebe1393b527c1"
+  },
+  "type": "generic",
+  "message": "Not Bot  liked your challenge \"Eco-Friendly Lifestyle Challenge\".",
+  "link": "/challenges/687f7c5767b9bd51afe31f82",
+  "referenceId": {
+    "$oid": "687f7c5767b9bd51afe31f82"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-29T08:25:52.213Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888886e493c87a53beda628"
+  },
+  "userId": {
+    "$oid": "68678c7c0aee978992f3124a"
+  },
+  "type": "join",
+  "message": "You joined the challenge: \"30 days\"",
+  "link": "/challenges/68877a33c4996c61322e8a30",
+  "referenceId": {
+    "$oid": "68877a33c4996c61322e8a30"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-29T08:38:06.216Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "688888c9493c87a53beda64e"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "type": "generic",
+  "message": "Not Bot  liked your challenge \"30-Day Fitness Challenge\".",
+  "link": "/challenges/687f799267b9bd51afe31f37",
+  "referenceId": {
+    "$oid": "687f799267b9bd51afe31f37"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-29T08:39:37.882Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "688888fb493c87a53beda68f"
+  },
+  "userId": {
+    "$oid": "68678c7c0aee978992f3124a"
+  },
+  "type": "join",
+  "message": "You joined the challenge: \"Zero Waste September\"",
+  "link": "/challenges/687f7ea2d030b9f8bfe02794",
+  "referenceId": {
+    "$oid": "687f7ea2d030b9f8bfe02794"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-29T08:40:27.235Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68889d4d493c87a53beda727"
+  },
+  "userId": {
+    "$oid": "687633c4214ebe1393b527c1"
+  },
+  "type": "generic",
+  "message": "Not Bot  liked your challenge \"Eco-Friendly Lifestyle Challenge\".",
+  "link": "/challenges/687f7c5767b9bd51afe31f82",
+  "referenceId": {
+    "$oid": "687f7c5767b9bd51afe31f82"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-29T10:07:09.522Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888a1c8493c87a53beda7a6"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "type": "comment",
+  "message": "Not Bot  commented on your challenge \"30-Day Fitness Challenge\".",
+  "link": "/challenges/687f799267b9bd51afe31f37",
+  "referenceId": {
+    "$oid": "687f799267b9bd51afe31f37"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-29T10:26:16.501Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888a1d5493c87a53beda7ae"
+  },
+  "userId": {
+    "$oid": "687633c4214ebe1393b527c1"
+  },
+  "type": "generic",
+  "message": "Not Bot  liked your challenge \"Eco-Friendly Lifestyle Challenge\".",
+  "link": "/challenges/687f7c5767b9bd51afe31f82",
+  "referenceId": {
+    "$oid": "687f7c5767b9bd51afe31f82"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-29T10:26:29.617Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888a1d7493c87a53beda7b6"
+  },
+  "userId": {
+    "$oid": "687633c4214ebe1393b527c1"
+  },
+  "type": "generic",
+  "message": "Not Bot  liked your challenge \"Eco-Friendly Lifestyle Challenge\".",
+  "link": "/challenges/687f7c5767b9bd51afe31f82",
+  "referenceId": {
+    "$oid": "687f7c5767b9bd51afe31f82"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-29T10:26:31.397Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888a4b9493c87a53beda82b"
+  },
+  "userId": {
+    "$oid": "687633c4214ebe1393b527c1"
+  },
+  "type": "comment",
+  "message": "Not Bot  commented on your challenge \"Zero Waste September\".",
+  "link": "/challenges/687f7ea2d030b9f8bfe02794",
+  "referenceId": {
+    "$oid": "687f7ea2d030b9f8bfe02794"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-29T10:38:49.230Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888a73e493c87a53beda919"
+  },
+  "userId": {
+    "$oid": "687633c4214ebe1393b527c1"
+  },
+  "type": "generic",
+  "message": "My Test liked your challenge \"Zero Waste September\".",
+  "link": "/challenges/687f7ea2d030b9f8bfe02794",
+  "referenceId": {
+    "$oid": "687f7ea2d030b9f8bfe02794"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-29T10:49:34.036Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888a74b493c87a53beda94a"
+  },
+  "userId": {
+    "$oid": "687633c4214ebe1393b527c1"
+  },
+  "type": "generic",
+  "message": "My Test liked your challenge \"Zero Waste September\".",
+  "link": "/challenges/687f7ea2d030b9f8bfe02794",
+  "referenceId": {
+    "$oid": "687f7ea2d030b9f8bfe02794"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-29T10:49:47.123Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888a756493c87a53beda961"
+  },
+  "userId": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "type": "join",
+  "message": "You joined the challenge: \"10\"",
+  "link": "/challenges/68877b02c4996c61322e8a44",
+  "referenceId": {
+    "$oid": "68877b02c4996c61322e8a44"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-29T10:49:58.525Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888a7e4493c87a53beda9ae"
+  },
+  "userId": {
+    "$oid": "68678c7c0aee978992f3124a"
+  },
+  "type": "join",
+  "message": "You joined the challenge: \"2day marathon\"",
+  "link": "/challenges/6887700b1ade2608326f8236",
+  "referenceId": {
+    "$oid": "6887700b1ade2608326f8236"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-29T10:52:20.267Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888a8f8df8248db8c5edd61"
+  },
+  "userId": {
+    "$oid": "68678c7c0aee978992f3124a"
+  },
+  "type": "join",
+  "message": "You joined the challenge: \"7 day challenge\"",
+  "link": "/challenges/68875db548d618ec13c2e7a0",
+  "referenceId": {
+    "$oid": "68875db548d618ec13c2e7a0"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-29T10:56:56.103Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888c2a72036cc12c781c7ba"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "type": "comment",
+  "message": "My Test commented on your challenge \"30-Day Fitness Challenge\".",
+  "link": "/challenges/687f799267b9bd51afe31f37",
+  "referenceId": {
+    "$oid": "687f799267b9bd51afe31f37"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-29T12:46:31.132Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888c2a72036cc12c781c7bd"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "type": "comment",
+  "message": "My Test commented on your challenge \"30-Day Fitness Challenge\".",
+  "link": "/challenges/687f799267b9bd51afe31f37",
+  "referenceId": {
+    "$oid": "687f799267b9bd51afe31f37"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-29T12:46:31.847Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888d4df2036cc12c781c9e9"
+  },
+  "userId": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "type": "join",
+  "message": "You joined the challenge: \"30 days\"",
+  "link": "/challenges/68877a33c4996c61322e8a30",
+  "referenceId": {
+    "$oid": "68877a33c4996c61322e8a30"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-29T14:04:15.268Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888d58f2036cc12c781ca28"
+  },
+  "userId": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "type": "join",
+  "message": "You joined the challenge: \"30-Day Fitness Challenge\"",
+  "link": "/challenges/687f799267b9bd51afe31f37",
+  "referenceId": {
+    "$oid": "687f799267b9bd51afe31f37"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-29T14:07:11.489Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888d65e2036cc12c781caab"
+  },
+  "userId": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "type": "join",
+  "message": "You joined the challenge: \"Zero Waste September\"",
+  "link": "/challenges/687f7ea2d030b9f8bfe02794",
+  "referenceId": {
+    "$oid": "687f7ea2d030b9f8bfe02794"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-29T14:10:38.099Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888d6612036cc12c781cab7"
+  },
+  "userId": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "type": "join",
+  "message": "You joined the challenge: \"Eco-Friendly Lifestyle Challenge\"",
+  "link": "/challenges/687f7c5767b9bd51afe31f82",
+  "referenceId": {
+    "$oid": "687f7c5767b9bd51afe31f82"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-29T14:10:41.707Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888d6f82036cc12c781cb06"
+  },
+  "userId": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "type": "join",
+  "message": "You joined the challenge: \"7 day challenge\"",
+  "link": "/challenges/68875db548d618ec13c2e7a0",
+  "referenceId": {
+    "$oid": "68875db548d618ec13c2e7a0"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-29T14:13:12.128Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888d6f92036cc12c781cb12"
+  },
+  "userId": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "type": "join",
+  "message": "You joined the challenge: \"30-day Plastic-Free July\"",
+  "link": "/challenges/6887732a1ade2608326f825f",
+  "referenceId": {
+    "$oid": "6887732a1ade2608326f825f"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-29T14:13:13.839Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888dbd8d7d3ca90e441dcef"
+  },
+  "userId": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "type": "join",
+  "message": "You joined the challenge: \"2day marathon\"",
+  "link": "/challenges/6887700b1ade2608326f8236",
+  "referenceId": {
+    "$oid": "6887700b1ade2608326f8236"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-29T14:34:00.272Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888dbd8d7d3ca90e441dcf1"
+  },
+  "userId": {
+    "$oid": "687633c4214ebe1393b527c1"
+  },
+  "type": "join",
+  "message": "My Test joined your challenge \"2day marathon\"",
+  "link": "/challenges/6887700b1ade2608326f8236",
+  "referenceId": {
+    "$oid": "6887700b1ade2608326f8236"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-29T14:34:00.276Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888dbd8d7d3ca90e441dcf3"
+  },
+  "userId": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "type": "reward",
+  "message": "🎉 You earned a reward: Welcome bonus (1⭐)",
+  "link": "/rewards/6888dbd8d7d3ca90e441dceb",
+  "referenceId": {
+    "$oid": "6888dbd8d7d3ca90e441dceb"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-29T14:34:00.278Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6889cc1d168ad05e775c8eaa"
+  },
+  "userId": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "type": "generic",
+  "message": "This is a test notification!",
+  "referenceId": null,
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-30T07:39:09.155Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6889cee4168ad05e775c9092"
+  },
+  "userId": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "type": "generic",
+  "message": "This is a test notification!",
+  "referenceId": null,
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-30T07:51:00.116Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6889d1a0476b0749f3a694ec"
+  },
+  "userId": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "type": "generic",
+  "message": "Your challenge \"4\" has been created and is pending approval.",
+  "link": "/challenges/6889d1a0476b0749f3a694ea",
+  "referenceId": {
+    "$oid": "6889d1a0476b0749f3a694ea"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-30T08:02:40.948Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6889d1c6476b0749f3a69507"
+  },
+  "userId": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "type": "generic",
+  "message": "Your challenge \"1 game\" has been created and is pending approval.",
+  "link": "/challenges/6889d1c6476b0749f3a69505",
+  "referenceId": {
+    "$oid": "6889d1c6476b0749f3a69505"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-30T08:03:18.735Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6889d293476b0749f3a6952e"
+  },
+  "userId": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "type": "approved",
+  "message": "Your challenge \"1 game\" has been approved!",
+  "link": "/challenges/6889d1c6476b0749f3a69505",
+  "referenceId": {
+    "$oid": "6889d1c6476b0749f3a69505"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-30T08:06:43.085Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6889d2b8476b0749f3a69588"
+  },
+  "userId": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "type": "approved",
+  "message": "Your challenge \"4\" has been approved!",
+  "link": "/challenges/6889d1a0476b0749f3a694ea",
+  "referenceId": {
+    "$oid": "6889d1a0476b0749f3a694ea"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-30T08:07:20.217Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6889d2c6476b0749f3a695ae"
+  },
+  "userId": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "type": "join",
+  "message": "You joined the challenge: \"1 game\"",
+  "link": "/challenges/6889d1c6476b0749f3a69505",
+  "referenceId": {
+    "$oid": "6889d1c6476b0749f3a69505"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-30T08:07:34.888Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6889d2c6476b0749f3a695b0"
+  },
+  "userId": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "type": "reward",
+  "message": "🎉 You earned a reward: Welcome bonus (1⭐)",
+  "link": "/rewards/6889d2c6476b0749f3a695aa",
+  "referenceId": {
+    "$oid": "6889d2c6476b0749f3a695aa"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-30T08:07:34.894Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6889d85f476b0749f3a696c7"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "type": "join",
+  "message": "You joined the challenge: \"1 game\"",
+  "link": "/challenges/6889d1c6476b0749f3a69505",
+  "referenceId": {
+    "$oid": "6889d1c6476b0749f3a69505"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-30T08:31:27.976Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6889d85f476b0749f3a696c9"
+  },
+  "userId": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "type": "join",
+  "message": "New tester  joined your challenge \"1 game\"",
+  "link": "/challenges/6889d1c6476b0749f3a69505",
+  "referenceId": {
+    "$oid": "6889d1c6476b0749f3a69505"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-30T08:31:27.979Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6889d85f476b0749f3a696cb"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "type": "reward",
+  "message": "🎉 You earned a reward: Welcome bonus (1⭐)",
+  "link": "/rewards/6889d85f476b0749f3a696c3",
+  "referenceId": {
+    "$oid": "6889d85f476b0749f3a696c3"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-30T08:31:27.983Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6889da6fc556cb920176c23d"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "type": "quit",
+  "message": "You quit the challenge: \"10\".",
+  "link": "/challenges/68877b02c4996c61322e8a44",
+  "referenceId": {
+    "$oid": "68877b02c4996c61322e8a44"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-30T08:40:15.522Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6889deff4cee23e7711339df"
+  },
+  "userId": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "type": "generic",
+  "message": "This is a test notification!",
+  "referenceId": null,
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-30T08:59:43.223Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6889df36195d00bacb9ebbd0"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "type": "generic",
+  "message": "This is a test notification for you!",
+  "referenceId": null,
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-30T09:00:38.802Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6889df99195d00bacb9ebcac"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "type": "join",
+  "message": "You joined the challenge: \"4\"",
+  "link": "/challenges/6889d1a0476b0749f3a694ea",
+  "referenceId": {
+    "$oid": "6889d1a0476b0749f3a694ea"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-30T09:02:17.452Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6889df99195d00bacb9ebcae"
+  },
+  "userId": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "type": "join",
+  "message": "New tester  joined your challenge \"4\"",
+  "link": "/challenges/6889d1a0476b0749f3a694ea",
+  "referenceId": {
+    "$oid": "6889d1a0476b0749f3a694ea"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-30T09:02:17.460Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6889df99195d00bacb9ebcb0"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "type": "reward",
+  "message": "🎉 You earned a reward: Welcome bonus (1⭐)",
+  "link": "/rewards/6889df99195d00bacb9ebca8",
+  "referenceId": {
+    "$oid": "6889df99195d00bacb9ebca8"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-30T09:02:17.466Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6889e2bc06ee8c9101bb3758"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "type": "join",
+  "message": "You joined the challenge: \"Test Challenge\"",
+  "link": "/challenges/test123",
+  "referenceId": null,
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-30T09:15:40.137Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6889e2bc06ee8c9101bb375a"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "type": "reward",
+  "message": "🎉 You earned a reward: Welcome Badge (5⭐)",
+  "link": "/rewards/reward123",
+  "referenceId": null,
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-30T09:15:40.178Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6889e31106ee8c9101bb3785"
+  },
+  "userId": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "type": "quit",
+  "message": "You quit the challenge: \"1 game\".",
+  "link": "/challenges/6889d1c6476b0749f3a69505",
+  "referenceId": {
+    "$oid": "6889d1c6476b0749f3a69505"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-30T09:17:05.893Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6889e73006ee8c9101bb393c"
+  },
+  "userId": {
+    "$oid": "6889e70506ee8c9101bb3901"
+  },
+  "type": "join",
+  "message": "You joined the challenge: \"4\"",
+  "link": "/challenges/6889d1a0476b0749f3a694ea",
+  "referenceId": {
+    "$oid": "6889d1a0476b0749f3a694ea"
+  },
+  "read": true,
+  "createdAt": {
+    "$date": "2025-07-30T09:34:40.511Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6889e73006ee8c9101bb393e"
+  },
+  "userId": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "type": "join",
+  "message": "Newbolt Acct joined your challenge \"4\"",
+  "link": "/challenges/6889d1a0476b0749f3a694ea",
+  "referenceId": {
+    "$oid": "6889d1a0476b0749f3a694ea"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-30T09:34:40.514Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6889e73006ee8c9101bb3940"
+  },
+  "userId": {
+    "$oid": "6889e70506ee8c9101bb3901"
+  },
+  "type": "reward",
+  "message": "🎉 You earned a reward: Welcome bonus (1⭐)",
+  "link": "/rewards/6889e73006ee8c9101bb3938",
+  "referenceId": {
+    "$oid": "6889e73006ee8c9101bb3938"
+  },
+  "read": true,
+  "createdAt": {
+    "$date": "2025-07-30T09:34:40.516Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "688a00aa06ee8c9101bb39e9"
+  },
+  "userId": {
+    "$oid": "6889e70506ee8c9101bb3901"
+  },
+  "type": "quit",
+  "message": "You quit the challenge: \"4\".",
+  "link": "/challenges/6889d1a0476b0749f3a694ea",
+  "referenceId": {
+    "$oid": "6889d1a0476b0749f3a694ea"
+  },
+  "read": true,
+  "createdAt": {
+    "$date": "2025-07-30T11:23:22.499Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "688a01b406ee8c9101bb3a2e"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "type": "comment",
+  "message": "Newbolt Acct commented on your challenge \"30-Day Fitness Challenge\".",
+  "link": "/challenges/687f799267b9bd51afe31f37",
+  "referenceId": {
+    "$oid": "687f799267b9bd51afe31f37"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-30T11:27:48.096Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "688a01b406ee8c9101bb3a3c"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "type": "comment",
+  "message": "Newbolt Acct commented on your challenge \"30-Day Fitness Challenge\".",
+  "link": "/challenges/687f799267b9bd51afe31f37",
+  "referenceId": {
+    "$oid": "687f799267b9bd51afe31f37"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-30T11:27:48.368Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "688a092b365b3825b3efd56b"
+  },
+  "userId": {
+    "$oid": "687633c4214ebe1393b527c1"
+  },
+  "type": "join",
+  "message": "Newbolt Acct joined your challenge \"30 days\"",
+  "link": "/challenges/68877a33c4996c61322e8a30",
+  "referenceId": {
+    "$oid": "68877a33c4996c61322e8a30"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-30T11:59:39.767Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "688a092b365b3825b3efd56d"
+  },
+  "userId": {
+    "$oid": "6889e70506ee8c9101bb3901"
+  },
+  "type": "reward",
+  "message": "🎉 You earned a reward: Welcome bonus (1⭐)",
+  "link": "/rewards/688a092b365b3825b3efd565",
+  "referenceId": {
+    "$oid": "688a092b365b3825b3efd565"
+  },
+  "read": true,
+  "createdAt": {
+    "$date": "2025-07-30T11:59:39.771Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "688a2076e44ca58c2628d03f"
+  },
+  "userId": {
+    "$oid": "6889e70506ee8c9101bb3901"
+  },
+  "type": "generic",
+  "message": "Your challenge \"ryu\" has been created and is pending approval.",
+  "link": "/challenges/688a2076e44ca58c2628d03d",
+  "referenceId": {
+    "$oid": "688a2076e44ca58c2628d03d"
+  },
+  "read": true,
+  "createdAt": {
+    "$date": "2025-07-30T13:39:02.327Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "688b0d9f4f91180d328cc1d1"
+  },
+  "userId": {
+    "$oid": "6889e70506ee8c9101bb3901"
+  },
+  "type": "join",
+  "message": "You joined the challenge: \"Zero Waste September\"",
+  "link": "/challenges/687f7ea2d030b9f8bfe02794",
+  "referenceId": {
+    "$oid": "687f7ea2d030b9f8bfe02794"
+  },
+  "read": true,
+  "createdAt": {
+    "$date": "2025-07-31T06:30:55.671Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "688b0d9f4f91180d328cc1d3"
+  },
+  "userId": {
+    "$oid": "687633c4214ebe1393b527c1"
+  },
+  "type": "join",
+  "message": "Newbolt Acct joined your challenge \"Zero Waste September\"",
+  "link": "/challenges/687f7ea2d030b9f8bfe02794",
+  "referenceId": {
+    "$oid": "687f7ea2d030b9f8bfe02794"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-31T06:30:55.695Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "688b0d9f4f91180d328cc1d5"
+  },
+  "userId": {
+    "$oid": "6889e70506ee8c9101bb3901"
+  },
+  "type": "reward",
+  "message": "🎉 You earned a reward: Welcome bonus (1⭐)",
+  "link": "/rewards/688b0d9f4f91180d328cc1cd",
+  "referenceId": {
+    "$oid": "688b0d9f4f91180d328cc1cd"
+  },
+  "read": true,
+  "createdAt": {
+    "$date": "2025-07-31T06:30:55.705Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "688b0dac4f91180d328cc209"
+  },
+  "userId": {
+    "$oid": "6889e70506ee8c9101bb3901"
+  },
+  "type": "quit",
+  "message": "You quit the challenge: \"30 days\".",
+  "link": "/challenges/68877a33c4996c61322e8a30",
+  "referenceId": {
+    "$oid": "68877a33c4996c61322e8a30"
+  },
+  "read": true,
+  "createdAt": {
+    "$date": "2025-07-31T06:31:08.771Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "688b10d74f91180d328cc262"
+  },
+  "userId": {
+    "$oid": "6889e70506ee8c9101bb3901"
+  },
+  "type": "join",
+  "message": "You joined the challenge: \"Eco-Friendly Lifestyle Challenge\"",
+  "link": "/challenges/687f7c5767b9bd51afe31f82",
+  "referenceId": {
+    "$oid": "687f7c5767b9bd51afe31f82"
+  },
+  "read": true,
+  "createdAt": {
+    "$date": "2025-07-31T06:44:39.462Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "688b10d74f91180d328cc264"
+  },
+  "userId": {
+    "$oid": "687633c4214ebe1393b527c1"
+  },
+  "type": "join",
+  "message": "Newbolt Acct joined your challenge \"Eco-Friendly Lifestyle Challenge\"",
+  "link": "/challenges/687f7c5767b9bd51afe31f82",
+  "referenceId": {
+    "$oid": "687f7c5767b9bd51afe31f82"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-07-31T06:44:39.466Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "688b10d74f91180d328cc266"
+  },
+  "userId": {
+    "$oid": "6889e70506ee8c9101bb3901"
+  },
+  "type": "reward",
+  "message": "🎉 You earned a reward: Welcome bonus (1⭐)",
+  "link": "/rewards/688b10d74f91180d328cc25e",
+  "referenceId": {
+    "$oid": "688b10d74f91180d328cc25e"
+  },
+  "read": true,
+  "createdAt": {
+    "$date": "2025-07-31T06:44:39.469Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "688b53a400e56a7dc23e1513"
+  },
+  "userId": {
+    "$oid": "6889e70506ee8c9101bb3901"
+  },
+  "type": "quit",
+  "message": "You quit the challenge: \"Zero Waste September\".",
+  "link": "/challenges/687f7ea2d030b9f8bfe02794",
+  "referenceId": {
+    "$oid": "687f7ea2d030b9f8bfe02794"
+  },
+  "read": true,
+  "createdAt": {
+    "$date": "2025-07-31T11:29:40.174Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "688fcc43b2b7326c23e097bc"
+  },
+  "userId": {
+    "$oid": "687137919eeae1ff1cf08320"
+  },
+  "type": "join",
+  "message": "You joined the challenge: \"Eco-Friendly Lifestyle Challenge\"",
+  "link": "/challenges/687f7c5767b9bd51afe31f82",
+  "referenceId": {
+    "$oid": "687f7c5767b9bd51afe31f82"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-08-03T20:53:23.429Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "688fcc43b2b7326c23e097be"
+  },
+  "userId": {
+    "$oid": "687633c4214ebe1393b527c1"
+  },
+  "type": "join",
+  "message": "Tung tung tung sahur joined your challenge \"Eco-Friendly Lifestyle Challenge\"",
+  "link": "/challenges/687f7c5767b9bd51afe31f82",
+  "referenceId": {
+    "$oid": "687f7c5767b9bd51afe31f82"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-08-03T20:53:23.434Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "688fcc43b2b7326c23e097c0"
+  },
+  "userId": {
+    "$oid": "687137919eeae1ff1cf08320"
+  },
+  "type": "reward",
+  "message": "🎉 You earned a reward: Welcome bonus (1⭐)",
+  "link": "/rewards/688fcc43b2b7326c23e097b8",
+  "referenceId": {
+    "$oid": "688fcc43b2b7326c23e097b8"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-08-03T20:53:23.437Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "688fcc4eb2b7326c23e097e5"
+  },
+  "userId": {
+    "$oid": "687633c4214ebe1393b527c1"
+  },
+  "type": "comment",
+  "message": "Tung tung tung sahur commented on your challenge \"Zero Waste September\".",
+  "link": "/challenges/687f7ea2d030b9f8bfe02794",
+  "referenceId": {
+    "$oid": "687f7ea2d030b9f8bfe02794"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-08-03T20:53:34.812Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "688fcc64b2b7326c23e09833"
+  },
+  "userId": {
+    "$oid": "687633c4214ebe1393b527c1"
+  },
+  "type": "comment",
+  "message": "Tung tung tung sahur commented on your challenge \"Eco-Friendly Lifestyle Challenge\".",
+  "link": "/challenges/687f7c5767b9bd51afe31f82",
+  "referenceId": {
+    "$oid": "687f7c5767b9bd51afe31f82"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-08-03T20:53:56.171Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "688fcf53b2b7326c23e099bb"
+  },
+  "userId": {
+    "$oid": "687633c4214ebe1393b527c1"
+  },
+  "type": "comment",
+  "message": "Newbolt Acct commented on your challenge \"Eco-Friendly Lifestyle Challenge\".",
+  "link": "/challenges/687f7c5767b9bd51afe31f82",
+  "referenceId": {
+    "$oid": "687f7c5767b9bd51afe31f82"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-08-03T21:06:27.474Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "689050eba10d29034af2a7a4"
+  },
+  "userId": {
+    "$oid": "6889e70506ee8c9101bb3901"
+  },
+  "type": "join",
+  "message": "You joined the challenge: \"10\"",
+  "link": "/challenges/68877b02c4996c61322e8a44",
+  "referenceId": {
+    "$oid": "68877b02c4996c61322e8a44"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-08-04T06:19:23.837Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "689050eba10d29034af2a7a6"
+  },
+  "userId": {
+    "$oid": "687633c4214ebe1393b527c1"
+  },
+  "type": "join",
+  "message": "Newbolt Acct joined your challenge \"10\"",
+  "link": "/challenges/68877b02c4996c61322e8a44",
+  "referenceId": {
+    "$oid": "68877b02c4996c61322e8a44"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-08-04T06:19:23.844Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "689050eba10d29034af2a7a8"
+  },
+  "userId": {
+    "$oid": "6889e70506ee8c9101bb3901"
+  },
+  "type": "reward",
+  "message": "🎉 You earned a reward: Welcome bonus (1⭐)",
+  "link": "/rewards/689050eba10d29034af2a7a0",
+  "referenceId": {
+    "$oid": "689050eba10d29034af2a7a0"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-08-04T06:19:23.853Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68905238a10d29034af2aa08"
+  },
+  "userId": {
+    "$oid": "6889e70506ee8c9101bb3901"
+  },
+  "type": "quit",
+  "message": "You quit the challenge: \"Eco-Friendly Lifestyle Challenge\".",
+  "link": "/challenges/687f7c5767b9bd51afe31f82",
+  "referenceId": {
+    "$oid": "687f7c5767b9bd51afe31f82"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-08-04T06:24:56.363Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68906614a10d29034af2ae4b"
+  },
+  "userId": {
+    "$oid": "68905e19a10d29034af2ac41"
+  },
+  "type": "join",
+  "message": "You joined the challenge: \"10\"",
+  "link": "/challenges/68877b02c4996c61322e8a44",
+  "referenceId": {
+    "$oid": "68877b02c4996c61322e8a44"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-08-04T07:49:40.726Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68906614a10d29034af2ae4d"
+  },
+  "userId": {
+    "$oid": "687633c4214ebe1393b527c1"
+  },
+  "type": "join",
+  "message": "Chunk joined your challenge \"10\"",
+  "link": "/challenges/68877b02c4996c61322e8a44",
+  "referenceId": {
+    "$oid": "68877b02c4996c61322e8a44"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-08-04T07:49:40.729Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68906614a10d29034af2ae4f"
+  },
+  "userId": {
+    "$oid": "68905e19a10d29034af2ac41"
+  },
+  "type": "reward",
+  "message": "🎉 You earned a reward: Welcome bonus (1⭐)",
+  "link": "/rewards/68906614a10d29034af2ae47",
+  "referenceId": {
+    "$oid": "68906614a10d29034af2ae47"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-08-04T07:49:40.732Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6890661fa10d29034af2ae57"
+  },
+  "userId": {
+    "$oid": "687633c4214ebe1393b527c1"
+  },
+  "type": "comment",
+  "message": "Chunk commented on your challenge \"30 days\".",
+  "link": "/challenges/68877a33c4996c61322e8a30",
+  "referenceId": {
+    "$oid": "68877a33c4996c61322e8a30"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-08-04T07:49:51.568Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6890744ab25d582fcce7a590"
+  },
+  "userId": {
+    "$oid": "687633c4214ebe1393b527c1"
+  },
+  "type": "join",
+  "message": "Spam Acct joined your challenge \"Eco-Friendly Lifestyle Challenge\"",
+  "link": "/challenges/687f7c5767b9bd51afe31f82",
+  "referenceId": {
+    "$oid": "687f7c5767b9bd51afe31f82"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-08-04T08:50:18.140Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6890744ab25d582fcce7a592"
+  },
+  "userId": {
+    "$oid": "68907412b25d582fcce7a523"
+  },
+  "type": "reward",
+  "message": "🎉 You earned a reward: Welcome bonus (1⭐)",
+  "link": "/rewards/6890744ab25d582fcce7a58a",
+  "referenceId": {
+    "$oid": "6890744ab25d582fcce7a58a"
+  },
+  "read": true,
+  "createdAt": {
+    "$date": "2025-08-04T08:50:18.146Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6890a49a41d7b31740b12bd9"
+  },
+  "userId": {
+    "$oid": "6890a44d41d7b31740b12b88"
+  },
+  "type": "join",
+  "message": "You joined the challenge: \"10\"",
+  "link": "/challenges/68877b02c4996c61322e8a44",
+  "referenceId": {
+    "$oid": "68877b02c4996c61322e8a44"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-08-04T12:16:26.310Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6890a49a41d7b31740b12bdb"
+  },
+  "userId": {
+    "$oid": "687633c4214ebe1393b527c1"
+  },
+  "type": "join",
+  "message": "Ghkkfd joined your challenge \"10\"",
+  "link": "/challenges/68877b02c4996c61322e8a44",
+  "referenceId": {
+    "$oid": "68877b02c4996c61322e8a44"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-08-04T12:16:26.519Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6890a49a41d7b31740b12bdd"
+  },
+  "userId": {
+    "$oid": "6890a44d41d7b31740b12b88"
+  },
+  "type": "reward",
+  "message": "🎉 You earned a reward: Welcome bonus (1⭐)",
+  "link": "/rewards/6890a49a41d7b31740b12bd5",
+  "referenceId": {
+    "$oid": "6890a49a41d7b31740b12bd5"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-08-04T12:16:26.529Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68919b20c71c162e81bc0769"
+  },
+  "userId": {
+    "$oid": "68907412b25d582fcce7a523"
+  },
+  "type": "join",
+  "message": "You joined the challenge: \"10\"",
+  "link": "/challenges/68877b02c4996c61322e8a44",
+  "referenceId": {
+    "$oid": "68877b02c4996c61322e8a44"
+  },
+  "read": true,
+  "createdAt": {
+    "$date": "2025-08-05T05:48:16.496Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68919b20c71c162e81bc076b"
+  },
+  "userId": {
+    "$oid": "687633c4214ebe1393b527c1"
+  },
+  "type": "join",
+  "message": "Spam Acct joined your challenge \"10\"",
+  "link": "/challenges/68877b02c4996c61322e8a44",
+  "referenceId": {
+    "$oid": "68877b02c4996c61322e8a44"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-08-05T05:48:16.519Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68919b20c71c162e81bc076d"
+  },
+  "userId": {
+    "$oid": "68907412b25d582fcce7a523"
+  },
+  "type": "reward",
+  "message": "🎉 You earned a reward: Welcome bonus (1⭐)",
+  "link": "/rewards/68919b20c71c162e81bc0765",
+  "referenceId": {
+    "$oid": "68919b20c71c162e81bc0765"
+  },
+  "read": true,
+  "createdAt": {
+    "$date": "2025-08-05T05:48:16.533Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6891d4ffc71c162e81bc0ffd"
+  },
+  "userId": {
+    "$oid": "68905e19a10d29034af2ac41"
+  },
+  "type": "generic",
+  "message": "Your challenge \"fgh\" has been created and is pending approval.",
+  "link": "/challenges/6891d4ffc71c162e81bc0ffb",
+  "referenceId": {
+    "$oid": "6891d4ffc71c162e81bc0ffb"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-08-05T09:55:11.609Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6891e2dc1902ae02375e29f0"
+  },
+  "userId": {
+    "$oid": "6891a11ec71c162e81bc08bf"
+  },
+  "type": "join",
+  "message": "You joined the challenge: \"10\"",
+  "link": "/challenges/68877b02c4996c61322e8a44",
+  "referenceId": {
+    "$oid": "68877b02c4996c61322e8a44"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-08-05T10:54:20.627Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6891e2dc1902ae02375e29f2"
+  },
+  "userId": {
+    "$oid": "687633c4214ebe1393b527c1"
+  },
+  "type": "join",
+  "message": "Kola joined your challenge \"10\"",
+  "link": "/challenges/68877b02c4996c61322e8a44",
+  "referenceId": {
+    "$oid": "68877b02c4996c61322e8a44"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-08-05T10:54:20.638Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6891e2dc1902ae02375e29f4"
+  },
+  "userId": {
+    "$oid": "6891a11ec71c162e81bc08bf"
+  },
+  "type": "reward",
+  "message": "🎉 You earned a reward: Welcome bonus (1⭐)",
+  "link": "/rewards/6891e2dc1902ae02375e29ec",
+  "referenceId": {
+    "$oid": "6891e2dc1902ae02375e29ec"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-08-05T10:54:20.649Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6891e477f4220d843e036db6"
+  },
+  "userId": {
+    "$oid": "68907412b25d582fcce7a523"
+  },
+  "type": "join",
+  "message": "You joined the challenge: \"30 days\"",
+  "link": "/challenges/68877a33c4996c61322e8a30",
+  "referenceId": {
+    "$oid": "68877a33c4996c61322e8a30"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-08-05T11:01:11.660Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6891e477f4220d843e036db8"
+  },
+  "userId": {
+    "$oid": "687633c4214ebe1393b527c1"
+  },
+  "type": "join",
+  "message": "Spam Acct joined your challenge \"30 days\"",
+  "link": "/challenges/68877a33c4996c61322e8a30",
+  "referenceId": {
+    "$oid": "68877a33c4996c61322e8a30"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-08-05T11:01:11.667Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6891e477f4220d843e036dba"
+  },
+  "userId": {
+    "$oid": "68907412b25d582fcce7a523"
+  },
+  "type": "reward",
+  "message": "🎉 You earned a reward: Welcome bonus (1⭐)",
+  "link": "/rewards/6891e477f4220d843e036db2",
+  "referenceId": {
+    "$oid": "6891e477f4220d843e036db2"
+  },
+  "read": false,
+  "createdAt": {
+    "$date": "2025-08-05T11:01:11.672Z"
+  },
+  "__v": 0
+}]

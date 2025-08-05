@@ -1,0 +1,41 @@
+[{
+  "_id": {
+    "$oid": "6874a6bf735467e49adfa59e"
+  },
+  "barcode": "8901234567890",
+  "material": "Plastic",
+  "recyclable": true
+},
+{
+  "_id": {
+    "$oid": "6874a6d4735467e49adfa5a0"
+  },
+  "barcode": "8900987654321",
+  "material": "Glass",
+  "recyclable": true
+},
+{
+  "_id": {
+    "$oid": "6874a6ec735467e49adfa5a2"
+  },
+  "barcode": "1234567890123",
+  "material": "Carton",
+  "recyclable": true
+},
+{
+  "_id": {
+    "$oid": "6874a715735467e49adfa5a4"
+  },
+  "barcode": "9876543210987",
+  "material": "Metal",
+  "recyclable": true
+},
+{
+  "_id": {
+    "$oid": "6874c573735467e49adfa5a6"
+  },
+  "barcode": "8690504098532",
+  "name": "Fuse Tea Peach 500ml",
+  "material": "Plastic",
+  "recyclable": true
+}]

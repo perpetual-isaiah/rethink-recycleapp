@@ -1,0 +1,70 @@
+[{
+  "_id": {
+    "$oid": "6865269a42bd039bf8729460"
+  },
+  "user": {
+    "$oid": "6864e73c06c2b5a2f424de20"
+  },
+  "material": "plastic",
+  "weightKg": 2.5,
+  "date": {
+    "$date": "2025-07-02T12:31:22.078Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686528dd42bd039bf8729462"
+  },
+  "user": {
+    "$oid": "6864e73c06c2b5a2f424de20"
+  },
+  "material": "glass",
+  "weightKg": 1,
+  "date": {
+    "$date": "2025-07-02T12:41:01.284Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68652a70b061f394267a499f"
+  },
+  "user": {
+    "$oid": "6864e73c06c2b5a2f424de20"
+  },
+  "material": "Plastic",
+  "quantity": 12,
+  "unit": "items",
+  "date": {
+    "$date": "2025-07-01T00:00:00.000Z"
+  },
+  "createdAt": {
+    "$date": "2025-07-02T12:47:44.777Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T12:47:44.777Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68652c4fb061f394267a49a6"
+  },
+  "user": {
+    "$oid": "6864e73c06c2b5a2f424de20"
+  },
+  "material": "Glass",
+  "quantity": 1,
+  "unit": "kg",
+  "date": {
+    "$date": "2025-07-01T00:00:00.000Z"
+  },
+  "createdAt": {
+    "$date": "2025-07-02T12:55:43.933Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T12:55:43.933Z"
+  },
+  "__v": 0
+}]

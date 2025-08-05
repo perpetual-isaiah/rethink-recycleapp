@@ -1,0 +1,825 @@
+[{
+  "_id": {
+    "$oid": "6863820f81ced6a384e6e9ba"
+  },
+  "name": "Test User",
+  "email": "test@example.com",
+  "password": "$2b$10$pBMDeIYr5BrRqqACT.ceCuevkP0Ob8jA/./wy4.YRYv4o7JNXM2Jq",
+  "__v": 0,
+  "updatedAt": {
+    "$date": "2025-07-16T11:22:07.735Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6863830481ced6a384e6e9bd"
+  },
+  "name": "Testing User",
+  "email": "tes1t@example.com",
+  "password": "$2b$10$qwHYBFpmPuYrZV70b10gfupJDmFp8VVaYL95NYng1DJFrXR.oM0bC",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686385ed81ced6a384e6e9c0"
+  },
+  "name": "My test",
+  "email": "testing@example.com",
+  "password": "$2b$10$zVGhTjey56Kd6y/ynyx3Oe9N77iETVQQLvf/tPu1t9oINsV4Imr7e",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6863d069d8f6c67923fa5890"
+  },
+  "name": "John Doe",
+  "email": "john@example.com",
+  "password": "$2b$10$DtL1xAOnXvWk3UmuggwQuOzezvGRl/kDETB.zbro9V5Ch.wfb8nou",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6864e73c06c2b5a2f424de20"
+  },
+  "name": "Dumebi",
+  "email": "dumebi@example.com",
+  "password": "$2b$10$aUMFWG9YhGIZ8mGBY3nLsOcyu/EnmgF7CuPbZj4.J8fJepmp9ZBRe",
+  "__v": 0,
+  "location": {
+    "latitude": 35.33001888731208,
+    "longitude": 33.361407649910745
+  },
+  "updatedAt": {
+    "$date": "2025-07-04T07:58:27.852Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6864f5aa271cc2b785fbeb0e"
+  },
+  "name": "Collins",
+  "email": "cforcollins@gmail.com",
+  "password": "$2b$10$r/wbQanuNC5pvpKcncAelu7g2Pk99JZvY8UeBqo2yuDupGhymWjdC",
+  "role": "user",
+  "location": {
+    "latitude": 35.33001889442856,
+    "longitude": 33.36140772615385
+  },
+  "createdAt": {
+    "$date": "2025-07-02T09:02:34.281Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T09:03:17.105Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68678c7c0aee978992f3124a"
+  },
+  "name": "Not Bot ",
+  "email": "bot@gmail.com",
+  "password": "$2b$10$Ig7.3IYvVlSTpmp8zX9H8O45PmEl8hGKF1.3qaVPegnsR6hXQk88q",
+  "role": "user",
+  "location": {
+    "latitude": 35.33002106691533,
+    "longitude": 33.361407932177556
+  },
+  "totalRecycled": 0,
+  "challengesCompleted": 3,
+  "challengesJoined": [
+    {
+      "$oid": "68651e0c6bc8c5439b89a8f1"
+    },
+    {
+      "$oid": "68678f210aee978992f3125c"
+    },
+    {
+      "$oid": "68679133ec8cf23290359df7"
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-07-04T08:10:36.228Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-03T21:24:39.306Z"
+  },
+  "__v": 3,
+  "city": "Kazafani",
+  "pushToken": "ExponentPushToken[gYrSqYI1PCvnzX0RmsT5NT]"
+},
+{
+  "_id": {
+    "$oid": "686cda8f1bd7cb8854c3953c"
+  },
+  "name": "Try",
+  "email": "hhh@gmail.cok",
+  "password": "$2b$10$U.hp3TPLohAoi71zgb/WOuzDCl3zhxKPlJdEHCn.GpUNhZrH4uvLG",
+  "role": "user",
+  "location": {
+    "latitude": null,
+    "longitude": null
+  },
+  "city": "",
+  "totalRecycled": 0,
+  "challengesCompleted": 0,
+  "challengesJoined": [],
+  "createdAt": {
+    "$date": "2025-07-08T08:45:03.621Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T08:45:03.621Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686cdad51bd7cb8854c39540"
+  },
+  "name": "Check",
+  "email": "check@gmail.com",
+  "password": "$2b$10$lHWcGytH7Vu/PfHP8QpQt.1Qlii1I51nP6.wAwLFx84bpi6tA13z2",
+  "role": "user",
+  "location": {
+    "latitude": null,
+    "longitude": null
+  },
+  "city": "",
+  "totalRecycled": 0,
+  "challengesCompleted": 0,
+  "challengesJoined": [],
+  "createdAt": {
+    "$date": "2025-07-08T08:46:13.265Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T08:46:13.265Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686cdbef1bd7cb8854c39543"
+  },
+  "name": "verif",
+  "email": "verif@gmail.com",
+  "password": "$2b$10$un4QgilqSfA4qKn8ovcVj.uTPwMx7ADSdNmjCp8sHcx9lLABEBI8q",
+  "role": "user",
+  "location": {
+    "latitude": null,
+    "longitude": null
+  },
+  "city": "",
+  "totalRecycled": 0,
+  "challengesCompleted": 0,
+  "challengesJoined": [],
+  "createdAt": {
+    "$date": "2025-07-08T08:50:55.424Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T08:50:55.424Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686cee781bd7cb8854c39546"
+  },
+  "name": "Ttt",
+  "email": "tt@gmail.com",
+  "password": "$2b$10$Y0TGTrM9F8lO4IIKKW02QuYjK2cT6VCwmhIau3xhrWv6eo0Jm9I9S",
+  "role": "user",
+  "location": {
+    "latitude": null,
+    "longitude": null
+  },
+  "city": "",
+  "totalRecycled": 0,
+  "challengesCompleted": 0,
+  "challengesJoined": [],
+  "createdAt": {
+    "$date": "2025-07-08T10:10:00.136Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T10:10:00.136Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686cf42c1bd7cb8854c3954e"
+  },
+  "name": "Lll",
+  "email": "lll@gmail.com",
+  "password": "$2b$10$wnywTPgcFDVvqTN/gGMnXeUCjT39kCXqyGA8sqT6DnNS6zfuG5tD2",
+  "role": "user",
+  "location": {
+    "latitude": null,
+    "longitude": null
+  },
+  "city": "",
+  "totalRecycled": 0,
+  "challengesCompleted": 0,
+  "challengesJoined": [],
+  "createdAt": {
+    "$date": "2025-07-08T10:34:20.688Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T10:34:20.688Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686cf9781bd7cb8854c39551"
+  },
+  "name": "Testing ",
+  "email": "test@gmail.com",
+  "password": "$2b$10$.jqbOnUUlWFMDp46GxaNSOQZzHLjnf9bMLiG8YxHomffKqExujPba",
+  "role": "user",
+  "location": {
+    "latitude": null,
+    "longitude": null
+  },
+  "city": "",
+  "totalRecycled": 0,
+  "challengesCompleted": 0,
+  "challengesJoined": [],
+  "createdAt": {
+    "$date": "2025-07-08T10:56:56.673Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T10:56:56.673Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686d00368259d23a3aaca26d"
+  },
+  "name": "Pom Pom",
+  "email": "pompom@example.com",
+  "password": "$2b$10$dcQZPi1i.zt2oL8Bm9/koOxXq4ekA3jMyBF5594S6uKfU6OqYh262",
+  "role": "user",
+  "city": "",
+  "totalRecycled": 0,
+  "challengesCompleted": 0,
+  "challengesJoined": [],
+  "createdAt": {
+    "$date": "2025-07-08T11:25:42.157Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T11:25:42.157Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686d01b68f6e7db8d7375bf9"
+  },
+  "name": "very girl",
+  "email": "millyexample.com",
+  "password": "$2b$10$QCAkRFKju2p6uiTb81U6E.uSKYf9TfxhTPSfIW7zOTdlDKAwsuLSq",
+  "role": "user",
+  "location": {
+    "latitude": null,
+    "longitude": null
+  },
+  "city": "",
+  "totalRecycled": 0,
+  "challengesCompleted": 0,
+  "challengesJoined": [],
+  "createdAt": {
+    "$date": "2025-07-08T11:32:06.569Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T11:32:06.569Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "686d025f8f6e7db8d7375c02"
+  },
+  "name": "Greg ",
+  "email": "greg@gmail.com",
+  "password": "$2b$10$jSlY0FbR8wViYX5gbQObKOcktKxbn5IlQwrriBSS5wakz1un85O9a",
+  "role": "user",
+  "location": {
+    "latitude": null,
+    "longitude": null
+  },
+  "city": "",
+  "totalRecycled": 0,
+  "challengesCompleted": 0,
+  "challengesJoined": [],
+  "createdAt": {
+    "$date": "2025-07-08T11:34:55.033Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-08T11:34:55.033Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687137919eeae1ff1cf08320"
+  },
+  "name": "Tung tung tung sahur",
+  "email": "amberasaka@gmail.com",
+  "password": "$2b$10$rcmk8WK3daL6cjrPcayOqOLU0qEaD6iYrLTumJVYLRFilH5IB4Bzi",
+  "role": "user",
+  "location": {
+    "latitude": 35.33467298802538,
+    "longitude": 33.30148470109022
+  },
+  "city": "Kyrenia",
+  "totalRecycled": 0,
+  "challengesCompleted": 0,
+  "challengesJoined": [],
+  "createdAt": {
+    "$date": "2025-07-11T16:10:57.212Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-03T20:53:12.035Z"
+  },
+  "__v": 0,
+  "pushToken": "ExponentPushToken[F_SfXaLd-SCQqtTuY9GQ0y]"
+},
+{
+  "_id": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "name": "My Test",
+  "email": "tester@gmail.com",
+  "password": "$2b$10$hNQAwYlUhC0wP7eyl14vguV5G4mP9a3y/PN1aLO7vVBVMTIpo.kOm",
+  "role": "user",
+  "location": {
+    "latitude": 35.33002345168066,
+    "longitude": 33.361408218082815
+  },
+  "city": "Kazafani",
+  "phone": "",
+  "gender": "female",
+  "dateOfBirth": {
+    "$date": "1994-07-29T11:58:00.000Z"
+  },
+  "profilePhotoUrl": "https://res.cloudinary.com/dolg3dv2x/image/upload/v1753790227/xiil8zwml7kwrr1w1rt9.png",
+  "totalRecycled": 0,
+  "challengesCompleted": 3,
+  "challengesJoined": [
+    {
+      "$oid": "686516776bc8c5439b89a8e9"
+    },
+    {
+      "$oid": "68651e0c6bc8c5439b89a8f1"
+    },
+    {
+      "$oid": "6874e87f735467e49adfa5ac"
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-07-14T06:14:48.290Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-30T09:03:21.151Z"
+  },
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "687633c4214ebe1393b527c1"
+  },
+  "name": "Admin User",
+  "email": "admin@example.com",
+  "password": "$2b$10$ASzrV7SEzRVVDebCFsYRi.DvRxfMVFM.uRS44FGm6cJNeH74uwyNG",
+  "role": "admin",
+  "location": {
+    "latitude": null,
+    "longitude": null
+  },
+  "city": "",
+  "phone": "",
+  "gender": "",
+  "dateOfBirth": null,
+  "profilePhotoUrl": "file:///var/mobile/Containers/Data/Application/38CB8812-6A74-4071-B3E0-526E4B1764B9/Library/Caches/ExponentExperienceData/@perpetual.isaiah/myrecyclingapp/ImagePicker/9F8A84B7-D19E-46EE-862A-9D6190259DF8.gif",
+  "totalRecycled": 0,
+  "challengesCompleted": 0,
+  "challengesJoined": [],
+  "createdAt": {
+    "$date": "2025-07-15T10:56:04.918Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-04T07:23:40.373Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "name": "New tester ",
+  "email": "testnow@gmail.com",
+  "password": "$2b$10$jY3L4c.LJ0b1XGDEhiZf4eRUvWY8TSbHLUyBjgxYu0gLfpYsvEAIy",
+  "role": "user",
+  "location": {
+    "latitude": 35.33002343681243,
+    "longitude": 33.36140821878424
+  },
+  "city": "Kazafani",
+  "phone": "",
+  "gender": "",
+  "dateOfBirth": null,
+  "profilePhotoUrl": "",
+  "totalRecycled": 0,
+  "challengesCompleted": 0,
+  "challengesJoined": [
+    {
+      "$oid": "687f799267b9bd51afe31f37"
+    },
+    {
+      "$oid": "687f7ea2d030b9f8bfe02794"
+    },
+    {
+      "$oid": "687f7c5767b9bd51afe31f82"
+    },
+    {
+      "$oid": "68875db548d618ec13c2e7a0"
+    }
+  ],
+  "tokenVersion": 2,
+  "createdAt": {
+    "$date": "2025-07-22T07:14:07.185Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-03T20:05:25.821Z"
+  },
+  "__v": 0,
+  "pushToken": "ExponentPushToken[gYrSqYI1PCvnzX0RmsT5NT]"
+},
+{
+  "_id": {
+    "$oid": "68836c39595d7e8adcd51b0f"
+  },
+  "name": "new boy",
+  "email": "new@gmail.com",
+  "password": "$2b$10$4D7sQbaJjwWHBy7n0zam0O1YjlDMXsGOSHW1wLF/Cg4E2Up/Hm/QG",
+  "role": "user",
+  "location": {
+    "latitude": 35.33002234675861,
+    "longitude": 33.36140794257552
+  },
+  "city": "Kazafani",
+  "phone": "",
+  "gender": "",
+  "dateOfBirth": null,
+  "profilePhotoUrl": "",
+  "totalRecycled": 0,
+  "challengesCompleted": 0,
+  "challengesJoined": [
+    {
+      "$oid": "687f7ea2d030b9f8bfe02794"
+    }
+  ],
+  "tokenVersion": 1,
+  "createdAt": {
+    "$date": "2025-07-25T11:36:25.428Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-25T11:41:05.555Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6889e70506ee8c9101bb3901"
+  },
+  "name": "Newbolt Acct",
+  "email": "newbot@gmail.com",
+  "password": "$2b$10$64KacYdNPEah52YTpnR1zeRctjJX3X2Nz7fQ4s..Y8bjn0qCthPoe",
+  "role": "user",
+  "location": {
+    "latitude": 35.32996783538951,
+    "longitude": 33.36140822996308
+  },
+  "city": "Kazafani",
+  "phone": "",
+  "gender": "female",
+  "dateOfBirth": {
+    "$date": "2000-06-30T11:00:00.000Z"
+  },
+  "profilePhotoUrl": "https://res.cloudinary.com/dolg3dv2x/image/upload/v1753959648/ybiwmdzpmbcx3cvfmsa7.jpg",
+  "totalRecycled": 0,
+  "challengesCompleted": 0,
+  "challengesJoined": [],
+  "tokenVersion": 0,
+  "createdAt": {
+    "$date": "2025-07-30T09:33:57.135Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-04T09:01:32.982Z"
+  },
+  "__v": 0,
+  "pushToken": "ExponentPushToken[gYrSqYI1PCvnzX0RmsT5NT]"
+},
+{
+  "_id": {
+    "$oid": "68905e19a10d29034af2ac41"
+  },
+  "name": "Chunk",
+  "email": "chubby@gmail.com",
+  "password": "$2b$10$ivG5l.GMFaa55pRib8h0NenuiFfia6U5EgBmNrbxJhUN.vqFZbozu",
+  "role": "user",
+  "location": {
+    "latitude": 35.330022733100336,
+    "longitude": 33.36140806931486
+  },
+  "city": "Kazafani",
+  "phone": "",
+  "gender": "male",
+  "dateOfBirth": {
+    "$date": "2003-06-04T07:17:00.000Z"
+  },
+  "profilePhotoUrl": "https://res.cloudinary.com/dolg3dv2x/image/upload/v1754291808/zl6rfgzp6crpcekuzrw8.jpg",
+  "totalRecycled": 0,
+  "challengesCompleted": 0,
+  "challengesJoined": [],
+  "tokenVersion": 0,
+  "pushToken": "ExponentPushToken[gYrSqYI1PCvnzX0RmsT5NT]",
+  "createdAt": {
+    "$date": "2025-08-04T07:15:37.544Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-05T10:43:07.920Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68907347b25d582fcce7a4bd"
+  },
+  "name": "Chu",
+  "email": "chu@gmail.com",
+  "password": "$2b$10$qjS/jbWBlBDxpGhzlrZqiukbx/Sps7HwXYkuKid/1sPzRN1h2IRo2",
+  "role": "user",
+  "location": {
+    "latitude": null,
+    "longitude": null
+  },
+  "city": "",
+  "phone": "",
+  "gender": "",
+  "dateOfBirth": null,
+  "profilePhotoUrl": "",
+  "totalRecycled": 0,
+  "challengesCompleted": 0,
+  "challengesJoined": [],
+  "tokenVersion": 0,
+  "pushToken": "ExponentPushToken[I3cKMMKAl3kjbSFaPiZmYS]",
+  "createdAt": {
+    "$date": "2025-08-04T08:45:59.893Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-04T08:46:43.326Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68907412b25d582fcce7a523"
+  },
+  "name": "Spam Acct",
+  "email": "spam@gmail.com",
+  "password": "$2b$10$HzCfDgLB1K.6a9EYNQDm0OPDtAhH5I0xM.UpYWl.lhSv2ToCQbs/i",
+  "role": "user",
+  "location": {
+    "latitude": 35.33002274477811,
+    "longitude": 33.36140806877709
+  },
+  "city": "Kazafani",
+  "phone": "",
+  "gender": "",
+  "dateOfBirth": null,
+  "profilePhotoUrl": "",
+  "totalRecycled": 0,
+  "challengesCompleted": 0,
+  "challengesJoined": [],
+  "tokenVersion": 0,
+  "pushToken": "ExponentPushToken[gYrSqYI1PCvnzX0RmsT5NT]",
+  "createdAt": {
+    "$date": "2025-08-04T08:49:22.575Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-05T11:00:37.707Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6890a44d41d7b31740b12b88"
+  },
+  "name": "Ghkkfd",
+  "email": "red@gmail.com",
+  "password": "$2b$10$q9q08E5CYI3XbSu4vdhN9.UgunDvtDL859Hnd1d5CpC3O.rvFTQ0.",
+  "role": "user",
+  "location": {
+    "latitude": null,
+    "longitude": null
+  },
+  "city": "",
+  "phone": "",
+  "gender": "",
+  "dateOfBirth": null,
+  "profilePhotoUrl": "",
+  "totalRecycled": 0,
+  "challengesCompleted": 0,
+  "challengesJoined": [],
+  "tokenVersion": 0,
+  "pushToken": "ExponentPushToken[I3cKMMKAl3kjbSFaPiZmYS]",
+  "createdAt": {
+    "$date": "2025-08-04T12:15:22.754Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-04T12:15:54.706Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68919d98c71c162e81bc0840"
+  },
+  "name": "Poppy",
+  "email": "pop@gmail.com",
+  "password": "$2b$10$fbEe72idBmZKszHrJKFMReT143Bo85UZDxpA3au6xspCS7HcEvsra",
+  "role": "user",
+  "location": {
+    "latitude": null,
+    "longitude": null
+  },
+  "city": "",
+  "phone": "",
+  "gender": "",
+  "dateOfBirth": null,
+  "profilePhotoUrl": "",
+  "totalRecycled": 0,
+  "challengesCompleted": 0,
+  "challengesJoined": [],
+  "tokenVersion": 0,
+  "pushToken": "ExponentPushToken[gYrSqYI1PCvnzX0RmsT5NT]",
+  "createdAt": {
+    "$date": "2025-08-05T05:58:48.933Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-05T05:59:53.830Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6891a11ec71c162e81bc08bf"
+  },
+  "name": "Kola",
+  "email": "kola@gmail.com",
+  "password": "$2b$10$bxAU4Ie7e6HhV7vmpT9RWuCvhC92aXJXgYegkU4Cm/EMyrfmA6Flu",
+  "role": "user",
+  "location": {
+    "latitude": 35.33002267092004,
+    "longitude": 33.36140806362667
+  },
+  "city": "Kazafani",
+  "phone": "",
+  "gender": "",
+  "dateOfBirth": null,
+  "profilePhotoUrl": "",
+  "totalRecycled": 0,
+  "challengesCompleted": 0,
+  "challengesJoined": [],
+  "tokenVersion": 0,
+  "pushToken": "ExponentPushToken[gYrSqYI1PCvnzX0RmsT5NT]",
+  "createdAt": {
+    "$date": "2025-08-05T06:13:50.995Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-05T10:54:57.484Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6891a253c71c162e81bc08fe"
+  },
+  "name": "Sigh",
+  "email": "qwerty@gmail.com",
+  "password": "$2b$10$2wwVlGq8gpwDwV9zSJK.3ez7r.5c1YrcLTur8jpItoERVJECGdJL2",
+  "role": "user",
+  "location": {
+    "latitude": null,
+    "longitude": null
+  },
+  "city": "",
+  "phone": "",
+  "gender": "",
+  "dateOfBirth": null,
+  "profilePhotoUrl": "",
+  "totalRecycled": 0,
+  "challengesCompleted": 0,
+  "challengesJoined": [],
+  "tokenVersion": 0,
+  "pushToken": "ExponentPushToken[gYrSqYI1PCvnzX0RmsT5NT]",
+  "createdAt": {
+    "$date": "2025-08-05T06:18:59.793Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-05T06:19:35.731Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6891a7d0c71c162e81bc0983"
+  },
+  "name": "Oops",
+  "email": "oops@gmail.com",
+  "password": "$2b$10$zNyROn.z6zYCQKMZWQkm3.eiCYLtC8HNXF9s2LOb/znlvew7yDwjG",
+  "role": "user",
+  "location": {
+    "latitude": 35.3300247302374,
+    "longitude": 33.36140822903624
+  },
+  "city": "Kazafani",
+  "phone": "",
+  "gender": "",
+  "dateOfBirth": null,
+  "profilePhotoUrl": "",
+  "totalRecycled": 0,
+  "challengesCompleted": 0,
+  "challengesJoined": [],
+  "tokenVersion": 0,
+  "pushToken": "ExponentPushToken[gYrSqYI1PCvnzX0RmsT5NT]",
+  "createdAt": {
+    "$date": "2025-08-05T06:42:24.412Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-05T06:42:59.666Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6891c228c71c162e81bc0cdf"
+  },
+  "name": "Gold",
+  "email": "gold@gmail.com",
+  "password": "$2b$10$.oAJeTuN4G5.D7iKwuaiZeGAmpRafcDhHWQmKnaGOYf5byapvW.l6",
+  "role": "user",
+  "location": {
+    "latitude": null,
+    "longitude": null
+  },
+  "city": "",
+  "phone": "",
+  "gender": "",
+  "dateOfBirth": null,
+  "profilePhotoUrl": "",
+  "totalRecycled": 0,
+  "challengesCompleted": 0,
+  "challengesJoined": [],
+  "tokenVersion": 0,
+  "pushToken": "ExponentPushToken[gYrSqYI1PCvnzX0RmsT5NT]",
+  "createdAt": {
+    "$date": "2025-08-05T08:34:48.520Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-05T08:35:17.658Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6891c63cc71c162e81bc0e1a"
+  },
+  "name": "Final",
+  "email": "final@gmail.com",
+  "password": "$2b$10$yCmX7cjFxF3xCWxJBksh5eeNGfBLT9TeQAWyZUOX7FFaXStryhPHC",
+  "role": "user",
+  "location": {
+    "latitude": 35.33002275219182,
+    "longitude": 33.36140806843568
+  },
+  "city": "Kazafani",
+  "phone": "",
+  "gender": "",
+  "dateOfBirth": null,
+  "profilePhotoUrl": "",
+  "totalRecycled": 0,
+  "challengesCompleted": 0,
+  "challengesJoined": [],
+  "tokenVersion": 0,
+  "pushToken": "ExponentPushToken[gYrSqYI1PCvnzX0RmsT5NT]",
+  "createdAt": {
+    "$date": "2025-08-05T08:52:12.199Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-05T10:12:24.213Z"
+  },
+  "__v": 0
+}]

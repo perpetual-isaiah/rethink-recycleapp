@@ -1,0 +1,1187 @@
+[{
+  "_id": {
+    "$oid": "68760ce48a080d08894af39c"
+  },
+  "userId": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "challengeId": {
+    "$oid": "6874e87f735467e49adfa5ac"
+  },
+  "progress": {
+    "day1": false,
+    "day2": false,
+    "day3": false
+  },
+  "status": "abandoned",
+  "__v": 1,
+  "badges": [],
+  "currentStreak": 0,
+  "joinDate": {
+    "$date": "2025-07-29T13:12:27.569Z"
+  },
+  "lastDoneDate": null,
+  "longestStreak": 1,
+  "pointsEarned": 0,
+  "updatedAt": {
+    "$date": "2025-07-29T14:36:50.361Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "687f7a8067b9bd51afe31f64"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "challengeId": {
+    "$oid": "687f799267b9bd51afe31f37"
+  },
+  "progress": {
+    "day1": true,
+    "day3": true,
+    "day2": true,
+    "day4": true,
+    "day5": true,
+    "day6": true,
+    "day7": true
+  },
+  "status": "abandoned",
+  "joinDate": {
+    "$date": "2025-07-22T11:48:16.096Z"
+  },
+  "pointsEarned": 0,
+  "badges": [],
+  "createdAt": {
+    "$date": "2025-07-22T11:48:16.104Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-28T07:54:16.433Z"
+  },
+  "__v": 0,
+  "currentStreak": 1,
+  "lastDoneDate": {
+    "$date": "2025-07-28T07:46:00.123Z"
+  },
+  "longestStreak": 1
+},
+{
+  "_id": {
+    "$oid": "687f80fad030b9f8bfe027a0"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "challengeId": {
+    "$oid": "687f7ea2d030b9f8bfe02794"
+  },
+  "progress": {
+    "day1": true,
+    "day3": true,
+    "day2": true,
+    "day4": true,
+    "day5": true,
+    "day6": true,
+    "day7": true,
+    "day8": true,
+    "day9": true,
+    "day10": true,
+    "day11": true,
+    "day12": true,
+    "day13": true,
+    "day14": true,
+    "day15": true,
+    "day17": true,
+    "day16": true,
+    "day18": true,
+    "day19": true,
+    "day20": true,
+    "day21": true,
+    "day22": true,
+    "day23": true,
+    "day24": true,
+    "day25": true,
+    "day26": true,
+    "day27": true,
+    "day28": true,
+    "day29": true,
+    "day30": true,
+    "day31": true
+  },
+  "status": "abandoned",
+  "joinDate": {
+    "$date": "2025-07-22T12:15:54.813Z"
+  },
+  "pointsEarned": 0,
+  "badges": [],
+  "createdAt": {
+    "$date": "2025-07-22T12:15:54.817Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-28T07:55:58.766Z"
+  },
+  "__v": 0,
+  "currentStreak": 1,
+  "lastDoneDate": {
+    "$date": "2025-07-28T07:11:49.864Z"
+  },
+  "longestStreak": 1
+},
+{
+  "_id": {
+    "$oid": "6880d2c44c44cb7bd534461f"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "challengeId": {
+    "$oid": "687f7c5767b9bd51afe31f82"
+  },
+  "progress": {
+    "day1": true,
+    "day2": true,
+    "day3": true,
+    "day4": true,
+    "day5": true,
+    "day6": true,
+    "day7": true,
+    "day8": true,
+    "day9": true,
+    "day10": true,
+    "day11": true,
+    "day12": true,
+    "day13": true,
+    "day14": true,
+    "day15": true
+  },
+  "status": "active",
+  "joinDate": {
+    "$date": "2025-07-23T12:17:08.335Z"
+  },
+  "pointsEarned": 0,
+  "badges": [],
+  "createdAt": {
+    "$date": "2025-07-23T12:17:08.373Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-28T07:34:59.724Z"
+  },
+  "__v": 0,
+  "currentStreak": 1,
+  "lastDoneDate": {
+    "$date": "2025-07-28T07:34:59.723Z"
+  },
+  "longestStreak": 1
+},
+{
+  "_id": {
+    "$oid": "68836c85595d7e8adcd51b29"
+  },
+  "userId": {
+    "$oid": "68836c39595d7e8adcd51b0f"
+  },
+  "challengeId": {
+    "$oid": "687f7ea2d030b9f8bfe02794"
+  },
+  "progress": {
+    "day1": true,
+    "day2": true,
+    "day3": true
+  },
+  "status": "active",
+  "joinDate": {
+    "$date": "2025-07-25T11:37:41.758Z"
+  },
+  "currentStreak": 1,
+  "longestStreak": 1,
+  "pointsEarned": 0,
+  "badges": [],
+  "createdAt": {
+    "$date": "2025-07-25T11:37:41.771Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-25T11:38:22.758Z"
+  },
+  "__v": 0,
+  "lastDoneDate": {
+    "$date": "2025-07-25T11:38:22.757Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68875e7d48d618ec13c2e7c8"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "challengeId": {
+    "$oid": "68875db548d618ec13c2e7a0"
+  },
+  "progress": {},
+  "status": "completed",
+  "joinDate": {
+    "$date": "2025-07-28T11:26:53.462Z"
+  },
+  "currentStreak": 0,
+  "longestStreak": 0,
+  "pointsEarned": 0,
+  "badges": [],
+  "createdAt": {
+    "$date": "2025-07-28T11:26:53.514Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-03T20:05:25.479Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "688770581ade2608326f824a"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "challengeId": {
+    "$oid": "6887700b1ade2608326f8236"
+  },
+  "progress": {
+    "day1": true,
+    "day2": false,
+    "day3": false,
+    "day4": false
+  },
+  "status": "completed",
+  "joinDate": {
+    "$date": "2025-07-28T12:43:04.694Z"
+  },
+  "currentStreak": 0,
+  "longestStreak": 1,
+  "pointsEarned": 0,
+  "badges": [],
+  "createdAt": {
+    "$date": "2025-07-28T12:43:04.699Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-03T20:05:25.479Z"
+  },
+  "__v": 0,
+  "lastDoneDate": null
+},
+{
+  "_id": {
+    "$oid": "688774a21ade2608326f8277"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "challengeId": {
+    "$oid": "6887732a1ade2608326f825f"
+  },
+  "progress": {},
+  "status": "completed",
+  "joinDate": {
+    "$date": "2025-07-28T13:01:22.398Z"
+  },
+  "currentStreak": 0,
+  "longestStreak": 0,
+  "pointsEarned": 0,
+  "badges": [],
+  "createdAt": {
+    "$date": "2025-07-28T13:01:22.399Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-30T08:30:57.646Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68877a59c4996c61322e8a37"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "challengeId": {
+    "$oid": "68877a33c4996c61322e8a30"
+  },
+  "progress": {},
+  "status": "active",
+  "joinDate": {
+    "$date": "2025-07-28T13:25:45.694Z"
+  },
+  "currentStreak": 0,
+  "longestStreak": 0,
+  "pointsEarned": 0,
+  "badges": [],
+  "createdAt": {
+    "$date": "2025-07-28T13:25:45.696Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-28T13:25:45.696Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68877c98ed840d55dd2eabee"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "challengeId": {
+    "$oid": "68877b02c4996c61322e8a44"
+  },
+  "progress": {},
+  "status": "abandoned",
+  "joinDate": {
+    "$date": "2025-07-28T13:35:20.868Z"
+  },
+  "currentStreak": 0,
+  "longestStreak": 0,
+  "pointsEarned": 0,
+  "badges": [],
+  "createdAt": {
+    "$date": "2025-07-28T13:35:20.876Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-30T08:40:15.514Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68888147493c87a53beda43d"
+  },
+  "userId": {
+    "$oid": "68678c7c0aee978992f3124a"
+  },
+  "challengeId": {
+    "$oid": "68877b02c4996c61322e8a44"
+  },
+  "progress": {},
+  "status": "active",
+  "joinDate": {
+    "$date": "2025-07-29T08:07:35.558Z"
+  },
+  "currentStreak": 0,
+  "longestStreak": 0,
+  "pointsEarned": 0,
+  "badges": [],
+  "createdAt": {
+    "$date": "2025-07-29T08:07:35.562Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-29T08:07:35.562Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "688883d3493c87a53beda4eb"
+  },
+  "userId": {
+    "$oid": "68678c7c0aee978992f3124a"
+  },
+  "challengeId": {
+    "$oid": "6887732a1ade2608326f825f"
+  },
+  "progress": {},
+  "status": "completed",
+  "joinDate": {
+    "$date": "2025-07-29T08:18:27.101Z"
+  },
+  "currentStreak": 0,
+  "longestStreak": 0,
+  "pointsEarned": 0,
+  "badges": [],
+  "createdAt": {
+    "$date": "2025-07-29T08:18:27.102Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-03T16:01:25.913Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888886e493c87a53beda621"
+  },
+  "userId": {
+    "$oid": "68678c7c0aee978992f3124a"
+  },
+  "challengeId": {
+    "$oid": "68877a33c4996c61322e8a30"
+  },
+  "progress": {},
+  "status": "active",
+  "joinDate": {
+    "$date": "2025-07-29T08:38:06.150Z"
+  },
+  "currentStreak": 0,
+  "longestStreak": 0,
+  "pointsEarned": 0,
+  "badges": [],
+  "createdAt": {
+    "$date": "2025-07-29T08:38:06.153Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-29T08:38:06.153Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "688888fb493c87a53beda688"
+  },
+  "userId": {
+    "$oid": "68678c7c0aee978992f3124a"
+  },
+  "challengeId": {
+    "$oid": "687f7ea2d030b9f8bfe02794"
+  },
+  "progress": {},
+  "status": "active",
+  "joinDate": {
+    "$date": "2025-07-29T08:40:27.124Z"
+  },
+  "currentStreak": 0,
+  "longestStreak": 0,
+  "pointsEarned": 0,
+  "badges": [],
+  "createdAt": {
+    "$date": "2025-07-29T08:40:27.126Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-29T08:40:27.126Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888a756493c87a53beda95a"
+  },
+  "userId": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "challengeId": {
+    "$oid": "68877b02c4996c61322e8a44"
+  },
+  "progress": {
+    "day1": false,
+    "day2": false
+  },
+  "status": "abandoned",
+  "joinDate": {
+    "$date": "2025-07-29T10:49:58.442Z"
+  },
+  "currentStreak": 0,
+  "longestStreak": 1,
+  "pointsEarned": 0,
+  "badges": [],
+  "createdAt": {
+    "$date": "2025-07-29T10:49:58.463Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-29T17:21:43.130Z"
+  },
+  "__v": 0,
+  "lastDoneDate": null
+},
+{
+  "_id": {
+    "$oid": "6888a7e4493c87a53beda9a7"
+  },
+  "userId": {
+    "$oid": "68678c7c0aee978992f3124a"
+  },
+  "challengeId": {
+    "$oid": "6887700b1ade2608326f8236"
+  },
+  "progress": {},
+  "status": "completed",
+  "joinDate": {
+    "$date": "2025-07-29T10:52:20.260Z"
+  },
+  "currentStreak": 0,
+  "longestStreak": 0,
+  "pointsEarned": 0,
+  "badges": [],
+  "createdAt": {
+    "$date": "2025-07-29T10:52:20.260Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-03T16:01:25.913Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888a8f8df8248db8c5edd5a"
+  },
+  "userId": {
+    "$oid": "68678c7c0aee978992f3124a"
+  },
+  "challengeId": {
+    "$oid": "68875db548d618ec13c2e7a0"
+  },
+  "progress": {},
+  "status": "completed",
+  "joinDate": {
+    "$date": "2025-07-29T10:56:56.002Z"
+  },
+  "currentStreak": 0,
+  "longestStreak": 0,
+  "pointsEarned": 0,
+  "badges": [],
+  "createdAt": {
+    "$date": "2025-07-29T10:56:56.022Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-03T16:01:25.913Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888d4df2036cc12c781c9e2"
+  },
+  "userId": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "challengeId": {
+    "$oid": "68877a33c4996c61322e8a30"
+  },
+  "progress": {},
+  "status": "abandoned",
+  "joinDate": {
+    "$date": "2025-07-29T14:04:15.070Z"
+  },
+  "currentStreak": 0,
+  "longestStreak": 0,
+  "pointsEarned": 0,
+  "badges": [],
+  "createdAt": {
+    "$date": "2025-07-29T14:04:15.094Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-30T07:41:53.779Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888d58f2036cc12c781ca21"
+  },
+  "userId": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "challengeId": {
+    "$oid": "687f799267b9bd51afe31f37"
+  },
+  "progress": {},
+  "status": "abandoned",
+  "joinDate": {
+    "$date": "2025-07-29T14:07:11.427Z"
+  },
+  "currentStreak": 0,
+  "longestStreak": 0,
+  "pointsEarned": 0,
+  "badges": [],
+  "createdAt": {
+    "$date": "2025-07-29T14:07:11.428Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-30T07:34:49.279Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888d65e2036cc12c781caa4"
+  },
+  "userId": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "challengeId": {
+    "$oid": "687f7ea2d030b9f8bfe02794"
+  },
+  "progress": {},
+  "status": "active",
+  "joinDate": {
+    "$date": "2025-07-29T14:10:37.999Z"
+  },
+  "currentStreak": 0,
+  "longestStreak": 0,
+  "pointsEarned": 0,
+  "badges": [],
+  "createdAt": {
+    "$date": "2025-07-29T14:10:38.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-29T14:10:38.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888d6612036cc12c781cab0"
+  },
+  "userId": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "challengeId": {
+    "$oid": "687f7c5767b9bd51afe31f82"
+  },
+  "progress": {},
+  "status": "abandoned",
+  "joinDate": {
+    "$date": "2025-07-29T14:10:41.680Z"
+  },
+  "currentStreak": 0,
+  "longestStreak": 0,
+  "pointsEarned": 0,
+  "badges": [],
+  "createdAt": {
+    "$date": "2025-07-29T14:10:41.681Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-29T14:37:11.967Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888d6f82036cc12c781caff"
+  },
+  "userId": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "challengeId": {
+    "$oid": "68875db548d618ec13c2e7a0"
+  },
+  "progress": {},
+  "status": "active",
+  "joinDate": {
+    "$date": "2025-07-29T14:13:12.104Z"
+  },
+  "currentStreak": 0,
+  "longestStreak": 0,
+  "pointsEarned": 0,
+  "badges": [],
+  "createdAt": {
+    "$date": "2025-07-29T14:13:12.105Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-29T14:13:12.105Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888d6f92036cc12c781cb0b"
+  },
+  "userId": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "challengeId": {
+    "$oid": "6887732a1ade2608326f825f"
+  },
+  "progress": {},
+  "status": "completed",
+  "joinDate": {
+    "$date": "2025-07-29T14:13:13.825Z"
+  },
+  "currentStreak": 0,
+  "longestStreak": 0,
+  "pointsEarned": 0,
+  "badges": [],
+  "createdAt": {
+    "$date": "2025-07-29T14:13:13.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-30T07:34:22.219Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6888dbd8d7d3ca90e441dce8"
+  },
+  "userId": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "challengeId": {
+    "$oid": "6887700b1ade2608326f8236"
+  },
+  "progress": {},
+  "status": "abandoned",
+  "joinDate": {
+    "$date": "2025-07-29T14:34:00.246Z"
+  },
+  "currentStreak": 0,
+  "longestStreak": 0,
+  "pointsEarned": 0,
+  "badges": [],
+  "createdAt": {
+    "$date": "2025-07-29T14:34:00.253Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-30T07:49:45.364Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6889d2c6476b0749f3a695a7"
+  },
+  "userId": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "challengeId": {
+    "$oid": "6889d1c6476b0749f3a69505"
+  },
+  "progress": {},
+  "status": "abandoned",
+  "joinDate": {
+    "$date": "2025-07-30T08:07:34.780Z"
+  },
+  "currentStreak": 0,
+  "longestStreak": 0,
+  "pointsEarned": 0,
+  "badges": [],
+  "createdAt": {
+    "$date": "2025-07-30T08:07:34.782Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-30T09:17:05.884Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6889d85f476b0749f3a696c0"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "challengeId": {
+    "$oid": "6889d1c6476b0749f3a69505"
+  },
+  "progress": {},
+  "status": "completed",
+  "joinDate": {
+    "$date": "2025-07-30T08:31:27.953Z"
+  },
+  "currentStreak": 0,
+  "longestStreak": 0,
+  "pointsEarned": 0,
+  "badges": [],
+  "createdAt": {
+    "$date": "2025-07-30T08:31:27.955Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-03T20:05:25.479Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6889df99195d00bacb9ebca5"
+  },
+  "userId": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "challengeId": {
+    "$oid": "6889d1a0476b0749f3a694ea"
+  },
+  "progress": {},
+  "status": "completed",
+  "joinDate": {
+    "$date": "2025-07-30T09:02:17.400Z"
+  },
+  "currentStreak": 0,
+  "longestStreak": 0,
+  "pointsEarned": 0,
+  "badges": [],
+  "createdAt": {
+    "$date": "2025-07-30T09:02:17.409Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-03T20:05:25.479Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6889e73006ee8c9101bb3935"
+  },
+  "userId": {
+    "$oid": "6889e70506ee8c9101bb3901"
+  },
+  "challengeId": {
+    "$oid": "6889d1a0476b0749f3a694ea"
+  },
+  "progress": {},
+  "status": "abandoned",
+  "joinDate": {
+    "$date": "2025-07-30T09:34:40.257Z"
+  },
+  "currentStreak": 0,
+  "longestStreak": 0,
+  "pointsEarned": 0,
+  "badges": [],
+  "createdAt": {
+    "$date": "2025-07-30T09:34:40.258Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-30T11:23:22.476Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "688a092b365b3825b3efd562"
+  },
+  "userId": {
+    "$oid": "6889e70506ee8c9101bb3901"
+  },
+  "challengeId": {
+    "$oid": "68877a33c4996c61322e8a30"
+  },
+  "progress": {},
+  "status": "abandoned",
+  "joinDate": {
+    "$date": "2025-07-30T11:59:39.684Z"
+  },
+  "currentStreak": 0,
+  "longestStreak": 0,
+  "pointsEarned": 0,
+  "badges": [],
+  "createdAt": {
+    "$date": "2025-07-30T11:59:39.714Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-31T06:31:08.763Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "688b0d9f4f91180d328cc1ca"
+  },
+  "userId": {
+    "$oid": "6889e70506ee8c9101bb3901"
+  },
+  "challengeId": {
+    "$oid": "687f7ea2d030b9f8bfe02794"
+  },
+  "progress": {
+    "day1": true,
+    "day2": true,
+    "day3": true,
+    "day4": true,
+    "day5": true,
+    "day6": true,
+    "day7": true,
+    "day8": true,
+    "day9": true,
+    "day10": true,
+    "day11": true,
+    "day12": true,
+    "day13": true,
+    "day14": true,
+    "day15": true,
+    "day16": true,
+    "day31": true
+  },
+  "status": "abandoned",
+  "joinDate": {
+    "$date": "2025-07-31T06:30:55.511Z"
+  },
+  "currentStreak": 1,
+  "longestStreak": 1,
+  "pointsEarned": 0,
+  "badges": [],
+  "createdAt": {
+    "$date": "2025-07-31T06:30:55.525Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-31T11:29:40.156Z"
+  },
+  "__v": 0,
+  "lastDoneDate": {
+    "$date": "2025-07-31T11:29:05.394Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "688b10d74f91180d328cc25b"
+  },
+  "userId": {
+    "$oid": "6889e70506ee8c9101bb3901"
+  },
+  "challengeId": {
+    "$oid": "687f7c5767b9bd51afe31f82"
+  },
+  "progress": {
+    "day1": true,
+    "day2": false
+  },
+  "status": "abandoned",
+  "joinDate": {
+    "$date": "2025-07-31T06:44:39.409Z"
+  },
+  "currentStreak": 0,
+  "longestStreak": 1,
+  "pointsEarned": 0,
+  "badges": [],
+  "createdAt": {
+    "$date": "2025-07-31T06:44:39.410Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-04T06:24:56.360Z"
+  },
+  "__v": 0,
+  "lastDoneDate": null,
+  "lastReadAt": {
+    "$date": "2025-08-04T06:07:16.337Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "688fcc43b2b7326c23e097b5"
+  },
+  "userId": {
+    "$oid": "687137919eeae1ff1cf08320"
+  },
+  "challengeId": {
+    "$oid": "687f7c5767b9bd51afe31f82"
+  },
+  "progress": {},
+  "status": "active",
+  "joinDate": {
+    "$date": "2025-08-03T20:53:23.334Z"
+  },
+  "currentStreak": 0,
+  "longestStreak": 0,
+  "pointsEarned": 0,
+  "badges": [],
+  "lastReadAt": null,
+  "createdAt": {
+    "$date": "2025-08-03T20:53:23.338Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-03T20:53:23.338Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "689050eba10d29034af2a79d"
+  },
+  "userId": {
+    "$oid": "6889e70506ee8c9101bb3901"
+  },
+  "challengeId": {
+    "$oid": "68877b02c4996c61322e8a44"
+  },
+  "progress": {
+    "day7": true,
+    "day6": false
+  },
+  "status": "active",
+  "joinDate": {
+    "$date": "2025-08-04T06:19:23.634Z"
+  },
+  "currentStreak": 1,
+  "longestStreak": 1,
+  "pointsEarned": 0,
+  "badges": [],
+  "lastReadAt": null,
+  "createdAt": {
+    "$date": "2025-08-04T06:19:23.668Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-04T06:19:49.891Z"
+  },
+  "__v": 0,
+  "lastDoneDate": {
+    "$date": "2025-08-03T21:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68906614a10d29034af2ae44"
+  },
+  "userId": {
+    "$oid": "68905e19a10d29034af2ac41"
+  },
+  "challengeId": {
+    "$oid": "68877b02c4996c61322e8a44"
+  },
+  "progress": {},
+  "status": "active",
+  "joinDate": {
+    "$date": "2025-08-04T07:49:40.715Z"
+  },
+  "currentStreak": 0,
+  "longestStreak": 0,
+  "pointsEarned": 0,
+  "badges": [],
+  "lastReadAt": {
+    "$date": "2025-08-05T10:26:51.223Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-04T07:49:40.717Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-05T10:26:51.238Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6890744ab25d582fcce7a587"
+  },
+  "userId": {
+    "$oid": "68907412b25d582fcce7a523"
+  },
+  "challengeId": {
+    "$oid": "687f7c5767b9bd51afe31f82"
+  },
+  "progress": {},
+  "status": "active",
+  "joinDate": {
+    "$date": "2025-08-04T08:50:18.022Z"
+  },
+  "currentStreak": 0,
+  "longestStreak": 0,
+  "pointsEarned": 0,
+  "badges": [],
+  "lastReadAt": {
+    "$date": "2025-08-04T15:04:58.946Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-04T08:50:18.026Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-04T15:04:58.980Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6890a49941d7b31740b12bd2"
+  },
+  "userId": {
+    "$oid": "6890a44d41d7b31740b12b88"
+  },
+  "challengeId": {
+    "$oid": "68877b02c4996c61322e8a44"
+  },
+  "progress": {},
+  "status": "active",
+  "joinDate": {
+    "$date": "2025-08-04T12:16:25.864Z"
+  },
+  "currentStreak": 0,
+  "longestStreak": 0,
+  "pointsEarned": 0,
+  "badges": [],
+  "lastReadAt": null,
+  "createdAt": {
+    "$date": "2025-08-04T12:16:25.865Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-04T12:16:25.865Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68919b20c71c162e81bc0762"
+  },
+  "userId": {
+    "$oid": "68907412b25d582fcce7a523"
+  },
+  "challengeId": {
+    "$oid": "68877b02c4996c61322e8a44"
+  },
+  "progress": {},
+  "status": "active",
+  "joinDate": {
+    "$date": "2025-08-05T05:48:16.265Z"
+  },
+  "currentStreak": 0,
+  "longestStreak": 0,
+  "pointsEarned": 0,
+  "badges": [],
+  "lastReadAt": {
+    "$date": "2025-08-05T10:06:04.309Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-05T05:48:16.353Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-05T10:06:04.310Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6891e2dc1902ae02375e29e9"
+  },
+  "userId": {
+    "$oid": "6891a11ec71c162e81bc08bf"
+  },
+  "challengeId": {
+    "$oid": "68877b02c4996c61322e8a44"
+  },
+  "progress": {},
+  "status": "active",
+  "joinDate": {
+    "$date": "2025-08-05T10:54:20.431Z"
+  },
+  "currentStreak": 0,
+  "longestStreak": 0,
+  "pointsEarned": 0,
+  "badges": [],
+  "lastReadAt": {
+    "$date": "2025-08-05T10:55:01.029Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-05T10:54:20.466Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-05T10:55:01.030Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6891e477f4220d843e036daf"
+  },
+  "userId": {
+    "$oid": "68907412b25d582fcce7a523"
+  },
+  "challengeId": {
+    "$oid": "68877a33c4996c61322e8a30"
+  },
+  "progress": {},
+  "status": "active",
+  "joinDate": {
+    "$date": "2025-08-05T11:01:11.604Z"
+  },
+  "currentStreak": 0,
+  "longestStreak": 0,
+  "pointsEarned": 0,
+  "badges": [],
+  "lastReadAt": null,
+  "createdAt": {
+    "$date": "2025-08-05T11:01:11.611Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-05T11:01:11.611Z"
+  },
+  "__v": 0
+}]

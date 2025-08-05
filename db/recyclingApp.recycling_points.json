@@ -1,0 +1,104 @@
+[{
+  "_id": {
+    "$oid": "68623e0cf24f483264baaae3"
+  },
+  "name": "Green Glass Center",
+  "address": "Main Street 12, Lefkoşa",
+  "lat": 35.1896,
+  "lng": 33.3823,
+  "materials": [
+    "glass",
+    "paper"
+  ]
+},
+{
+  "_id": {
+    "$oid": "686241d9f24f483264baaae7"
+  },
+  "name": "Eco Bin Center",
+  "address": "Main Road 5, Lefkoşa",
+  "lat": 35.1956,
+  "lng": 33.3659,
+  "materials": [
+    "plastic",
+    "metal",
+    "glass"
+  ]
+},
+{
+  "_id": {
+    "$oid": "6863b45ad8f6c67923fa588a"
+  },
+  "name": "Blue Glass Center",
+  "address": "Main Street 12, Girne",
+  "lat": 50.1896,
+  "lng": 48.3823,
+  "materials": [
+    "glass",
+    "plastic"
+  ],
+  "createdAt": {
+    "$date": "2025-07-01T10:11:38.704Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6864eeed0d8cd520f8a55d50"
+  },
+  "name": "Green Park Recycling Center",
+  "address": "123 Green St, Cityville",
+  "lat": 40.7128,
+  "lng": -74.006,
+  "materials": [
+    "plastic",
+    "paper",
+    "glass"
+  ],
+  "createdAt": {
+    "$date": "2025-07-02T08:33:49.085Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68668582b85c1a78f46ba85d"
+  },
+  "name": "West Park Recycling Center",
+  "address": "123 Green St, Girne",
+  "city": "Kyrenia",
+  "region": "North Cyprus",
+  "lat": 35.3404,
+  "lng": 33.3175,
+  "materials": [
+    "Plastic",
+    "Glass"
+  ],
+  "tags": [
+    "city-center",
+    "public"
+  ],
+  "createdAt": {
+    "$date": "2025-07-03T13:28:34.381Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6866867702dd98e7c3d48f83"
+  },
+  "name": "Eco Drop Center",
+  "address": "456 Blue St",
+  "region": "North Cyprus",
+  "lat": 35.1221,
+  "lng": 33.9022,
+  "materials": [
+    "Plastic",
+    "Glass"
+  ],
+  "tags": [],
+  "createdAt": {
+    "$date": "2025-07-03T13:32:39.299Z"
+  },
+  "__v": 0
+}]

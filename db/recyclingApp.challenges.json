@@ -1,0 +1,1158 @@
+[{
+  "_id": {
+    "$oid": "686516776bc8c5439b89a8e9"
+  },
+  "title": "30-Day Recycling Challenge",
+  "description": "Recycle at least 1 item per day for 30 days!",
+  "createdBy": {
+    "$oid": "6864e73c06c2b5a2f424de20"
+  },
+  "participants": [
+    {
+      "$oid": "6864e73c06c2b5a2f424de20"
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-07-02T11:22:31.587Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-03T12:01:38.527Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "68651e0c6bc8c5439b89a8f1"
+  },
+  "title": "5-Day Recycling Challenge",
+  "description": "Recycle at least 1 item per day for 5 days!",
+  "createdBy": {
+    "$oid": "6864e73c06c2b5a2f424de20"
+  },
+  "participants": [
+    {
+      "$oid": "6864e73c06c2b5a2f424de20"
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-07-02T11:54:52.525Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-02T11:58:13.270Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "68678f210aee978992f3125c"
+  },
+  "title": "Recycle 5 Plastic Bottles",
+  "description": "Collect and recycle 5 plastic bottles within a week.",
+  "createdBy": {
+    "$oid": "68678c7c0aee978992f3124a"
+  },
+  "participants": [
+    {
+      "$oid": "68678c7c0aee978992f3124a"
+    }
+  ],
+  "startDate": {
+    "$date": "2025-07-01T00:00:00.000Z"
+  },
+  "endDate": {
+    "$date": "2025-07-07T23:59:59.000Z"
+  },
+  "createdAt": {
+    "$date": "2025-07-04T08:21:53.787Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-04T08:22:10.949Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "68679133ec8cf23290359df7"
+  },
+  "title": "Recycle 15 Glass Bottles",
+  "description": "Collect and recycle 15 glass bottles within a week.",
+  "createdBy": {
+    "$oid": "68678c7c0aee978992f3124a"
+  },
+  "participants": [
+    {
+      "$oid": "68678c7c0aee978992f3124a"
+    }
+  ],
+  "startDate": {
+    "$date": "2025-07-01T00:00:00.000Z"
+  },
+  "endDate": {
+    "$date": "2025-07-07T23:59:59.000Z"
+  },
+  "createdAt": {
+    "$date": "2025-07-04T08:30:43.616Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-04T08:32:51.690Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6874e87f735467e49adfa5ac"
+  },
+  "title": "Green Living Challenge",
+  "description": "Join us in making sustainable choices every day for 30 days! Track your progress and inspire others.",
+  "whyParticipate": "Participating in this challenge helps reduce your carbon footprint, raises awareness in your community, and encourages eco-conscious habits that benefit both your health and the planet.",
+  "createdBy": {
+    "$oid": "64bfb2a0c5f3d2d8938e3a67"
+  },
+  "participants": [
+    {
+      "$oid": "6874a0580ea3a538bb2c2363"
+    }
+  ],
+  "startDate": {
+    "$date": "2025-07-15T00:00:00.000Z"
+  },
+  "endDate": {
+    "$date": "2025-08-14T23:59:59.999Z"
+  },
+  "createdAt": {
+    "$date": "2025-07-14T10:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-14T11:24:50.599Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "64c9d7b7f0a5b2c4d1234567"
+  },
+  "title": "30-Day Fitness Challenge",
+  "description": "Complete daily workouts for 30 days.",
+  "startDate": {
+    "$date": "2025-07-01T00:00:00.000Z"
+  },
+  "endDate": {
+    "$date": "2025-07-30T23:59:59.000Z"
+  },
+  "createdBy": {
+    "$oid": "64c9d7b7f0a5b2c4d7654321"
+  },
+  "participants": []
+},
+{
+  "_id": {
+    "$oid": "687744cf3289bf434f688a5a"
+  },
+  "title": "10 days save the earth",
+  "description": "Save ",
+  "createdBy": {
+    "$oid": "687633c4214ebe1393b527c1"
+  },
+  "participants": [],
+  "startDate": {
+    "$date": "2025-07-16T00:00:00.000Z"
+  },
+  "endDate": {
+    "$date": "2025-07-26T00:00:00.000Z"
+  },
+  "whyParticipate": "It is good\n",
+  "approved": false,
+  "createdAt": {
+    "$date": "2025-07-16T06:21:03.887Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-16T06:21:03.887Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687f738238e9fc4a20bbe962"
+  },
+  "title": "Save the Forest",
+  "description": "Join us in planting trees to save the forest.",
+  "createdBy": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "participants": [],
+  "likes": [],
+  "startDate": {
+    "$date": "2025-08-01T00:00:00.000Z"
+  },
+  "endDate": {
+    "$date": "2025-08-31T23:59:59.999Z"
+  },
+  "whyParticipate": "Because forests help clean the air!",
+  "approved": false,
+  "points": 10,
+  "comments": [],
+  "createdAt": {
+    "$date": "2025-07-22T11:18:26.135Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-22T11:18:26.135Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687f74df38e9fc4a20bbe965"
+  },
+  "title": "Save the Forest",
+  "description": "Join us in planting trees to save the forest.",
+  "createdBy": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "participants": [],
+  "likes": [],
+  "startDate": {
+    "$date": "2025-08-01T00:00:00.000Z"
+  },
+  "endDate": {
+    "$date": "2025-08-31T23:59:59.999Z"
+  },
+  "whyParticipate": "Because forests help clean the air!",
+  "approved": false,
+  "points": 10,
+  "comments": [],
+  "createdAt": {
+    "$date": "2025-07-22T11:24:15.472Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-22T11:24:15.472Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687f77af38e9fc4a20bbe968"
+  },
+  "title": "Save the Forest",
+  "description": "Join us in planting trees to save the forest.",
+  "createdBy": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "participants": [],
+  "likes": [],
+  "startDate": {
+    "$date": "2025-08-01T00:00:00.000Z"
+  },
+  "endDate": {
+    "$date": "2025-08-31T23:59:59.999Z"
+  },
+  "whyParticipate": "Because forests help clean the air!",
+  "approved": false,
+  "points": 10,
+  "comments": [],
+  "createdAt": {
+    "$date": "2025-07-22T11:36:15.014Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-22T11:36:15.014Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687f77b038e9fc4a20bbe96b"
+  },
+  "title": "Save the Forest",
+  "description": "Join us in planting trees to save the forest.",
+  "createdBy": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "participants": [],
+  "likes": [],
+  "startDate": {
+    "$date": "2025-08-01T00:00:00.000Z"
+  },
+  "endDate": {
+    "$date": "2025-08-31T23:59:59.999Z"
+  },
+  "whyParticipate": "Because forests help clean the air!",
+  "approved": false,
+  "points": 10,
+  "comments": [],
+  "createdAt": {
+    "$date": "2025-07-22T11:36:16.642Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-22T11:36:16.642Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687f77ba38e9fc4a20bbe96e"
+  },
+  "title": "Save the Forest",
+  "description": "Join us in planting trees to save the forest.",
+  "createdBy": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "participants": [],
+  "likes": [],
+  "startDate": {
+    "$date": "2025-08-01T00:00:00.000Z"
+  },
+  "endDate": {
+    "$date": "2025-08-31T23:59:59.999Z"
+  },
+  "whyParticipate": "Because forests help clean the air!",
+  "approved": false,
+  "points": 10,
+  "comments": [],
+  "createdAt": {
+    "$date": "2025-07-22T11:36:26.253Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-22T11:36:26.253Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687f77bc38e9fc4a20bbe971"
+  },
+  "title": "Save the Forest",
+  "description": "Join us in planting trees to save the forest.",
+  "createdBy": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "participants": [],
+  "likes": [],
+  "startDate": {
+    "$date": "2025-08-01T00:00:00.000Z"
+  },
+  "endDate": {
+    "$date": "2025-08-31T23:59:59.999Z"
+  },
+  "whyParticipate": "Because forests help clean the air!",
+  "approved": false,
+  "points": 10,
+  "comments": [],
+  "createdAt": {
+    "$date": "2025-07-22T11:36:28.416Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-04T08:45:05.815Z"
+  },
+  "__v": 0,
+  "declined": true
+},
+{
+  "_id": {
+    "$oid": "687f77bd38e9fc4a20bbe974"
+  },
+  "title": "Save the Forest",
+  "description": "Join us in planting trees to save the forest.",
+  "createdBy": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "participants": [],
+  "likes": [],
+  "startDate": {
+    "$date": "2025-08-01T00:00:00.000Z"
+  },
+  "endDate": {
+    "$date": "2025-08-31T23:59:59.999Z"
+  },
+  "whyParticipate": "Because forests help clean the air!",
+  "approved": false,
+  "points": 10,
+  "comments": [],
+  "createdAt": {
+    "$date": "2025-07-22T11:36:29.853Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-22T11:36:29.853Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687f781538e9fc4a20bbe977"
+  },
+  "title": "30-Day Fitness Challenge",
+  "description": "Complete daily exercises for 30 days to improve your fitness.",
+  "createdBy": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "participants": [],
+  "likes": [],
+  "startDate": {
+    "$date": "2025-08-01T00:00:00.000Z"
+  },
+  "endDate": {
+    "$date": "2025-08-31T23:59:59.999Z"
+  },
+  "whyParticipate": "To get healthier and stay motivated.",
+  "approved": false,
+  "points": 10,
+  "comments": [],
+  "createdAt": {
+    "$date": "2025-07-22T11:37:57.723Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-22T11:37:57.723Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "687f799267b9bd51afe31f37"
+  },
+  "title": "30-Day Fitness Challenge",
+  "description": "Complete daily exercises for 30 days to improve your fitness.",
+  "createdBy": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "participants": [
+    {
+      "$oid": "687f3a3f67578840685123a9"
+    },
+    {
+      "$oid": "6874a0580ea3a538bb2c2363"
+    }
+  ],
+  "likes": [],
+  "startDate": {
+    "$date": "2025-08-01T00:00:00.000Z"
+  },
+  "endDate": {
+    "$date": "2025-08-31T23:59:59.999Z"
+  },
+  "whyParticipate": "To get healthier and stay motivated.",
+  "approved": true,
+  "points": 10,
+  "comments": [
+    {
+      "user": {
+        "$oid": "687f3a3f67578840685123a9"
+      },
+      "text": "nice challenge",
+      "_id": {
+        "$oid": "68887e67493c87a53beda3c9"
+      },
+      "replies": [],
+      "createdAt": {
+        "$date": "2025-07-29T07:55:19.367Z"
+      }
+    },
+    {
+      "user": {
+        "$oid": "68678c7c0aee978992f3124a"
+      },
+      "text": "Hey I’m new here",
+      "_id": {
+        "$oid": "688882d7493c87a53beda4bc"
+      },
+      "replies": [],
+      "createdAt": {
+        "$date": "2025-07-29T08:14:15.521Z"
+      }
+    },
+    {
+      "user": {
+        "$oid": "68678c7c0aee978992f3124a"
+      },
+      "text": "hi guys",
+      "_id": {
+        "$oid": "6888a1c8493c87a53beda7a4"
+      },
+      "replies": [
+        {
+          "user": {
+            "$oid": "6874a0580ea3a538bb2c2363"
+          },
+          "text": "hi",
+          "_id": {
+            "$oid": "6888c7cd2036cc12c781c88c"
+          },
+          "createdAt": {
+            "$date": "2025-07-29T13:08:29.992Z"
+          }
+        }
+      ],
+      "createdAt": {
+        "$date": "2025-07-29T10:26:16.453Z"
+      }
+    },
+    {
+      "user": {
+        "$oid": "6874a0580ea3a538bb2c2363"
+      },
+      "text": "New",
+      "_id": {
+        "$oid": "6888c2a72036cc12c781c7b8"
+      },
+      "replies": [],
+      "createdAt": {
+        "$date": "2025-07-29T12:46:31.057Z"
+      }
+    },
+    {
+      "user": {
+        "$oid": "6874a0580ea3a538bb2c2363"
+      },
+      "text": "New",
+      "_id": {
+        "$oid": "6888c2a62036cc12c781c7b1"
+      },
+      "replies": [],
+      "createdAt": {
+        "$date": "2025-07-29T12:46:30.748Z"
+      }
+    },
+    {
+      "user": {
+        "$oid": "6889e70506ee8c9101bb3901"
+      },
+      "text": "hrllo",
+      "_id": {
+        "$oid": "688a01b306ee8c9101bb3a2c"
+      },
+      "replies": [],
+      "createdAt": {
+        "$date": "2025-07-30T11:27:47.822Z"
+      }
+    },
+    {
+      "user": {
+        "$oid": "6889e70506ee8c9101bb3901"
+      },
+      "text": "hrllo",
+      "_id": {
+        "$oid": "688a01b406ee8c9101bb3a3a"
+      },
+      "replies": [],
+      "createdAt": {
+        "$date": "2025-07-30T11:27:48.362Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-07-22T11:44:18.753Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-30T11:27:48.364Z"
+  },
+  "__v": 12
+},
+{
+  "_id": {
+    "$oid": "687f7c5767b9bd51afe31f82"
+  },
+  "title": "Eco-Friendly Lifestyle Challenge",
+  "description": "Adopt eco-friendly habits like reducing plastic use, conserving water, and recycling for 14 days.",
+  "createdBy": {
+    "$oid": "687633c4214ebe1393b527c1"
+  },
+  "participants": [
+    {
+      "$oid": "687f3a3f67578840685123a9"
+    },
+    {
+      "$oid": "6874a0580ea3a538bb2c2363"
+    },
+    {
+      "$oid": "6889e70506ee8c9101bb3901"
+    },
+    {
+      "$oid": "687137919eeae1ff1cf08320"
+    },
+    {
+      "$oid": "68907412b25d582fcce7a523"
+    }
+  ],
+  "likes": [
+    {
+      "$oid": "68678c7c0aee978992f3124a"
+    }
+  ],
+  "startDate": {
+    "$date": "2025-09-01T00:00:00.000Z"
+  },
+  "endDate": {
+    "$date": "2025-09-14T23:59:59.999Z"
+  },
+  "whyParticipate": "To reduce your carbon footprint and help the environment.",
+  "approved": true,
+  "points": 10,
+  "comments": [
+    {
+      "user": {
+        "$oid": "687137919eeae1ff1cf08320"
+      },
+      "text": "hi",
+      "_id": {
+        "$oid": "688fcc64b2b7326c23e09831"
+      },
+      "replies": [],
+      "createdAt": {
+        "$date": "2025-08-03T20:53:56.167Z"
+      }
+    },
+    {
+      "user": {
+        "$oid": "6889e70506ee8c9101bb3901"
+      },
+      "text": "yungt",
+      "_id": {
+        "$oid": "688fcf53b2b7326c23e099b9"
+      },
+      "replies": [],
+      "createdAt": {
+        "$date": "2025-08-03T21:06:27.414Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-07-22T11:56:07.657Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-04T08:50:18.043Z"
+  },
+  "__v": 20,
+  "declined": false
+},
+{
+  "_id": {
+    "$oid": "687f7ea2d030b9f8bfe02794"
+  },
+  "title": "Zero Waste September",
+  "description": "A 30-day challenge to produce as little waste as possible. Track your daily progress, share tips, and learn sustainable habits.",
+  "createdBy": {
+    "$oid": "687633c4214ebe1393b527c1"
+  },
+  "participants": [
+    {
+      "$oid": "687f3a3f67578840685123a9"
+    },
+    {
+      "$oid": "68836c39595d7e8adcd51b0f"
+    },
+    {
+      "$oid": "68678c7c0aee978992f3124a"
+    },
+    {
+      "$oid": "6874a0580ea3a538bb2c2363"
+    },
+    {
+      "$oid": "6889e70506ee8c9101bb3901"
+    }
+  ],
+  "likes": [
+    {
+      "$oid": "687f3a3f67578840685123a9"
+    },
+    {
+      "$oid": "6874a0580ea3a538bb2c2363"
+    }
+  ],
+  "startDate": {
+    "$date": "2025-09-01T00:00:00.000Z"
+  },
+  "endDate": {
+    "$date": "2025-09-30T23:59:59.000Z"
+  },
+  "whyParticipate": "To raise awareness about waste generation and promote sustainable living habits that benefit the planet and your community.",
+  "approved": true,
+  "points": 10,
+  "comments": [
+    {
+      "user": {
+        "$oid": "687f3a3f67578840685123a9"
+      },
+      "text": "Looking forward to this challenge!",
+      "_id": {
+        "$oid": "687f82ced030b9f8bfe027b1"
+      },
+      "createdAt": {
+        "$date": "2025-07-22T12:23:42.500Z"
+      }
+    },
+    {
+      "user": {
+        "$oid": "68678c7c0aee978992f3124a"
+      },
+      "text": "yay",
+      "_id": {
+        "$oid": "6888a4b9493c87a53beda829"
+      },
+      "replies": [],
+      "createdAt": {
+        "$date": "2025-07-29T10:38:49.195Z"
+      }
+    },
+    {
+      "user": {
+        "$oid": "687137919eeae1ff1cf08320"
+      },
+      "text": "im new here",
+      "_id": {
+        "$oid": "688fcc4eb2b7326c23e097e3"
+      },
+      "replies": [],
+      "createdAt": {
+        "$date": "2025-08-03T20:53:34.800Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-07-22T12:05:54.486Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-03T20:53:34.806Z"
+  },
+  "__v": 12
+},
+{
+  "_id": {
+    "$oid": "68875db548d618ec13c2e7a0"
+  },
+  "title": "7 day challenge",
+  "description": "Haha",
+  "createdBy": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "participants": [
+    {
+      "$oid": "687f3a3f67578840685123a9"
+    },
+    {
+      "$oid": "68678c7c0aee978992f3124a"
+    },
+    {
+      "$oid": "6874a0580ea3a538bb2c2363"
+    }
+  ],
+  "likes": [],
+  "startDate": {
+    "$date": "2025-07-28T11:23:32.150Z"
+  },
+  "endDate": {
+    "$date": "2025-08-03T11:23:32.150Z"
+  },
+  "whyParticipate": "Motivation\n\nI",
+  "approved": true,
+  "points": 10,
+  "comments": [],
+  "createdAt": {
+    "$date": "2025-07-28T11:23:33.831Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-29T14:13:12.106Z"
+  },
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "6887700b1ade2608326f8236"
+  },
+  "title": "2day marathon",
+  "description": "Haha",
+  "createdBy": {
+    "$oid": "687633c4214ebe1393b527c1"
+  },
+  "participants": [
+    {
+      "$oid": "68678c7c0aee978992f3124a"
+    },
+    {
+      "$oid": "6874a0580ea3a538bb2c2363"
+    }
+  ],
+  "likes": [],
+  "startDate": {
+    "$date": "2025-07-29T00:00:00.000Z"
+  },
+  "endDate": {
+    "$date": "2025-08-01T00:00:00.000Z"
+  },
+  "whyParticipate": "why not",
+  "approved": true,
+  "points": 10,
+  "comments": [],
+  "createdAt": {
+    "$date": "2025-07-28T12:41:47.361Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-29T14:34:00.262Z"
+  },
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "6887732a1ade2608326f825f"
+  },
+  "title": "30-day Plastic-Free July",
+  "description": "Avoid single-use plastic for a whole month.",
+  "createdBy": {
+    "$oid": "687f3a3f67578840685123a9"
+  },
+  "participants": [
+    {
+      "$oid": "68678c7c0aee978992f3124a"
+    },
+    {
+      "$oid": "6874a0580ea3a538bb2c2363"
+    }
+  ],
+  "likes": [],
+  "startDate": {
+    "$date": "2025-07-01T00:00:00.000Z"
+  },
+  "endDate": {
+    "$date": "2025-07-30T00:00:00.000Z"
+  },
+  "whyParticipate": "Cut waste, earn stars ⭐",
+  "approved": true,
+  "points": 10,
+  "comments": [],
+  "createdAt": {
+    "$date": "2025-07-28T12:55:06.589Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-29T14:13:13.830Z"
+  },
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "68877a33c4996c61322e8a30"
+  },
+  "title": "30 days",
+  "description": "Yay!",
+  "createdBy": {
+    "$oid": "687633c4214ebe1393b527c1"
+  },
+  "participants": [
+    {
+      "$oid": "687f3a3f67578840685123a9"
+    },
+    {
+      "$oid": "68678c7c0aee978992f3124a"
+    },
+    {
+      "$oid": "6874a0580ea3a538bb2c2363"
+    },
+    {
+      "$oid": "6889e70506ee8c9101bb3901"
+    },
+    {
+      "$oid": "68907412b25d582fcce7a523"
+    }
+  ],
+  "likes": [],
+  "startDate": {
+    "$date": "2025-07-30T00:00:00.000Z"
+  },
+  "endDate": {
+    "$date": "2025-08-20T00:00:00.000Z"
+  },
+  "whyParticipate": "Why ",
+  "approved": true,
+  "points": 10,
+  "comments": [
+    {
+      "user": {
+        "$oid": "68905e19a10d29034af2ac41"
+      },
+      "text": "I’m new here",
+      "_id": {
+        "$oid": "6890661fa10d29034af2ae55"
+      },
+      "replies": [],
+      "createdAt": {
+        "$date": "2025-08-04T07:49:51.563Z"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-07-28T13:25:07.857Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-05T11:01:11.621Z"
+  },
+  "__v": 6,
+  "declined": false
+},
+{
+  "_id": {
+    "$oid": "68877b02c4996c61322e8a44"
+  },
+  "title": "10",
+  "description": "Chi",
+  "createdBy": {
+    "$oid": "687633c4214ebe1393b527c1"
+  },
+  "participants": [
+    {
+      "$oid": "687f3a3f67578840685123a9"
+    },
+    {
+      "$oid": "68678c7c0aee978992f3124a"
+    },
+    {
+      "$oid": "6874a0580ea3a538bb2c2363"
+    },
+    {
+      "$oid": "6889e70506ee8c9101bb3901"
+    },
+    {
+      "$oid": "68905e19a10d29034af2ac41"
+    },
+    {
+      "$oid": "6890a44d41d7b31740b12b88"
+    },
+    {
+      "$oid": "68907412b25d582fcce7a523"
+    },
+    {
+      "$oid": "6891a11ec71c162e81bc08bf"
+    }
+  ],
+  "likes": [],
+  "startDate": {
+    "$date": "2025-07-29T00:00:00.000Z"
+  },
+  "endDate": {
+    "$date": "2025-08-07T00:00:00.000Z"
+  },
+  "whyParticipate": "Gc",
+  "approved": true,
+  "points": 10,
+  "comments": [],
+  "createdAt": {
+    "$date": "2025-07-28T13:28:34.114Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-05T10:54:20.491Z"
+  },
+  "__v": 8,
+  "declined": false
+},
+{
+  "_id": {
+    "$oid": "6889cfb7168ad05e775c90d2"
+  },
+  "title": "1 day marathon",
+  "description": "Excessive",
+  "createdBy": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "participants": [],
+  "likes": [],
+  "startDate": {
+    "$date": "2025-07-30T07:54:31.866Z"
+  },
+  "endDate": {
+    "$date": "2025-07-31T07:54:31.866Z"
+  },
+  "whyParticipate": "Energy\n\n\n",
+  "approved": false,
+  "points": 10,
+  "comments": [],
+  "createdAt": {
+    "$date": "2025-07-30T07:54:31.963Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-30T07:54:31.963Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6889d048168ad05e775c90ea"
+  },
+  "title": "4",
+  "description": "Yh",
+  "createdBy": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "participants": [],
+  "likes": [],
+  "startDate": {
+    "$date": "2025-07-30T07:56:56.207Z"
+  },
+  "endDate": {
+    "$date": "2025-08-02T07:56:56.207Z"
+  },
+  "whyParticipate": "g",
+  "approved": false,
+  "points": 10,
+  "comments": [],
+  "createdAt": {
+    "$date": "2025-07-30T07:56:56.304Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-30T07:56:56.304Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6889d04d168ad05e775c90ee"
+  },
+  "title": "4",
+  "description": "Yh",
+  "createdBy": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "participants": [],
+  "likes": [],
+  "startDate": {
+    "$date": "2025-07-30T07:57:01.743Z"
+  },
+  "endDate": {
+    "$date": "2025-08-05T07:57:01.743Z"
+  },
+  "whyParticipate": "g",
+  "approved": false,
+  "points": 10,
+  "comments": [],
+  "createdAt": {
+    "$date": "2025-07-30T07:57:01.836Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-30T07:57:01.836Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6889d1a0476b0749f3a694ea"
+  },
+  "title": "4",
+  "description": "Yh",
+  "createdBy": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "participants": [
+    {
+      "$oid": "687f3a3f67578840685123a9"
+    },
+    {
+      "$oid": "6889e70506ee8c9101bb3901"
+    }
+  ],
+  "likes": [],
+  "startDate": {
+    "$date": "2025-07-30T08:02:40.544Z"
+  },
+  "endDate": {
+    "$date": "2025-07-31T08:02:40.544Z"
+  },
+  "whyParticipate": "g",
+  "approved": true,
+  "points": 10,
+  "comments": [],
+  "createdAt": {
+    "$date": "2025-07-30T08:02:40.941Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-30T09:34:40.262Z"
+  },
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "6889d1c6476b0749f3a69505"
+  },
+  "title": "1 game",
+  "description": "Game of recycling",
+  "createdBy": {
+    "$oid": "6874a0580ea3a538bb2c2363"
+  },
+  "participants": [
+    {
+      "$oid": "6874a0580ea3a538bb2c2363"
+    },
+    {
+      "$oid": "687f3a3f67578840685123a9"
+    }
+  ],
+  "likes": [],
+  "startDate": {
+    "$date": "2025-07-30T08:03:18.632Z"
+  },
+  "endDate": {
+    "$date": "2025-07-31T08:03:18.632Z"
+  },
+  "whyParticipate": "Greatness\n",
+  "approved": true,
+  "points": 10,
+  "comments": [],
+  "createdAt": {
+    "$date": "2025-07-30T08:03:18.730Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-30T08:31:27.961Z"
+  },
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "688a2076e44ca58c2628d03d"
+  },
+  "title": "ryu",
+  "description": "ghj",
+  "createdBy": {
+    "$oid": "6889e70506ee8c9101bb3901"
+  },
+  "participants": [],
+  "likes": [],
+  "startDate": {
+    "$date": "2025-07-30T13:39:02.542Z"
+  },
+  "endDate": {
+    "$date": "2025-08-05T13:39:02.542Z"
+  },
+  "whyParticipate": "Hhh\n",
+  "approved": false,
+  "points": 10,
+  "comments": [],
+  "createdAt": {
+    "$date": "2025-07-30T13:39:02.259Z"
+  },
+  "updatedAt": {
+    "$date": "2025-07-30T13:39:02.259Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6891d4ffc71c162e81bc0ffb"
+  },
+  "title": "fgh",
+  "description": "Ggg",
+  "createdBy": {
+    "$oid": "68905e19a10d29034af2ac41"
+  },
+  "participants": [],
+  "likes": [],
+  "startDate": {
+    "$date": "2025-08-05T09:55:11.676Z"
+  },
+  "endDate": {
+    "$date": "2025-08-16T09:55:11.676Z"
+  },
+  "whyParticipate": "Hhh\n\n",
+  "approved": false,
+  "declined": false,
+  "points": 10,
+  "comments": [],
+  "createdAt": {
+    "$date": "2025-08-05T09:55:11.563Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-05T09:55:11.563Z"
+  },
+  "__v": 0
+}]
