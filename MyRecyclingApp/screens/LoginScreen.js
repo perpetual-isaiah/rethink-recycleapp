@@ -84,7 +84,7 @@ try {
   console.warn('Could not register push token:', pushErr);
 }
 
-      Alert.alert('Success', `Welcome back, ${user.name}!`);
+      Alert.alert('Success', `Welcome, ${user.name}!`);
       if (user.role === 'admin') {
         navigation.replace('Admin');
         return;

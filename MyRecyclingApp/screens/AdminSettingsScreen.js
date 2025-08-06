@@ -104,15 +104,7 @@ export default function AdminSettingsScreen() {
           <Text style={styles.optionText}>Change Password</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.option}>
-          <Ionicons name="notifications-outline" size={24} color="#4CAF50" />
-          <Text style={styles.optionText}>Notifications</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.option}>
-          <Ionicons name="shield-checkmark-outline" size={24} color="#4CAF50" />
-          <Text style={styles.optionText}>Privacy & Security</Text>
-        </TouchableOpacity>
+     
 
         <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
           <Ionicons name="log-out-outline" size={20} color="#fff" />

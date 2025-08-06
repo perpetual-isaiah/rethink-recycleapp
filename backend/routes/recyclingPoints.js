@@ -25,13 +25,13 @@ router.get('/:id', async (req, res) => {
 
 // Create a new recycling point
 router.post('/', async (req, res) => {
-  const { name, address, lat, lng, materials } = req.body;
+  const { name, address, lat, lng, materials, tags } = req.body;
 
   if (!name || lat == null || lng == null) {
     return res.status(400).json({ message: 'Name, latitude, and longitude are required' });
   }
 
-  const newPoint = new RecyclingPoint({ name, address, lat, lng, materials });
+  const newPoint = new RecyclingPoint({ name, address, lat, lng, materials, tags });
 
   try {
     const savedPoint = await newPoint.save();
