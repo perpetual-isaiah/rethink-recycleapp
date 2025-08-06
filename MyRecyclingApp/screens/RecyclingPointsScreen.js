@@ -1,5 +1,5 @@
 // screens/RecyclingPointsScreen.js
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import {
   SafeAreaView,
   View,
@@ -18,35 +18,37 @@ import MapView, { Marker } from 'react-native-maps';
 import axios from 'axios';
 import * as Location from 'expo-location';
 import { API_BASE_URL } from '../config';
-import { useTheme } from '../context/ThemeContext'; // ← import
+import { useTheme } from '../context/ThemeContext';
 
 const { height } = Dimensions.get('window');
 
 const RecyclingPointsScreen = () => {
-  const { colors, darkMode } = useTheme();           // ← grab palette + flag
-  const styles = getStyles(colors, darkMode);        // ← dynamic styles
+  const { colors, darkMode } = useTheme();
+  const styles = getStyles(colors, darkMode);
 
-  const [activeTab, setActiveTab]       = useState('Map');
-  const [searchText, setSearchText]     = useState('');
+  const mapRef    = useRef(null);
+  const scrollRef = useRef(null);
+
+  const [activeTab, setActiveTab] = useState('Map');
+  const [searchText, setSearchText] = useState('');
   const [recyclingPoints, setRecyclingPoints] = useState([]);
-  const [loading, setLoading]           = useState(true);
-  const [location, setLocation]         = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [location, setLocation] = useState(null);
+  const [selectedPoint, setSelectedPoint] = useState(null);
 
+  // request location and load recycling points
   useEffect(() => {
     (async () => {
-      // request permissions
-      let { status } = await Location.requestForegroundPermissionsAsync();
+      const { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== 'granted') {
         Alert.alert('Permission Denied', 'Allow location permission to use this feature');
         setLoading(false);
         return;
       }
 
-      // get position
-      let currentLocation = await Location.getCurrentPositionAsync({});
+      const currentLocation = await Location.getCurrentPositionAsync({});
       setLocation(currentLocation.coords);
 
-      // fetch points
       try {
         const res = await axios.get(`${API_BASE_URL}/api/recycling-points`);
         setRecyclingPoints(res.data);
@@ -59,11 +61,33 @@ const RecyclingPointsScreen = () => {
     })();
   }, []);
 
+  // Filter list by search
   const filteredPoints = recyclingPoints.filter(point =>
     point.name.toLowerCase().includes(searchText.toLowerCase()) ||
     point.address.toLowerCase().includes(searchText.toLowerCase()) ||
     point.region.toLowerCase().includes(searchText.toLowerCase())
   );
+
+  // When selectedPoint or activeTab changes to "Map", animate the map
+  useEffect(() => {
+    if (activeTab === 'Map' && selectedPoint && mapRef.current) {
+      // scroll to top so that the map is visible
+      scrollRef.current?.scrollTo({ y: 0, animated: true });
+      // animate map to selected point
+      mapRef.current.animateToRegion({
+        latitude: selectedPoint.lat,
+        longitude: selectedPoint.lng,
+        latitudeDelta: 0.02,
+        longitudeDelta: 0.02,
+      }, 1000);
+    }
+  }, [activeTab, selectedPoint]);
+
+  // Select a point from the list: switch to map and store selection
+  const handleListItemPress = (point) => {
+    setSelectedPoint(point);
+    setActiveTab('Map');
+  };
 
   if (loading) {
     return (
@@ -88,7 +112,11 @@ const RecyclingPointsScreen = () => {
         backgroundColor={darkMode ? colors.bg : '#f9fafb'}
       />
 
-      <ScrollView contentContainerStyle={{ flexGrow: 1 }} keyboardShouldPersistTaps="handled">
+      <ScrollView
+        ref={scrollRef}
+        contentContainerStyle={{ flexGrow: 1 }}
+        keyboardShouldPersistTaps="handled"
+      >
         {/* Search */}
         <View style={styles.header}>
           <TextInput
@@ -115,10 +143,11 @@ const RecyclingPointsScreen = () => {
           ))}
         </View>
 
-        {/* Content */}
+        {/* Map or List */}
         {activeTab === 'Map' ? (
           <View style={styles.mapContainer}>
             <MapView
+              ref={mapRef}
               style={styles.map}
               initialRegion={{
                 latitude: location.latitude,
@@ -135,25 +164,67 @@ const RecyclingPointsScreen = () => {
                   coordinate={{ latitude: point.lat, longitude: point.lng }}
                   title={point.name}
                   description={point.materials.join(', ')}
+                  onPress={() => setSelectedPoint(point)}
                 >
-                  <View style={styles.markerContainer}>
-                    <Ionicons name="leaf" size={24} color={colors.tint} />
+                  <View style={[
+                    styles.markerContainer,
+                    selectedPoint?._id === point._id && styles.selectedMarker
+                  ]}>
+                    <Ionicons 
+                      name="leaf" 
+                      size={24} 
+                      color={selectedPoint?._id === point._id ? '#fff' : colors.tint} 
+                    />
                   </View>
                 </Marker>
               ))}
             </MapView>
+
+            {/* Info card */}
+            {selectedPoint && (
+              <View style={styles.infoCard}>
+                <TouchableOpacity 
+                  style={styles.closeButton}
+                  onPress={() => setSelectedPoint(null)}
+                >
+                  <Ionicons name="close" size={20} color={colors.textSecondary} />
+                </TouchableOpacity>
+                
+                <Text style={styles.infoCardTitle}>{selectedPoint.name}</Text>
+                <Text style={styles.infoCardAddress}>{selectedPoint.address}</Text>
+                <Text style={styles.infoCardRegion}>{selectedPoint.region}</Text>
+                <Text style={styles.infoCardMaterials}>
+                  Accepts:{' '}
+                  <Text style={{ color: colors.tint }}>
+                    {selectedPoint.materials.join(', ')}
+                  </Text>
+                </Text>
+              </View>
+            )}
           </View>
         ) : (
           <View style={styles.listContainer}>
             {filteredPoints.map(point => (
-              <View key={point._id} style={styles.pointCard}>
-                <Text style={styles.pointName}>{point.name}</Text>
+              <TouchableOpacity 
+                key={point._id} 
+                style={styles.pointCard}
+                onPress={() => handleListItemPress(point)}
+                activeOpacity={0.7}
+              >
+                <View style={styles.pointCardHeader}>
+                  <Text style={styles.pointName}>{point.name}</Text>
+                  <Ionicons name="location-outline" size={20} color={colors.tint} />
+                </View>
                 <Text style={styles.address}>{point.address}</Text>
                 <Text style={styles.region}>{point.region}</Text>
                 <Text style={styles.materials}>
-                  Accepts: <Text style={{ color: colors.tint }}>{point.materials.join(', ')}</Text>
+                  Accepts:{' '}
+                  <Text style={{ color: colors.tint }}>
+                    {point.materials.join(', ')}
+                  </Text>
                 </Text>
-              </View>
+                <Text style={styles.tapHint}>Tap to view on map</Text>
+              </TouchableOpacity>
             ))}
           </View>
         )}
@@ -165,7 +236,7 @@ const RecyclingPointsScreen = () => {
 const getStyles = (c, dark) =>
   StyleSheet.create({
     container: { flex: 1, backgroundColor: dark ? c.bg : '#f9fafb' },
-    center:    { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: dark ? c.bg : '#f9fafb' },
+    center: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: dark ? c.bg : '#f9fafb' },
 
     header: { padding: 10, backgroundColor: dark ? c.card : '#fff' },
     searchInput: {
@@ -206,6 +277,7 @@ const getStyles = (c, dark) =>
       borderRadius: 16,
       overflow: 'hidden',
       height: height * 0.6,
+      position: 'relative',
     },
     map: { flex: 1 },
 
@@ -218,6 +290,50 @@ const getStyles = (c, dark) =>
       alignItems: 'center',
       borderWidth: 2,
       borderColor: c.tint,
+    },
+    selectedMarker: {
+      backgroundColor: c.tint,
+      transform: [{ scale: 1.2 }],
+    },
+
+    infoCard: {
+      position: 'absolute',
+      bottom: 20,
+      left: 20,
+      right: 20,
+      backgroundColor: dark ? c.card : '#fff',
+      borderRadius: 12,
+      padding: 15,
+      shadowColor: '#000',
+      shadowOpacity: 0.2,
+      shadowRadius: 8,
+      elevation: 5,
+    },
+    closeButton: {
+      position: 'absolute',
+      top: 10,
+      right: 10,
+      padding: 5,
+    },
+    infoCardTitle: {
+      fontWeight: 'bold',
+      fontSize: 16,
+      marginBottom: 4,
+      color: c.text,
+      marginRight: 30,
+    },
+    infoCardAddress: {
+      fontSize: 14,
+      color: c.textSecondary,
+    },
+    infoCardRegion: {
+      fontSize: 12,
+      color: c.textSecondary,
+      marginBottom: 4,
+    },
+    infoCardMaterials: {
+      fontSize: 14,
+      color: c.text,
     },
 
     listContainer: { flexGrow: 1, marginHorizontal: 10 },
@@ -232,11 +348,27 @@ const getStyles = (c, dark) =>
       shadowRadius: 6,
       elevation: 3,
     },
-    pointName: { fontWeight: 'bold', fontSize: 16, marginBottom: 4, color: c.text },
-    address:   { fontSize: 14, color: c.textSecondary },
-    region:    { fontSize: 12, color: c.textSecondary, marginBottom: 4 },
-    materials: { fontSize: 14 },
-
+    pointCardHeader: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      marginBottom: 4,
+    },
+    pointName: { 
+      fontWeight: 'bold', 
+      fontSize: 16, 
+      color: c.text,
+      flex: 1,
+    },
+    address: { fontSize: 14, color: c.textSecondary },
+    region: { fontSize: 12, color: c.textSecondary, marginBottom: 4 },
+    materials: { fontSize: 14, color: c.text, marginBottom: 8 },
+    tapHint: {
+      fontSize: 12,
+      color: c.tint,
+      fontStyle: 'italic',
+      textAlign: 'center',
+    },
   });
 
 export default RecyclingPointsScreen;
