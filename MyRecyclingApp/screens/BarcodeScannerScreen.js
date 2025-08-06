@@ -3,16 +3,20 @@ import {
   Text,
   View,
   StyleSheet,
+  Alert,
   ActivityIndicator,
   Modal,
   Pressable,
+  Vibration,
 } from 'react-native';
 import { CameraView, useCameraPermissions } from 'expo-camera';
 import axios from 'axios';
 import { API_BASE_URL } from '../config';
 import * as Haptics from 'expo-haptics';
+import { useNavigation } from '@react-navigation/native';
 
 export default function BarcodeScannerScreen() {
+  const navigation = useNavigation();
   const [permission, requestPermission] = useCameraPermissions();
   const [scanned, setScanned] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -24,6 +28,75 @@ export default function BarcodeScannerScreen() {
     }
   }, [permission]);
 
+  // Map API material responses to guide material keys
+  const getMaterialKey = (material) => {
+    if (!material || material === 'Unknown') return null;
+    
+    const materialLower = material.toLowerCase();
+    
+    // Map common material types to guide keys (matching your API responses)
+    const materialMap = {
+      // Direct plastic types from your API
+      'polypropylene': 'plastic',
+      'polyethylene terephthalate': 'plastic',
+      'high-density polyethylene': 'plastic',
+      'low-density polyethylene': 'plastic',
+      'polystyrene': 'plastic',
+      'plastic': 'plastic',
+      'pet': 'plastic',
+      'hdpe': 'plastic',
+      'ldpe': 'plastic',
+      'pp': 'plastic',
+      'ps': 'plastic',
+      
+      // Paper materials
+      'paper': 'paper',
+      'cardboard': 'paper',
+      'envelope': 'paper',
+      'carton': 'carton',
+      
+      // Glass and metals
+      'glass': 'glass',
+      'metal': 'metal',
+      'aluminum': 'metal',
+      'iron': 'metal',
+      'steel': 'metal',
+      
+      // Other materials
+      'electronic': 'ewaste',
+      'electronics': 'ewaste',
+      'battery': 'batteries',
+      'textile': 'clothes',
+      'fabric': 'clothes',
+      'tire': 'tires',
+      'rubber': 'tires',
+      'organic': 'organic',
+      'compost': 'organic',
+      'construction': 'construction',
+      'concrete': 'construction',
+      'wood': 'construction'
+    };
+
+    // Find matching material key - check both full string and individual words
+    for (const [key, value] of Object.entries(materialMap)) {
+      if (materialLower.includes(key) || materialLower === key) {
+        return value;
+      }
+    }
+    
+    // Handle comma-separated materials (e.g., "Paper, Cardboard")
+    const materials = materialLower.split(',').map(m => m.trim());
+    for (const mat of materials) {
+      for (const [key, value] of Object.entries(materialMap)) {
+        if (mat.includes(key) || mat === key) {
+          return value;
+        }
+      }
+    }
+    
+    return null; // No matching guide found
+  };
+
   const handleBarCodeScanned = async ({ type, data }) => {
     setScanned(true);
     setLoading(true);
@@ -32,16 +105,42 @@ export default function BarcodeScannerScreen() {
       await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
 
       const response = await axios.get(`${API_BASE_URL}/api/recyclables/${data}`);
-      setRecyclableInfo(response.data); // expects { recyclable, material, message? }
-    } catch (error) {
+      
+      // Enhanced response with guide material key
+      const materialKey = getMaterialKey(response.data.material);
+      
       setRecyclableInfo({
-        recyclable: false,
-        material: 'Unknown',
-        message: 'Unable to check recyclability at the moment'
+        recyclable: response.data.recyclable,
+        material: response.data.material,
+        message: response.data.message,
+        materialKey: materialKey,
+        showGuideButton: materialKey !== null && response.data.recyclable
+      });
+    } catch (error) {
+      setRecyclableInfo({ 
+        error: true, 
+        message: 'Item not found or not recyclable',
+        showGuideButton: false
       });
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleViewGuide = () => {
+    if (recyclableInfo?.materialKey) {
+      // Close modal first
+      setScanned(false);
+      setRecyclableInfo(null);
+      
+      // Navigate to guide with material parameter
+      navigation.navigate('Guide', { material: recyclableInfo.materialKey });
+    }
+  };
+
+  const handleScanAnother = () => {
+    setScanned(false);
+    setRecyclableInfo(null);
   };
 
   if (!permission) {
@@ -67,15 +166,27 @@ export default function BarcodeScannerScreen() {
         onBarcodeScanned={scanned ? undefined : handleBarCodeScanned}
         barcodeScannerSettings={{
           barcodeTypes: [
-            "aztec", "ean13", "ean8", "qr", "pdf417", "upc_e",
-            "datamatrix", "code39", "code93", "itf14", "codabar",
-            "code128", "upc_a"
+            "aztec",
+            "ean13",
+            "ean8",
+            "qr",
+            "pdf417",
+            "upc_e",
+            "datamatrix",
+            "code39",
+            "code93",
+            "itf14",
+            "codabar",
+            "code128",
+            "upc_a"
           ],
         }}
       />
 
+      {/* 📦 Guide Box */}
       <View style={styles.guideBox} />
 
+      {/* 🔄 Loading indicator */}
       {loading && (
         <View style={styles.loader}>
           <ActivityIndicator size="large" color="#4CAF50" />
@@ -83,36 +194,57 @@ export default function BarcodeScannerScreen() {
         </View>
       )}
 
-      <Modal visible={!!recyclableInfo} transparent animationType="fade">
+      {/* ✅ Modal for result */}
+      <Modal visible={recyclableInfo !== null} transparent animationType="fade">
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
-            {recyclableInfo?.recyclable ? (
+            {recyclableInfo?.error ? (
               <>
-                <Text style={styles.modalTitle}>♻️ Recyclable!</Text>
+                <Text style={styles.modalTitle}>🚫 Not Recyclable</Text>
+                <Text style={styles.modalText}>{recyclableInfo.message}</Text>
+              </>
+            ) : recyclableInfo?.recyclable === false ? (
+              <>
+                <Text style={styles.modalTitle}>❌ Not Recyclable</Text>
                 <Text style={styles.modalText}>
-                  Material: {recyclableInfo.material || 'Unknown'}
+                  Material: {recyclableInfo?.material}
                 </Text>
+                {recyclableInfo?.message && (
+                  <Text style={styles.errorText}>{recyclableInfo.message}</Text>
+                )}
               </>
             ) : (
               <>
-                <Text style={styles.modalTitle}>🚫 Not Recyclable</Text>
+                <Text style={styles.modalTitle}>♻️ Recyclable</Text>
                 <Text style={styles.modalText}>
-                  {recyclableInfo.message || 'Not marked as recyclable'}
+                  Material: {recyclableInfo?.material}
                 </Text>
-                <Text style={styles.modalText}>
-                  Material: {recyclableInfo.material || 'Unknown'}
-                </Text>
+                {recyclableInfo?.showGuideButton && (
+                  <Text style={styles.guideHint}>
+                    View our recycling guide for detailed instructions!
+                  </Text>
+                )}
               </>
             )}
-            <Pressable
-              onPress={() => {
-                setScanned(false);
-                setRecyclableInfo(null);
-              }}
-              style={styles.scanAgainButton}
-            >
-              <Text style={{ color: '#fff' }}>Scan Another</Text>
-            </Pressable>
+            
+            <View style={styles.buttonContainer}>
+              {/* Show View Guide button only for recyclable items with matching guide */}
+              {recyclableInfo?.showGuideButton && recyclableInfo?.recyclable && (
+                <Pressable
+                  onPress={handleViewGuide}
+                  style={[styles.button, styles.guideButton]}
+                >
+                  <Text style={styles.buttonText}>📖 View Guide</Text>
+                </Pressable>
+              )}
+              
+              <Pressable
+                onPress={handleScanAnother}
+                style={[styles.button, styles.scanAgainButton]}
+              >
+                <Text style={styles.buttonText}>🔄 Scan Another</Text>
+              </Pressable>
+            </View>
           </View>
         </View>
       </Modal>
@@ -121,7 +253,9 @@ export default function BarcodeScannerScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1 },
+  container: {
+    flex: 1,
+  },
   loader: {
     position: 'absolute',
     top: '50%',
@@ -153,23 +287,58 @@ const styles = StyleSheet.create({
     padding: 25,
     borderRadius: 16,
     alignItems: 'center',
-    width: '80%',
+    width: '85%',
+    maxWidth: 350,
   },
   modalTitle: {
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 12,
+    textAlign: 'center',
   },
   modalText: {
     fontSize: 16,
-    marginBottom: 10,
+    marginBottom: 12,
     textAlign: 'center',
+    color: '#333',
+  },
+  guideHint: {
+    fontSize: 14,
+    color: '#666',
+    textAlign: 'center',
+    marginBottom: 20,
+    fontStyle: 'italic',
+  },
+  errorText: {
+    fontSize: 14,
+    color: '#e74c3c',
+    textAlign: 'center',
+    marginTop: 8,
+    marginBottom: 16,
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    gap: 12,
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+  },
+  button: {
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderRadius: 8,
+    minWidth: 120,
+    alignItems: 'center',
+  },
+  guideButton: {
+    backgroundColor: '#2196F3',
   },
   scanAgainButton: {
     backgroundColor: '#4CAF50',
-    paddingVertical: 10,
-    paddingHorizontal: 25,
-    borderRadius: 8,
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: '600',
   },
   permissionButton: {
     backgroundColor: '#4CAF50',
