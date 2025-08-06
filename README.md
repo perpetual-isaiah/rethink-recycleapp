@@ -121,6 +121,7 @@ CLOUDINARY_API_SECRET=your_api_secret
 # 5. API Documentation
 
 * **Postman Collection:**
+   https://lively-crater-77241.postman.co/workspace/Recycling-Awareness-App-API-Wor~cc97a8ad-6f6b-4372-a4e0-f0d0bed48774/collection/36770175-7d7eb8a5-6f3a-40f3-89c4-ada308400e7f?action=share&creator=36770175
   
   https://lively-crater-77241.postman.co/workspace/Recycling-Awareness-App-API-Wor~cc97a8ad-6f6b-4372-a4e0-f0d0bed48774/collection/36770175-7d7eb8a5-6f3a-40f3-89c4-ada308400e7f?action=share&source=copy-link&creator=36770175
 
