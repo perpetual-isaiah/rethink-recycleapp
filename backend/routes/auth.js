@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const EmailVerification = require('../models/EmailVerification');
+const verifyToken = require('../middleware/verifyToken');
 
 // Signup
 router.post('/signup', async (req, res) => {
@@ -150,6 +151,40 @@ router.post('/forgot-password', async (req, res) => {
   }
 });
 
+// Verify Reset Code
+router.post('/verify-reset-code', async (req, res) => {
+  const { email, code } = req.body;
+  if (!email || !code) {
+    return res.status(400).json({ message: 'Email and code required' });
+  }
+
+  try {
+    // find the user
+    const user = await User.findOne({ email });
+    if (!user) return res.status(404).json({ message: 'User not found' });
+
+    // find a non-expired reset record
+    const record = await PasswordReset.findOne({
+      userId: user._id,
+      code,
+      expiresAt: { $gt: new Date() }
+    });
+
+    if (!record) {
+      return res.status(400).json({ message: 'Invalid or expired code' });
+    }
+
+    // if you like, you could delete old codes now:
+    // await PasswordReset.deleteMany({ userId: user._id });
+
+    return res.json({ message: 'Code verified' });
+  } catch (err) {
+    console.error('Verify reset code error:', err);
+    return res.status(500).json({ message: 'Verification failed' });
+  }
+});
+
+
 // Reset Password with Code
 router.post('/reset-password', async (req, res) => {
   const { email, code, newPassword } = req.body;
@@ -216,7 +251,62 @@ router.post('/change-password', async (req, res) => {
   }
 });
 
+// 1) Request email‐update code
+router.post(
+  '/request-email-update',
+  verifyToken,
+  async (req, res) => {
+    const userId = req.user.id;
+    const { newEmail } = req.body;
+    if (!newEmail) return res.status(400).json({ message: 'New email is required' });
 
+    // prevent duplicates
+    if (await User.findOne({ email: newEmail })) {
+      return res.status(400).json({ message: 'Email already in use' });
+    }
+
+    const code = Math.floor(100000 + Math.random() * 900000).toString();
+    const expiresAt = new Date(Date.now() + 10 * 60 * 1000);
+
+    await EmailVerification.create({ userId, code, newEmail, expiresAt });
+
+    // TODO: actually send email (SMS, SES, nodemailer…)
+    console.log(`Email‐update code for ${newEmail}: ${code}`);
+
+    res.json({ message: 'Verification code sent to new email.' });
+  }
+);
+
+// 2) Verify email‐update code & apply change
+router.post(
+  '/verify-email-update',
+  verifyToken,
+  async (req, res) => {
+    const userId = req.user.id;
+    const { newEmail, code } = req.body;
+    if (!newEmail || !code) {
+      return res.status(400).json({ message: 'Email and code are required' });
+    }
+
+    const record = await EmailVerification.findOne({
+      userId,
+      newEmail,
+      code,
+      expiresAt: { $gt: new Date() }
+    });
+
+    if (!record) {
+      return res.status(400).json({ message: 'Invalid or expired code' });
+    }
+
+    // perform the update
+    await User.findByIdAndUpdate(userId, { email: newEmail });
+    // cleanup
+    await EmailVerification.deleteMany({ userId });
+
+    res.json({ message: 'Email updated successfully', email: newEmail });
+  }
+);
 
 
 module.exports = router;

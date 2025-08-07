@@ -49,6 +49,8 @@ app.use('/api/chat', chatRoutes);
 
 
 
+
+
 // --------- SOCKET.IO CHAT SETUP WITH JWT AUTH ----------
 const ChatMessage = require('./models/ChatMessage');
 const Challenge = require('./models/Challenge');

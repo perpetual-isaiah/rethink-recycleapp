@@ -6,6 +6,10 @@ const EmailVerificationSchema = new mongoose.Schema({
     required: true,
     ref: 'User'
   },
+    newEmail: {                      // ← Add this
+    type: String,
+    required: true,
+  },
   code: {
     type: String,
     required: true,

@@ -1,7 +1,17 @@
+// screens/ResetCodeScreen.js
 import React, { useRef, useState } from 'react';
 import {
-  View, Text, TextInput, TouchableOpacity,
-  StyleSheet, Alert, SafeAreaView, KeyboardAvoidingView, Platform
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+  Alert,
+  SafeAreaView,
+  KeyboardAvoidingView,
+  Platform,
+  Modal,
+  ActivityIndicator,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import axios from 'axios';
@@ -9,29 +19,64 @@ import { API_BASE_URL } from '../config';
 
 export default function ResetCodeScreen({ route, navigation }) {
   const { email } = route.params;
+
+  /* ---------- CODE INPUT ---------- */
   const [digits, setDigits] = useState(['', '', '', '', '', '']);
+  const inputs = useRef([]);
+
+  /* ---------- MODAL & PASSWORD ---------- */
+  const [passwordModalVisible, setPasswordModalVisible] = useState(false);
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  /* ---------- LOADING ---------- */
   const [loading, setLoading] = useState(false);
 
-  const inputs = useRef([]);
-
+  /* ---------- Helpers ---------- */
   const handleDigitChange = (value, index) => {
     if (/^\d?$/.test(value)) {
       const updated = [...digits];
       updated[index] = value;
       setDigits(updated);
-      if (value && index < 5) inputs.current[index + 1].focus();
-      if (!value && index > 0) inputs.current[index - 1].focus();
+
+      // auto-focus next / previous
+      if (value && index < 5) inputs.current[index + 1]?.focus();
+      if (!value && index > 0) inputs.current[index - 1]?.focus();
     }
   };
 
-  const handleSubmit = async () => {
+  /* ---------- 1. VERIFY CODE ---------- */
+  const verifyCode = async () => {
     const code = digits.join('');
-    if (code.length < 6 || !newPassword || !confirmPassword) {
-      Alert.alert('Error', 'Please complete all fields.');
+    if (code.length < 6) {
+      Alert.alert('Error', 'Please enter the full 6-digit code.');
+      return;
+    }
+
+    try {
+      setLoading(true);
+      await axios.post(`${API_BASE_URL}/api/auth/verify-reset-code`, {
+        email,
+        code,
+      }); // ✅ adjust route if needed
+      setPasswordModalVisible(true); // open modal
+    } catch (err) {
+      console.error('Code verify error:', err.response?.data || err.message);
+      Alert.alert(
+        'Invalid Code',
+        err.response?.data?.message || 'The code you entered is incorrect.'
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  /* ---------- 2. RESET PASSWORD ---------- */
+  const resetPassword = async () => {
+    if (!newPassword || !confirmPassword) {
+      Alert.alert('Error', 'Please fill both password fields.');
       return;
     }
     if (newPassword !== confirmPassword) {
@@ -41,28 +86,33 @@ export default function ResetCodeScreen({ route, navigation }) {
 
     try {
       setLoading(true);
-      const res = await axios.post(`${API_BASE_URL}/api/auth/reset-password`, {
+      await axios.post(`${API_BASE_URL}/api/auth/reset-password`, {
         email,
-        code,
+        code: digits.join(''),
         newPassword,
       });
-      Alert.alert('Success', res.data.message || 'Password reset successful.');
+      Alert.alert('Success', 'Password reset successful.');
+      setPasswordModalVisible(false);
       navigation.navigate('Login');
-    } catch (error) {
-      console.error('Reset error:', error.response?.data || error.message);
-      Alert.alert('Error', error.response?.data?.message || 'Failed to reset password.');
+    } catch (err) {
+      console.error('Reset error:', err.response?.data || err.message);
+      Alert.alert(
+        'Error',
+        err.response?.data?.message || 'Failed to reset password.'
+      );
     } finally {
       setLoading(false);
     }
   };
 
+  /* ---------- RENDER ---------- */
   return (
     <SafeAreaView style={styles.container}>
       <KeyboardAvoidingView
         behavior={Platform.select({ ios: 'padding', android: undefined })}
         style={styles.inner}
       >
-        <Text style={styles.header}>Enter Code & Reset Password</Text>
+        <Text style={styles.header}>Enter Verification Code</Text>
 
         <View style={styles.codeContainer}>
           {digits.map((digit, index) => (
@@ -80,51 +130,95 @@ export default function ResetCodeScreen({ route, navigation }) {
           ))}
         </View>
 
-        {/* New Password */}
-        <View style={styles.passwordWrapper}>
-          <TextInput
-            style={styles.input}
-            placeholder="New Password"
-            secureTextEntry={!showPassword}
-            value={newPassword}
-            onChangeText={setNewPassword}
-          />
-          <TouchableOpacity
-            style={styles.eyeIcon}
-            onPress={() => setShowPassword((prev) => !prev)}
-          >
-            <Ionicons name={showPassword ? 'eye' : 'eye-off'} size={22} color="#888" />
-          </TouchableOpacity>
-        </View>
-
-        {/* Confirm Password */}
-        <View style={styles.passwordWrapper}>
-          <TextInput
-            style={styles.input}
-            placeholder="Confirm Password"
-            secureTextEntry={!showConfirmPassword}
-            value={confirmPassword}
-            onChangeText={setConfirmPassword}
-          />
-          <TouchableOpacity
-            style={styles.eyeIcon}
-            onPress={() => setShowConfirmPassword((prev) => !prev)}
-          >
-            <Ionicons name={showConfirmPassword ? 'eye' : 'eye-off'} size={22} color="#888" />
-          </TouchableOpacity>
-        </View>
-
         <TouchableOpacity
           style={[styles.button, loading && { opacity: 0.7 }]}
-          onPress={handleSubmit}
+          onPress={verifyCode}
           disabled={loading}
         >
-          <Text style={styles.buttonText}>Reset Password</Text>
+          {loading ? (
+            <ActivityIndicator color="#fff" />
+          ) : (
+            <Text style={styles.buttonText}>Verify Code</Text>
+          )}
         </TouchableOpacity>
       </KeyboardAvoidingView>
+
+     
+     {/* ---------- PASSWORD MODAL ---------- */}
+<Modal
+  animationType="slide"
+  transparent={true}
+  visible={passwordModalVisible}
+  onRequestClose={() => setPasswordModalVisible(false)}
+>
+  <View style={styles.modalOverlay}>
+    <View style={styles.modalContent}>
+      <Text style={styles.modalHeader}>Reset Password</Text>
+
+      {/* New Password */}
+      <View style={styles.passwordWrapper}>
+        <TextInput
+          style={styles.input}
+          placeholder="New Password"
+          placeholderTextColor="#757575"
+          secureTextEntry={!showPassword}
+          value={newPassword}
+          onChangeText={setNewPassword}
+        />
+        <TouchableOpacity
+          style={styles.eyeIcon}
+          onPress={() => setShowPassword((p) => !p)}
+        >
+          <Ionicons
+            name={showPassword ? 'eye' : 'eye-off'}
+            size={22}
+            color="#888"
+          />
+        </TouchableOpacity>
+      </View>
+
+      {/* Confirm Password */}
+      <View style={styles.passwordWrapper}>
+        <TextInput
+          style={styles.input}
+          placeholder="Confirm Password"
+          placeholderTextColor="#757575"
+          secureTextEntry={!showConfirmPassword}
+          value={confirmPassword}
+          onChangeText={setConfirmPassword}
+        />
+        <TouchableOpacity
+          style={styles.eyeIcon}
+          onPress={() => setShowConfirmPassword((p) => !p)}
+        >
+          <Ionicons
+            name={showConfirmPassword ? 'eye' : 'eye-off'}
+            size={22}
+            color="#888"
+          />
+        </TouchableOpacity>
+      </View>
+
+      <TouchableOpacity
+        style={[styles.button, loading && { opacity: 0.7 }]}
+        onPress={resetPassword}
+        disabled={loading}
+      >
+        {loading ? (
+          <ActivityIndicator color="#fff" />
+        ) : (
+          <Text style={styles.buttonText}>Save New Password</Text>
+        )}
+      </TouchableOpacity>
+    </View>
+  </View>
+</Modal>
+
     </SafeAreaView>
   );
 }
+
+/* ---------- STYLES ---------- */
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -160,6 +254,39 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#000',
   },
+  button: {
+    backgroundColor: '#388E3C',
+    paddingVertical: 14,
+    borderRadius: 12,
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 17,
+    fontWeight: 'bold',
+  },
+
+  /* modal */
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.4)',
+    justifyContent: 'center',
+    paddingHorizontal: 24,
+  },
+  modalContent: {
+    backgroundColor: '#fff',
+    borderRadius: 16,
+    padding: 24,
+  },
+  modalHeader: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#1B5E20',
+    marginBottom: 20,
+    alignSelf: 'center',
+  },
+
+  /* password fields */
   passwordWrapper: {
     position: 'relative',
     marginBottom: 20,
@@ -171,23 +298,11 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#c8e6c9',
     fontSize: 16,
-    paddingRight: 45, // make room for eye icon
+    paddingRight: 45,
   },
   eyeIcon: {
     position: 'absolute',
     right: 15,
     top: 14,
-  },
-  button: {
-    backgroundColor: '#388E3C',
-    paddingVertical: 14,
-    borderRadius: 12,
-    alignItems: 'center',
-    marginTop: 10,
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 17,
-    fontWeight: 'bold',
   },
 });
