@@ -3,7 +3,61 @@ const router = express.Router();
 const User = require('../models/User');
 const Challenge = require('../models/Challenge');
 const verifyToken = require('../middleware/verifyToken');
+
+const authorize     = require('../middleware/authorizeRoles');
+const bcrypt        = require('bcryptjs');
 const axios = require('axios');
+
+// Only super-admins (“admin”) may hit these endpoints:
+router.use('/admins', verifyToken, authorize('admin'));
+
+/** GET  /api/user/admins
+ *  Lists all sub-admin users
+ */
+router.get('/admins', async (req, res) => {
+  try {
+    const adminRoles = [
+      'admin_full',
+      'challenge_admin',
+      'guide_admin',
+      'recycling_admin'
+    ];
+    const admins = await User.find({ role: { $in: adminRoles } })
+                             .select('-password');
+    return res.json(admins);
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: 'Error fetching admins' });
+  }
+});
+
+/** POST /api/user/admins
+ *  Body: { name, email, password, role }
+ *  Creates one of the four sub-admins
+ */
+router.post('/admins', async (req, res) => {
+  try {
+    const { name, email, password, role } = req.body;
+    const validRoles = [
+      'admin_full',
+      'challenge_admin',
+      'guide_admin',
+      'recycling_admin'
+    ];
+    if (!validRoles.includes(role)) {
+      return res.status(400).json({ message: 'Invalid role.' });
+    }
+    if (await User.findOne({ email })) {
+      return res.status(400).json({ message: 'Email already in use.' });
+    }
+    const hashed = await bcrypt.hash(password, 10);
+    const newAdmin = await User.create({ name, email, password: hashed, role });
+    return res.status(201).json(newAdmin);
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: err.message });
+  }
+});
 
 
 // POST /api/user/savePushToken - Save user's push notification token

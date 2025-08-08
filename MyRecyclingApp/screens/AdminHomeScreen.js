@@ -43,6 +43,14 @@ export default function AdminHomeScreen({ navigation }) {
       >
         <Text style={styles.buttonText}>Edit Guides</Text>
       </TouchableOpacity>
+
+      <TouchableOpacity
+  style={styles.button}
+  onPress={() => navigation.navigate('ManageAdmins')}
+>
+  <Text style={styles.buttonText}>Manage Admins</Text>
+</TouchableOpacity>
+
     </ScrollView>
   );
 }
