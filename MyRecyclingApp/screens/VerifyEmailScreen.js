@@ -56,9 +56,8 @@ export default function VerifyEmailScreen({ navigation, route }) {
       const data = await response.json();
 
       if (response.status === 200) {
-        Alert.alert('Success', 'Email verified! You can now log in.', [
-          { text: 'OK', onPress: () => navigation.navigate('Login') },
-        ]);
+        // Navigate to Congratulations screen instead of Login
+        navigation.navigate('Congratulations');
       } else {
         Alert.alert('Verification Failed', data.message || 'Invalid or expired code.');
       }
@@ -103,15 +102,14 @@ export default function VerifyEmailScreen({ navigation, route }) {
     <SafeAreaView style={styles.container}>
       <Text style={styles.header}>Verify Your Email</Text>
       <Text style={styles.subtext}>
-  Enter the 6-digit code sent to{email ? '\n' : ' '}
-  {email ? (
-    <Text style={styles.emailText}>{email}</Text>
-  ) : (
-    'your email'
-  )}
-  .
-</Text>
-
+        Enter the 6-digit code sent to{email ? '\n' : ' '}
+        {email ? (
+          <Text style={styles.emailText}>{email}</Text>
+        ) : (
+          'your email'
+        )}
+        .
+      </Text>
 
       <View style={styles.codeContainer}>
         {digits.map((digit, index) => (
@@ -152,7 +150,7 @@ export default function VerifyEmailScreen({ navigation, route }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F9FAFB', //'#F4FEED',
+    backgroundColor: '#F9FAFB',
     paddingHorizontal: 24,
     justifyContent: 'center',
   },
@@ -168,39 +166,35 @@ const styles = StyleSheet.create({
     color: '#4CAF50',
     marginBottom: 32,
     textAlign: 'center',
-    
   },
- 
-codeContainer: {
-  flexDirection: 'row',
-  justifyContent: 'center',    // center inputs, no big gaps on sides
-  marginBottom: 32,
-  // remove paddingHorizontal here
-},
-codeInput: {
-  marginHorizontal: 6,        // small spacing between inputs
-  width: 48,
-  height: 56,
-  fontSize: 20,
-  borderRadius: 12,
-  borderWidth: 1,
-  borderColor: '#c8e6c9',
-  backgroundColor: '#fff',
-  shadowColor: '#000',
-  shadowOpacity: 0.04,
-  shadowOffset: { width: 0, height: 1 },
-  shadowRadius: 2,
-  textAlign: 'center',
-},
-
+  codeContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginBottom: 32,
+  },
+  codeInput: {
+    marginHorizontal: 6,
+    width: 48,
+    height: 56,
+    fontSize: 20,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: '#c8e6c9',
+    backgroundColor: '#fff',
+    shadowColor: '#000',
+    shadowOpacity: 0.04,
+    shadowOffset: { width: 0, height: 1 },
+    shadowRadius: 2,
+    textAlign: 'center',
+  },
   button: {
     backgroundColor: '#388E3C',
     paddingVertical: 14,
     borderRadius: 12,
     alignItems: 'center',
     marginBottom: 24,
-    width: '90%',          // or a fixed value like 320
-  alignSelf: 'center',   // center horizontally
+    width: '90%',
+    alignSelf: 'center',
   },
   buttonText: {
     color: '#fff',
@@ -219,8 +213,7 @@ codeInput: {
     textAlign: 'center',
   },
   emailText: {
-  color: 'black', 
-  fontWeight: '600',
-},
-
+    color: 'black',
+    fontWeight: '600',
+  },
 });

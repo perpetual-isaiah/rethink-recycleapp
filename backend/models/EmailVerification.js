@@ -8,7 +8,7 @@ const EmailVerificationSchema = new mongoose.Schema({
   },
     newEmail: {                      // ← Add this
     type: String,
-    required: true,
+    required: false,
   },
   code: {
     type: String,

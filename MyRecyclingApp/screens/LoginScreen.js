@@ -15,7 +15,6 @@ import {
 import { Checkbox } from 'react-native-paper';
 import * as Notifications from 'expo-notifications';
 
-
 import { API_BASE_URL } from '../config';
 import * as Location from 'expo-location';
 
@@ -42,6 +41,12 @@ export default function LoginScreen({ navigation }) {
 
   const DISTANCE_THRESHOLD = 1000; // in meters
 
+  // Check if user has admin role
+  const isAdminRole = (role) => {
+    const adminRoles = ['admin', 'admin_full', 'challenge_admin', 'guide_admin', 'recycling_admin'];
+    return adminRoles.includes(role);
+  };
+
   const handleLogin = async () => {
     if (!email || !password) {
       setError('Please enter both email and password');
@@ -66,31 +71,38 @@ export default function LoginScreen({ navigation }) {
       }
 
       const { user, token } = response.data;
+      
+      // Store user information in AsyncStorage
       await AsyncStorage.setItem('token', token);
+      await AsyncStorage.setItem('userRole', user.role);
+      await AsyncStorage.setItem('userName', user.name);
+      await AsyncStorage.setItem('userId', user._id || user.id);
       await AsyncStorage.setItem('rememberMe', rememberMe ? 'true' : 'false');
 
       // Register push token for this user
-try {
-  const { data: { expoPushToken } } = await Notifications.getExpoPushTokenAsync();
-  if (expoPushToken) {
-    await AsyncStorage.setItem('expoPushToken', expoPushToken);
-    await axios.post(
-      `${API_BASE_URL}/api/user/register-push-token`,
-      { token: expoPushToken },
-      { headers: { Authorization: `Bearer ${token}` } }
-    );
-  }
-} catch (pushErr) {
-  console.warn('Could not register push token:', pushErr);
-}
+      try {
+        const { data: { expoPushToken } } = await Notifications.getExpoPushTokenAsync();
+        if (expoPushToken) {
+          await AsyncStorage.setItem('expoPushToken', expoPushToken);
+          await axios.post(
+            `${API_BASE_URL}/api/user/register-push-token`,
+            { token: expoPushToken },
+            { headers: { Authorization: `Bearer ${token}` } }
+          );
+        }
+      } catch (pushErr) {
+        console.warn('Could not register push token:', pushErr);
+      }
 
       Alert.alert('Success', `Welcome, ${user.name}!`);
-      if (user.role === 'admin') {
+
+      // Handle admin roles
+      if (isAdminRole(user.role)) {
         navigation.replace('Admin');
         return;
       }
 
-      // Determine the actual user ID field
+      // Handle regular users (location-based flow)
       const realId = user._id || user.id;
 
       // 1) Look up saved coords for this user
@@ -210,12 +222,7 @@ try {
         {loading ? <ActivityIndicator color="#fff" /> : <Text style={styles.buttonText}>Log In</Text>}
       </TouchableOpacity>
 
-      <View style={styles.orContainer}>
-        <View style={styles.line} />
-        <Text style={styles.orText}>OR Login with</Text>
-        <View style={styles.line} />
-      </View>
-
+      
       {/* Social buttons... */}
 
       <TouchableOpacity onPress={() => navigation.navigate('Signup')} disabled={loading}>

@@ -1,4 +1,3 @@
-// screens/RecyclingPointsScreen.js
 import React, { useEffect, useState, useRef } from 'react';
 import {
   SafeAreaView,
@@ -22,7 +21,7 @@ import { useTheme } from '../context/ThemeContext';
 
 const { height } = Dimensions.get('window');
 
-const RecyclingPointsScreen = () => {
+const RecyclingPointsScreen = ({ route, navigation }) => {
   const { colors, darkMode } = useTheme();
   const styles = getStyles(colors, darkMode);
 
@@ -35,6 +34,9 @@ const RecyclingPointsScreen = () => {
   const [loading, setLoading] = useState(true);
   const [location, setLocation] = useState(null);
   const [selectedPoint, setSelectedPoint] = useState(null);
+
+  // NEW: material filter coming from GuideDetailScreen
+  const [filterMaterial, setFilterMaterial] = useState(route?.params?.material || null);
 
   // request location and load recycling points
   useEffect(() => {
@@ -61,19 +63,67 @@ const RecyclingPointsScreen = () => {
     })();
   }, []);
 
-  // Filter list by search
-  const filteredPoints = recyclingPoints.filter(point =>
-    point.name.toLowerCase().includes(searchText.toLowerCase()) ||
-    point.address.toLowerCase().includes(searchText.toLowerCase()) ||
-    point.region.toLowerCase().includes(searchText.toLowerCase())
-  );
+  // Distance (haversine)
+  const distanceKm = (a, b) => {
+    const toRad = d => (d * Math.PI) / 180;
+    const R = 6371;
+    const dLat = toRad(b.latitude - a.latitude);
+    const dLng = toRad(b.longitude - a.longitude);
+    const lat1 = toRad(a.latitude);
+    const lat2 = toRad(b.latitude);
+    const h =
+      Math.sin(dLat / 2) ** 2 +
+      Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLng / 2) ** 2;
+    return 2 * R * Math.asin(Math.sqrt(h));
+  };
+
+  // If a material is provided: auto-select nearest matching point and jump to it
+  useEffect(() => {
+    if (!location || !recyclingPoints.length || !filterMaterial) return;
+
+    const candidates = recyclingPoints.filter(p =>
+      p.materials.map(m => m.toLowerCase()).includes(filterMaterial.toLowerCase())
+    );
+    if (!candidates.length) return;
+
+    let best = candidates[0];
+    let bestD = distanceKm(location, { latitude: best.lat, longitude: best.lng });
+    for (let i = 1; i < candidates.length; i++) {
+      const d = distanceKm(location, { latitude: candidates[i].lat, longitude: candidates[i].lng });
+      if (d < bestD) { best = candidates[i]; bestD = d; }
+    }
+
+    setSelectedPoint(best);
+    setActiveTab('Map');
+
+    requestAnimationFrame(() => {
+      mapRef.current?.animateToRegion({
+        latitude: best.lat,
+        longitude: best.lng,
+        latitudeDelta: 0.02,
+        longitudeDelta: 0.02,
+      }, 1000);
+      scrollRef.current?.scrollTo({ y: 0, animated: true });
+    });
+  }, [location, recyclingPoints, filterMaterial]);
+
+  // Filter list by search + (optional) material
+  const filteredPoints = recyclingPoints.filter(point => {
+    const matchesSearch =
+      point.name.toLowerCase().includes(searchText.toLowerCase()) ||
+      point.address.toLowerCase().includes(searchText.toLowerCase()) ||
+      point.region.toLowerCase().includes(searchText.toLowerCase()) ||
+      (point.city && point.city.toLowerCase().includes(searchText.toLowerCase()));
+    const matchesMaterial = !filterMaterial
+      ? true
+      : point.materials.map(m => m.toLowerCase()).includes(filterMaterial.toLowerCase());
+    return matchesSearch && matchesMaterial;
+  });
 
   // When selectedPoint or activeTab changes to "Map", animate the map
   useEffect(() => {
     if (activeTab === 'Map' && selectedPoint && mapRef.current) {
-      // scroll to top so that the map is visible
-      scrollRef.current?.scrollTo({ y: 0, animated: true });
-      // animate map to selected point
+      scrollRef.current?.scrollTo({ y: 0, animated: true }); // show map
       mapRef.current.animateToRegion({
         latitude: selectedPoint.lat,
         longitude: selectedPoint.lng,
@@ -121,12 +171,24 @@ const RecyclingPointsScreen = () => {
         <View style={styles.header}>
           <TextInput
             style={styles.searchInput}
-            placeholder="Search by name, address, or region"
+            placeholder="Search by name, address, city, or region"
             placeholderTextColor={darkMode ? colors.textSecondary : '#888'}
             value={searchText}
             onChangeText={setSearchText}
           />
         </View>
+
+        {/* Material filter chip */}
+        {filterMaterial && (
+          <View style={styles.filterChip}>
+            <Text style={styles.filterText}>
+              Filter: {filterMaterial.charAt(0).toUpperCase() + filterMaterial.slice(1)}
+            </Text>
+            <TouchableOpacity onPress={() => setFilterMaterial(null)}>
+              <Text style={styles.clearText}>×</Text>
+            </TouchableOpacity>
+          </View>
+        )}
 
         {/* Tabs */}
         <View style={styles.tabContainer}>
@@ -170,10 +232,10 @@ const RecyclingPointsScreen = () => {
                     styles.markerContainer,
                     selectedPoint?._id === point._id && styles.selectedMarker
                   ]}>
-                    <Ionicons 
-                      name="leaf" 
-                      size={24} 
-                      color={selectedPoint?._id === point._id ? '#fff' : colors.tint} 
+                    <Ionicons
+                      name="leaf"
+                      size={24}
+                      color={selectedPoint?._id === point._id ? '#fff' : colors.tint}
                     />
                   </View>
                 </Marker>
@@ -183,18 +245,21 @@ const RecyclingPointsScreen = () => {
             {/* Info card */}
             {selectedPoint && (
               <View style={styles.infoCard}>
-                <TouchableOpacity 
+                <TouchableOpacity
                   style={styles.closeButton}
                   onPress={() => setSelectedPoint(null)}
                 >
                   <Ionicons name="close" size={20} color={colors.textSecondary} />
                 </TouchableOpacity>
-                
+
                 <Text style={styles.infoCardTitle}>{selectedPoint.name}</Text>
                 <Text style={styles.infoCardAddress}>{selectedPoint.address}</Text>
+                {selectedPoint.city && (
+                  <Text style={styles.infoCardCity}>{selectedPoint.city}</Text>
+                )}
                 <Text style={styles.infoCardRegion}>{selectedPoint.region}</Text>
                 <Text style={styles.infoCardMaterials}>
-                  Accepts:{' '}
+                  Accepts{' '}
                   <Text style={{ color: colors.tint }}>
                     {selectedPoint.materials.join(', ')}
                   </Text>
@@ -205,8 +270,8 @@ const RecyclingPointsScreen = () => {
         ) : (
           <View style={styles.listContainer}>
             {filteredPoints.map(point => (
-              <TouchableOpacity 
-                key={point._id} 
+              <TouchableOpacity
+                key={point._id}
                 style={styles.pointCard}
                 onPress={() => handleListItemPress(point)}
                 activeOpacity={0.7}
@@ -216,9 +281,10 @@ const RecyclingPointsScreen = () => {
                   <Ionicons name="location-outline" size={20} color={colors.tint} />
                 </View>
                 <Text style={styles.address}>{point.address}</Text>
+                {point.city && <Text style={styles.city}>{point.city}</Text>}
                 <Text style={styles.region}>{point.region}</Text>
                 <Text style={styles.materials}>
-                  Accepts:{' '}
+                  Accepts{' '}
                   <Text style={{ color: colors.tint }}>
                     {point.materials.join(', ')}
                   </Text>
@@ -247,6 +313,21 @@ const getStyles = (c, dark) =>
       color: c.text,
     },
 
+    // chip
+    filterChip: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      alignSelf: 'flex-start',
+      marginLeft: 10,
+      marginBottom: 6,
+      backgroundColor: dark ? c.card : '#e8f5e9',
+      borderRadius: 16,
+      paddingHorizontal: 12,
+      paddingVertical: 6,
+    },
+    filterText: { color: c.text, fontWeight: '600', marginRight: 6 },
+    clearText: { color: c.tint, fontSize: 18, fontWeight: '700' },
+
     tabContainer: {
       flexDirection: 'row',
       backgroundColor: dark ? c.separator : '#e5e7eb',
@@ -259,17 +340,9 @@ const getStyles = (c, dark) =>
       alignItems: 'center',
       borderRadius: 21,
     },
-    activeTab: {
-      backgroundColor: dark ? c.card : '#fff',
-    },
-    tabText: {
-      fontSize: 14,
-      color: dark ? c.textSecondary : '#6b7280',
-    },
-    activeTabText: {
-      color: c.text,
-      fontWeight: '600',
-    },
+    activeTab: { backgroundColor: dark ? c.card : '#fff' },
+    tabText: { fontSize: 14, color: dark ? c.textSecondary : '#6b7280' },
+    activeTabText: { color: c.text, fontWeight: '600' },
 
     mapContainer: {
       flex: 1,
@@ -291,10 +364,7 @@ const getStyles = (c, dark) =>
       borderWidth: 2,
       borderColor: c.tint,
     },
-    selectedMarker: {
-      backgroundColor: c.tint,
-      transform: [{ scale: 1.2 }],
-    },
+    selectedMarker: { backgroundColor: c.tint, transform: [{ scale: 1.2 }] },
 
     infoCard: {
       position: 'absolute',
@@ -309,32 +379,12 @@ const getStyles = (c, dark) =>
       shadowRadius: 8,
       elevation: 5,
     },
-    closeButton: {
-      position: 'absolute',
-      top: 10,
-      right: 10,
-      padding: 5,
-    },
-    infoCardTitle: {
-      fontWeight: 'bold',
-      fontSize: 16,
-      marginBottom: 4,
-      color: c.text,
-      marginRight: 30,
-    },
-    infoCardAddress: {
-      fontSize: 14,
-      color: c.textSecondary,
-    },
-    infoCardRegion: {
-      fontSize: 12,
-      color: c.textSecondary,
-      marginBottom: 4,
-    },
-    infoCardMaterials: {
-      fontSize: 14,
-      color: c.text,
-    },
+    closeButton: { position: 'absolute', top: 10, right: 10, padding: 5 },
+    infoCardTitle: { fontWeight: 'bold', fontSize: 16, marginBottom: 4, color: c.text, marginRight: 30 },
+    infoCardAddress: { fontSize: 14, color: c.textSecondary },
+    infoCardCity: { fontSize: 13, color: c.textSecondary, fontWeight: '500' },
+    infoCardRegion: { fontSize: 12, color: c.textSecondary, marginBottom: 4 },
+    infoCardMaterials: { fontSize: 14, color: c.text },
 
     listContainer: { flexGrow: 1, marginHorizontal: 10 },
 
@@ -354,21 +404,12 @@ const getStyles = (c, dark) =>
       alignItems: 'center',
       marginBottom: 4,
     },
-    pointName: { 
-      fontWeight: 'bold', 
-      fontSize: 16, 
-      color: c.text,
-      flex: 1,
-    },
+    pointName: { fontWeight: 'bold', fontSize: 16, color: c.text, flex: 1 },
     address: { fontSize: 14, color: c.textSecondary },
+    city: { fontSize: 13, color: c.textSecondary, fontWeight: '500' },
     region: { fontSize: 12, color: c.textSecondary, marginBottom: 4 },
     materials: { fontSize: 14, color: c.text, marginBottom: 8 },
-    tapHint: {
-      fontSize: 12,
-      color: c.tint,
-      fontStyle: 'italic',
-      textAlign: 'center',
-    },
+    tapHint: { fontSize: 12, color: c.tint, fontStyle: 'italic', textAlign: 'center' },
   });
 
 export default RecyclingPointsScreen;

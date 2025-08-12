@@ -3,16 +3,16 @@ const router = express.Router();
 const User = require('../models/User');
 const Challenge = require('../models/Challenge');
 const verifyToken = require('../middleware/verifyToken');
-
-const authorize     = require('../middleware/authorizeRoles');
-const bcrypt        = require('bcryptjs');
 const axios = require('axios');
 
-// Only super-admins (“admin”) may hit these endpoints:
-router.use('/admins', verifyToken, authorize('admin'));
+const bcrypt    = require('bcryptjs');
+const authorize = require('../middleware/authorizeRoles');
+// only super-admins (role === 'admin') can access /admins
+router.use('/admins', verifyToken, authorize('admin', 'admin_full'));
 
-/** GET  /api/user/admins
- *  Lists all sub-admin users
+/**
+ * GET  /api/user/admins
+ * ↳ returns all users in the four sub-admin roles
  */
 router.get('/admins', async (req, res) => {
   try {
@@ -20,20 +20,22 @@ router.get('/admins', async (req, res) => {
       'admin_full',
       'challenge_admin',
       'guide_admin',
-      'recycling_admin'
+      'recycling_admin',
     ];
-    const admins = await User.find({ role: { $in: adminRoles } })
-                             .select('-password');
+    const admins = await User
+      .find({ role: { $in: adminRoles } })
+      .select('-password');
     return res.json(admins);
   } catch (err) {
-    console.error(err);
+    console.error('Error fetching admins:', err);
     return res.status(500).json({ message: 'Error fetching admins' });
   }
 });
 
-/** POST /api/user/admins
- *  Body: { name, email, password, role }
- *  Creates one of the four sub-admins
+/**
+ * POST /api/user/admins
+ * ↳ body: { name, email, password, role }
+ * ↳ creates exactly one of the four sub-admin roles
  */
 router.post('/admins', async (req, res) => {
   try {
@@ -42,7 +44,7 @@ router.post('/admins', async (req, res) => {
       'admin_full',
       'challenge_admin',
       'guide_admin',
-      'recycling_admin'
+      'recycling_admin',
     ];
     if (!validRoles.includes(role)) {
       return res.status(400).json({ message: 'Invalid role.' });
@@ -54,8 +56,68 @@ router.post('/admins', async (req, res) => {
     const newAdmin = await User.create({ name, email, password: hashed, role });
     return res.status(201).json(newAdmin);
   } catch (err) {
-    console.error(err);
+    console.error('Error creating admin:', err);
     return res.status(500).json({ message: err.message });
+  }
+});
+
+router.put('/admins/:adminId', async (req, res) => {
+  try {
+    const { adminId } = req.params;
+    const { name, email, role, password } = req.body;
+    const validRoles = ['admin_full','challenge_admin','guide_admin','recycling_admin'];
+    const updateFields = {};
+
+    if (name) updateFields.name = name.trim();
+
+    if (email) {
+      const exists = await User.findOne({ email, _id: { $ne: adminId } });
+      if (exists) return res.status(400).json({ message: 'Email already in use.' });
+      updateFields.email = email.toLowerCase().trim();
+    }
+
+    if (role) {
+      if (!validRoles.includes(role)) return res.status(400).json({ message: 'Invalid role.' });
+      updateFields.role = role;
+    }
+
+    if (password) {
+      const hashed = await bcrypt.hash(password, 10);
+      updateFields.password = hashed;
+    }
+
+    const updatedAdmin = await User.findOneAndUpdate(
+      { _id: adminId, role: { $in: validRoles } },
+      updateFields,
+      { new: true }
+    ).select('-password');
+
+    if (!updatedAdmin) {
+      return res.status(404).json({ message: 'Admin not found.' });
+    }
+    res.json(updatedAdmin);
+  } catch (err) {
+    console.error('Error updating admin:', err);
+    res.status(500).json({ message: 'Error updating admin.', error: err.message });
+  }
+});
+
+/**
+ * DELETE /api/user/admins/:adminId
+ * ↳ deletes a sub-admin
+ */
+router.delete('/admins/:adminId', async (req, res) => {
+  try {
+    const { adminId } = req.params;
+    const validRoles = ['admin_full','challenge_admin','guide_admin','recycling_admin'];
+    const deletedAdmin = await User.findOneAndDelete({ _id: adminId, role: { $in: validRoles } });
+    if (!deletedAdmin) {
+      return res.status(404).json({ message: 'Admin not found.' });
+    }
+    res.json({ message: 'Admin deleted successfully.' });
+  } catch (err) {
+    console.error('Error deleting admin:', err);
+    res.status(500).json({ message: 'Error deleting admin.', error: err.message });
   }
 });
 

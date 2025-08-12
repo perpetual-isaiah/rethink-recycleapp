@@ -106,23 +106,7 @@ export default function SignupScreen({ navigation }) {
             <Text style={styles.buttonText}>Sign Up</Text>
           </TouchableOpacity>
 
-          <View style={styles.orContainer}>
-            <View style={styles.line} />
-            <Text style={styles.orText}>OR Register with</Text>
-            <View style={styles.line} />
-          </View>
-
-          <View style={styles.socialContainer}>
-            <TouchableOpacity style={styles.iconButton}>
-              <Ionicons name="logo-google" size={28} color="#DB4437" />
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.iconButton}>
-              <Ionicons name="logo-facebook" size={28} color="#1877F2" />
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.iconButton}>
-              <Ionicons name="logo-apple" size={28} color="#000" />
-            </TouchableOpacity>
-          </View>
+        
 
           <TouchableOpacity onPress={() => navigation.navigate('Login')}>
             <Text style={styles.link}>
@@ -130,14 +114,7 @@ export default function SignupScreen({ navigation }) {
             </Text>
           </TouchableOpacity>
 
-          <TouchableOpacity
-  style={{ marginTop: 20, alignSelf: 'center' }}
-  onPress={() => navigation.navigate('Congratulations')}
->
-  <Text style={{ color: '#388E3C', fontWeight: 'bold' }}>
-    Go to Congratulations Screen (Test)
-  </Text>
-</TouchableOpacity>
+         
         </View>
       </ScrollView>
     </SafeAreaView>

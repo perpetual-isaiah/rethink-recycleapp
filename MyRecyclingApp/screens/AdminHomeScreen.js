@@ -1,4 +1,5 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { 
   View, 
   Text, 
@@ -10,12 +11,62 @@ import {
 
 export default function AdminHomeScreen({ navigation }) {
   const [refreshing, setRefreshing] = useState(false);
+  const [userRole, setUserRole] = useState(null);
+  const [userName, setUserName] = useState('Admin');
+
+  useEffect(() => {
+    const getUserInfo = async () => {
+      try {
+        const role = await AsyncStorage.getItem('userRole');
+        const name = await AsyncStorage.getItem('userName');
+        setUserRole(role);
+        if (name) setUserName(name);
+      } catch (error) {
+        console.error('Error getting user info:', error);
+      }
+    };
+
+    getUserInfo();
+  }, []);
 
   // For now, just simulates refresh. Add fetch logic as needed.
   const onRefresh = useCallback(() => {
     setRefreshing(true);
     setTimeout(() => setRefreshing(false), 800); // Replace with API call if needed
   }, []);
+
+  // Define which roles can access which features
+  const hasAccess = (feature) => {
+    switch (feature) {
+      case 'challenges':
+        return userRole === 'admin' || userRole === 'admin_full' || userRole === 'challenge_admin';
+      case 'guides':
+        return userRole === 'admin' || userRole === 'admin_full' || userRole === 'guide_admin';
+      case 'recycling':
+        return userRole === 'admin' || userRole === 'admin_full' || userRole === 'recycling_admin';
+      case 'manage_admins':
+        return userRole === 'admin'; // Only super admin can manage other admins
+      default:
+        return false;
+    }
+  };
+
+  const getRoleDisplayName = (role) => {
+    switch (role) {
+      case 'admin':
+        return 'Super Admin';
+      case 'admin_full':
+        return 'Full Admin';
+      case 'challenge_admin':
+        return 'Challenge Admin';
+      case 'guide_admin':
+        return 'Guide Admin';
+      case 'recycling_admin':
+        return 'Recycling Admin';
+      default:
+        return 'Admin';
+    }
+  };
 
   return (
     <ScrollView
@@ -28,29 +79,52 @@ export default function AdminHomeScreen({ navigation }) {
         />
       }
     >
-      <Text style={styles.title}>Welcome, Admin!</Text>
+      <Text style={styles.title}>Welcome, {userName}!</Text>
+      <Text style={styles.subtitle}>{getRoleDisplayName(userRole)}</Text>
 
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.navigate('ManageChallenges')}
-      >
-        <Text style={styles.buttonText}>Manage Challenges</Text>
-      </TouchableOpacity>
+      {hasAccess('challenges') && (
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate('ManageChallenges')}
+        >
+          <Text style={styles.buttonText}>Manage Challenges</Text>
+        </TouchableOpacity>
+      )}
 
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.navigate('Guides')}
-      >
-        <Text style={styles.buttonText}>Edit Guides</Text>
-      </TouchableOpacity>
+      {hasAccess('guides') && (
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate('Guides')}
+        >
+          <Text style={styles.buttonText}>Edit Guides</Text>
+        </TouchableOpacity>
+      )}
 
-      <TouchableOpacity
-  style={styles.button}
-  onPress={() => navigation.navigate('ManageAdmins')}
->
-  <Text style={styles.buttonText}>Manage Admins</Text>
-</TouchableOpacity>
+      {hasAccess('recycling') && (
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate('RecyclingPoints')}
+        >
+          <Text style={styles.buttonText}>Manage Recycling Points</Text>
+        </TouchableOpacity>
+      )}
 
+      {hasAccess('manage_admins') && (
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate('ManageAdmins')}
+        >
+          <Text style={styles.buttonText}>Manage Admins</Text>
+        </TouchableOpacity>
+      )}
+
+      {!hasAccess('challenges') && !hasAccess('guides') && !hasAccess('recycling') && !hasAccess('manage_admins') && (
+        <View style={styles.noAccessContainer}>
+          <Text style={styles.noAccessText}>
+            Contact your super admin for access permissions.
+          </Text>
+        </View>
+      )}
     </ScrollView>
   );
 }
@@ -66,8 +140,14 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 26,
     fontWeight: 'bold',
-    marginBottom: 40,
+    marginBottom: 8,
     color: '#388E3C',
+  },
+  subtitle: {
+    fontSize: 16,
+    color: '#666',
+    marginBottom: 40,
+    fontWeight: '500',
   },
   button: {
     width: '80%',
@@ -85,5 +165,19 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: '#fff',
     fontWeight: '600',
+  },
+  noAccessContainer: {
+    padding: 20,
+    backgroundColor: '#fff',
+    borderRadius: 12,
+    marginTop: 20,
+    borderWidth: 1,
+    borderColor: '#E0E0E0',
+  },
+  noAccessText: {
+    fontSize: 16,
+    color: '#666',
+    textAlign: 'center',
+    fontStyle: 'italic',
   },
 });
