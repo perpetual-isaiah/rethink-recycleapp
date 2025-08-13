@@ -12,6 +12,7 @@ import {
   SafeAreaView,
   Platform,
   RefreshControl,
+  Modal,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -143,6 +144,20 @@ const ChallengeListTab = ({ filter, onRefreshFlag }) => {
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
 
+  // edit modal state
+  const [editModalVisible, setEditModalVisible] = useState(false);
+  const [savingEdit, setSavingEdit] = useState(false);
+  const [editItem, setEditItem] = useState(null);
+  const [editTitle, setEditTitle] = useState('');
+  const [editDescription, setEditDescription] = useState('');
+  const [editWhy, setEditWhy] = useState('');
+  const [editStart, setEditStart] = useState('');
+  const [editEnd, setEditEnd] = useState('');
+  const [showStartPicker, setShowStartPicker] = useState(false);
+  const [showEndPicker, setShowEndPicker] = useState(false);
+  const [startDateObj, setStartDateObj] = useState(new Date());
+  const [endDateObj, setEndDateObj] = useState(new Date());
+
   const fetchChallenges = useCallback(async () => {
     setLoading(true);
     try {
@@ -150,7 +165,6 @@ const ChallengeListTab = ({ filter, onRefreshFlag }) => {
       const res = await axios.get(`${API_BASE_URL}/api/challenges`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      // Support declined field (boolean, default false)
       let filtered = res.data.filter(
         (item) =>
           (filter === 'pending' && !item.approved && !item.declined) ||
@@ -189,7 +203,7 @@ const ChallengeListTab = ({ filter, onRefreshFlag }) => {
     }
   };
 
-  // Decline (no delete, just set declined: true and notify)
+  // Decline
   const declineChallenge = async (id) => {
     try {
       const token = await AsyncStorage.getItem('token');
@@ -200,6 +214,94 @@ const ChallengeListTab = ({ filter, onRefreshFlag }) => {
       fetchChallenges();
     } catch (err) {
       Alert.alert('Error', 'Failed to decline');
+    }
+  };
+
+  // Open edit modal
+  const openEdit = (item) => {
+    setEditItem(item);
+    setEditTitle(item.title || '');
+    setEditDescription(item.description || '');
+    setEditWhy(item.whyParticipate || '');
+    const s = item.startDate ? new Date(item.startDate) : new Date();
+    const e = item.endDate ? new Date(item.endDate) : new Date();
+    setStartDateObj(s);
+    setEndDateObj(e);
+    setEditStart(s.toISOString().split('T')[0]);
+    setEditEnd(e.toISOString().split('T')[0]);
+    setEditModalVisible(true);
+  };
+
+  const saveEdit = async () => {
+    if (!editItem) return;
+    if (!editTitle || !editDescription || !editStart || !editEnd) {
+      Alert.alert('Error', 'Please fill all fields');
+      return;
+    }
+    if (new Date(editStart) >= new Date(editEnd)) {
+      Alert.alert('Error', 'Start date must be before end date');
+      return;
+    }
+    try {
+      setSavingEdit(true);
+      const token = await AsyncStorage.getItem('token');
+      await axios.put(
+        `${API_BASE_URL}/api/challenges/${editItem._id}`,
+        {
+          title: editTitle,
+          description: editDescription,
+          startDate: editStart,
+          endDate: editEnd,
+          whyParticipate: editWhy,
+        },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      setEditModalVisible(false);
+      Alert.alert('Saved', 'Challenge updated');
+      fetchChallenges();
+    } catch (e) {
+      console.error(e);
+      Alert.alert('Error', 'Failed to update challenge');
+    } finally {
+      setSavingEdit(false);
+    }
+  };
+
+  const deleteChallenge = async (id) => {
+    Alert.alert('Delete Challenge', 'Are you sure you want to delete this challenge?', [
+      { text: 'Cancel', style: 'cancel' },
+      {
+        text: 'Delete',
+        style: 'destructive',
+        onPress: async () => {
+          try {
+            const token = await AsyncStorage.getItem('token');
+            await axios.delete(`${API_BASE_URL}/api/challenges/${id}`, {
+              headers: { Authorization: `Bearer ${token}` },
+            });
+            Alert.alert('Deleted', 'Challenge deleted');
+            fetchChallenges();
+          } catch (e) {
+            console.error(e);
+            Alert.alert('Error', 'Failed to delete challenge');
+          }
+        },
+      },
+    ]);
+  };
+
+  const onChangeStartDate = (event, selectedDate) => {
+    setShowStartPicker(false);
+    if (selectedDate) {
+      setStartDateObj(selectedDate);
+      setEditStart(selectedDate.toISOString().split('T')[0]);
+    }
+  };
+  const onChangeEndDate = (event, selectedDate) => {
+    setShowEndPicker(false);
+    if (selectedDate) {
+      setEndDateObj(selectedDate);
+      setEditEnd(selectedDate.toISOString().split('T')[0]);
     }
   };
 
@@ -220,47 +322,100 @@ const ChallengeListTab = ({ filter, onRefreshFlag }) => {
   }
 
   return (
-    <FlatList
-      data={challenges}
-      keyExtractor={(item) => item._id}
-      contentContainerStyle={styles.listContainer}
-      refreshControl={
-        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor="#4CAF50" />
-      }
-      renderItem={({ item }) => (
-        <View style={styles.card}>
-          <View style={styles.cardHeader}>
-            <Text style={styles.title}>{item.title}</Text>
-            {item.approved ? (
-              <Ionicons name="checkmark-circle" size={24} color="#4CAF50" />
-            ) : item.declined ? (
-              <Ionicons name="close-circle" size={24} color="#F44336" />
-            ) : (
-              <Ionicons name="hourglass" size={24} color="#FBBF24" />
-            )}
-          </View>
-          <Text style={styles.description}>{item.description}</Text>
-          <Text style={styles.meta}>Start: {new Date(item.startDate).toDateString()}</Text>
-          <Text style={styles.meta}>End: {new Date(item.endDate).toDateString()}</Text>
-          {filter === 'pending' && (
-            <View style={styles.buttonRow}>
-              <TouchableOpacity
-                style={styles.approveButton}
-                onPress={() => approveChallenge(item._id)}
-              >
-                <Text style={styles.buttonText}>Approve</Text>
+    <>
+      <FlatList
+        data={challenges}
+        keyExtractor={(item) => item._id}
+        contentContainerStyle={styles.listContainer}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor="#4CAF50" />
+        }
+        renderItem={({ item }) => (
+          <View style={styles.card}>
+            <View style={styles.cardHeader}>
+              <Text style={styles.title}>{item.title}</Text>
+              {item.approved ? (
+                <Ionicons name="checkmark-circle" size={24} color="#4CAF50" />
+              ) : item.declined ? (
+                <Ionicons name="close-circle" size={24} color="#F44336" />
+              ) : (
+                <Ionicons name="hourglass" size={24} color="#FBBF24" />
+              )}
+            </View>
+            <Text style={styles.description}>{item.description}</Text>
+            <Text style={styles.meta}>Start: {new Date(item.startDate).toDateString()}</Text>
+            <Text style={styles.meta}>End: {new Date(item.endDate).toDateString()}</Text>
+
+            {/* Actions */}
+            <View style={[styles.buttonRow, { marginTop: 12 }]}>
+              {filter === 'pending' && (
+                <>
+                  <TouchableOpacity style={styles.approveButton} onPress={() => approveChallenge(item._id)}>
+                    <Text style={styles.buttonText}>Approve</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={styles.declineButton} onPress={() => declineChallenge(item._id)}>
+                    <Text style={styles.buttonText}>Decline</Text>
+                  </TouchableOpacity>
+                </>
+              )}
+
+              <TouchableOpacity style={[styles.neutralButton]} onPress={() => openEdit(item)}>
+                <Text style={styles.neutralButtonText}>Edit</Text>
               </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.declineButton}
-                onPress={() => declineChallenge(item._id)}
-              >
-                <Text style={styles.buttonText}>Decline</Text>
+
+              <TouchableOpacity style={styles.deleteButton} onPress={() => deleteChallenge(item._id)}>
+                <Text style={styles.buttonText}>Delete</Text>
               </TouchableOpacity>
             </View>
-          )}
+          </View>
+        )}
+      />
+
+      {/* Edit Modal */}
+      <Modal visible={editModalVisible} animationType="slide" transparent onRequestClose={() => setEditModalVisible(false)}>
+        <View style={styles.modalBackdrop}>
+          <View style={styles.modalCard}>
+            <Text style={styles.modalTitle}>Edit Challenge</Text>
+            <TextInput style={styles.input} placeholder="Title" value={editTitle} onChangeText={setEditTitle} />
+            <TextInput
+              style={[styles.input, { height: 80 }]}
+              placeholder="Description"
+              value={editDescription}
+              onChangeText={setEditDescription}
+              multiline
+            />
+            <TouchableOpacity style={styles.input} onPress={() => setShowStartPicker(true)}>
+              <Text>{editStart ? `Start Date: ${editStart}` : 'Select Start Date'}</Text>
+            </TouchableOpacity>
+            {showStartPicker && (
+              <DateTimePicker value={startDateObj} mode="date" display="default" onChange={onChangeStartDate} />
+            )}
+            <TouchableOpacity style={styles.input} onPress={() => setShowEndPicker(true)}>
+              <Text>{editEnd ? `End Date: ${editEnd}` : 'Select End Date'}</Text>
+            </TouchableOpacity>
+            {showEndPicker && (
+              <DateTimePicker value={endDateObj} mode="date" display="default" onChange={onChangeEndDate} />
+            )}
+            <TextInput
+              style={[styles.input, { height: 60 }]}
+              placeholder="Why Participate?"
+              value={editWhy}
+              onChangeText={setEditWhy}
+              multiline
+            />
+
+            <View style={[styles.buttonRow, { marginTop: 8 }]}>
+              <TouchableOpacity style={styles.neutralButton} onPress={() => setEditModalVisible(false)} disabled={savingEdit}>
+                <Text style={styles.neutralButtonText}>Cancel</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.approveButton} onPress={saveEdit} disabled={savingEdit}>
+                {savingEdit ? <ActivityIndicator /> : <Text style={styles.buttonText}>Save</Text>}
+              </TouchableOpacity>
+            </View>
+          </View>
         </View>
-      )}
-    />
+      </Modal>
+    </>
   );
 };
 
@@ -339,14 +494,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#374151',
   },
-  centered: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  listContainer: {
-    padding: 16,
-  },
+  centered: { flex: 1, justifyContent: 'center', alignItems: 'center' },
+  listContainer: { padding: 16 },
   card: {
     backgroundColor: '#fff',
     padding: 16,
@@ -359,26 +508,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginBottom: 6,
   },
-  title: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#111827',
-  },
-  description: {
-    fontSize: 14,
-    color: '#4B5563',
-    marginBottom: 8,
-  },
-  meta: {
-    fontSize: 12,
-    color: '#6B7280',
-  },
-  buttonRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 12,
-    gap: 12,
-  },
+  title: { fontSize: 16, fontWeight: 'bold', color: '#111827' },
+  description: { fontSize: 14, color: '#4B5563', marginBottom: 8 },
+  meta: { fontSize: 12, color: '#6B7280' },
+  buttonRow: { flexDirection: 'row', justifyContent: 'space-between', gap: 12 },
   approveButton: {
     flex: 1,
     backgroundColor: '#4CAF50',
@@ -393,15 +526,23 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     alignItems: 'center',
   },
-  buttonText: {
-    color: '#fff',
-    fontWeight: '600',
+  deleteButton: {
+    flex: 1,
+    backgroundColor: '#DC2626',
+    paddingVertical: 10,
+    borderRadius: 8,
+    alignItems: 'center',
   },
-  tabContainer: {
-    padding: 16,
-    backgroundColor: '#F9FAFB',
-    flexGrow: 1,
+  neutralButton: {
+    flex: 1,
+    backgroundColor: '#E5E7EB',
+    paddingVertical: 10,
+    borderRadius: 8,
+    alignItems: 'center',
   },
+  neutralButtonText: { color: '#111827', fontWeight: '600' },
+  buttonText: { color: '#fff', fontWeight: '600' },
+  tabContainer: { padding: 16, backgroundColor: '#F9FAFB', flexGrow: 1 },
   input: {
     backgroundColor: '#fff',
     borderRadius: 8,
@@ -417,4 +558,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 10,
   },
+  // modal
+  modalBackdrop: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.35)',
+    justifyContent: 'center',
+    padding: 16,
+  },
+  modalCard: {
+    backgroundColor: '#fff',
+    borderRadius: 12,
+    padding: 16,
+  },
+  modalTitle: { fontSize: 18, fontWeight: 'bold', marginBottom: 8 },
 });

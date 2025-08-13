@@ -5,10 +5,15 @@ const Challenge = require('../models/Challenge');
 const verifyToken = require('../middleware/verifyToken');
 const axios = require('axios');
 
+<<<<<<< HEAD
 const bcrypt    = require('bcryptjs');
+=======
+const bcrypt = require('bcryptjs');
+>>>>>>> 98685d44bfc6d250da33512ff9075a0113ae5dc1
 const authorize = require('../middleware/authorizeRoles');
-// only super-admins (role === 'admin') can access /admins
-router.use('/admins', verifyToken, authorize('admin', 'admin_full'));
+
+// Only super-admins (role === 'admin') can manage admins
+router.use('/admins', verifyToken, authorize('admin'));
 
 /**
  * GET  /api/user/admins
@@ -22,9 +27,7 @@ router.get('/admins', async (req, res) => {
       'guide_admin',
       'recycling_admin',
     ];
-    const admins = await User
-      .find({ role: { $in: adminRoles } })
-      .select('-password');
+    const admins = await User.find({ role: { $in: adminRoles } }).select('-password');
     return res.json(admins);
   } catch (err) {
     console.error('Error fetching admins:', err);
@@ -53,19 +56,25 @@ router.post('/admins', async (req, res) => {
       return res.status(400).json({ message: 'Email already in use.' });
     }
     const hashed = await bcrypt.hash(password, 10);
-    const newAdmin = await User.create({ name, email, password: hashed, role });
-    return res.status(201).json(newAdmin);
+    const created = await User.create({ name, email, password: hashed, role });
+    const safe = created.toObject();
+    delete safe.password;
+    return res.status(201).json(safe);
   } catch (err) {
     console.error('Error creating admin:', err);
     return res.status(500).json({ message: err.message });
   }
 });
 
+/**
+ * PUT /api/user/admins/:adminId
+ * ↳ update name, email, role, (optional) password
+ */
 router.put('/admins/:adminId', async (req, res) => {
   try {
     const { adminId } = req.params;
     const { name, email, role, password } = req.body;
-    const validRoles = ['admin_full','challenge_admin','guide_admin','recycling_admin'];
+    const validRoles = ['admin_full', 'challenge_admin', 'guide_admin', 'recycling_admin'];
     const updateFields = {};
 
     if (name) updateFields.name = name.trim();
@@ -109,7 +118,7 @@ router.put('/admins/:adminId', async (req, res) => {
 router.delete('/admins/:adminId', async (req, res) => {
   try {
     const { adminId } = req.params;
-    const validRoles = ['admin_full','challenge_admin','guide_admin','recycling_admin'];
+    const validRoles = ['admin_full', 'challenge_admin', 'guide_admin', 'recycling_admin'];
     const deletedAdmin = await User.findOneAndDelete({ _id: adminId, role: { $in: validRoles } });
     if (!deletedAdmin) {
       return res.status(404).json({ message: 'Admin not found.' });
@@ -121,7 +130,10 @@ router.delete('/admins/:adminId', async (req, res) => {
   }
 });
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 98685d44bfc6d250da33512ff9075a0113ae5dc1
 // POST /api/user/savePushToken - Save user's push notification token
 router.post('/savePushToken', verifyToken, async (req, res) => {
   try {
@@ -149,17 +161,17 @@ router.post('/savePushToken', verifyToken, async (req, res) => {
     }
 
     console.log(`Push token stored for user ${userId}: ${pushToken}`);
-    res.json({ 
-      success: true, 
+    res.json({
+      success: true,
       message: 'Push token stored successfully',
-      user 
+      user
     });
 
   } catch (error) {
     console.error('Error storing push token:', error);
-    res.status(500).json({ 
-      message: 'Error storing push token', 
-      error: error.message 
+    res.status(500).json({
+      message: 'Error storing push token',
+      error: error.message
     });
   }
 });
@@ -270,7 +282,6 @@ router.put('/profile', verifyToken, async (req, res) => {
   }
 });
 
-
 // POST /api/user/join/:challengeId
 router.post('/join/:challengeId', verifyToken, async (req, res) => {
   try {
@@ -374,20 +385,20 @@ router.get('/:userId', verifyToken, async (req, res) => {
 
 router.post('/remove-push-token', verifyToken, async (req, res) => {
   try {
-    const userId = req.user.id; // Set by verifyToken
+    const userId = req.user._id; // Changed from req.user.id to req.user._id for consistency
     const { token } = req.body;
     if (!token) return res.status(400).json({ message: 'No push token provided.' });
 
     // Remove this push token from this user
     await User.updateOne(
-      { _id: userId, expoPushToken: token },
-      { $unset: { expoPushToken: "" } }
+      { _id: userId, pushToken: token },
+      { $unset: { pushToken: '' } }
     );
 
-    // Optionally, remove from all users (extra safety, for shared devices)
+    // Also remove from any other user just in case
     await User.updateMany(
-      { expoPushToken: token, _id: { $ne: userId } },
-      { $unset: { expoPushToken: "" } }
+      { pushToken: token, _id: { $ne: userId } },
+      { $unset: { pushToken: '' } }
     );
 
     res.json({ success: true, message: 'Push token removed.' });
@@ -437,5 +448,8 @@ router.delete('/', verifyToken, async (req, res) => {
     });
   }
 });
+<<<<<<< HEAD
+=======
+
+>>>>>>> 98685d44bfc6d250da33512ff9075a0113ae5dc1
 module.exports = router;
- 

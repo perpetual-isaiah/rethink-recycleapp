@@ -15,6 +15,17 @@ const {
   sendChallengeApprovedNotification 
 } = require('../services/pushNotifications');
 
+// Helper function to check if user has admin privileges
+const hasAdminPrivileges = (userRole) => {
+  const adminRoles = ['challenge_admin', 'admin', 'admin_full'];
+  return adminRoles.includes(userRole);
+};
+
+// Helper function to check if user can approve/decline challenges
+const canManageChallenges = (userRole) => {
+  const managerRoles = ['challenge_admin', 'admin', 'admin_full']; // All admin roles can manage challenges
+  return managerRoles.includes(userRole);
+};
 
 // Helper to centralize 500 errors
 const respond500 = (res, msg, err) => {
@@ -37,9 +48,17 @@ router.post('/', verifyToken, async (req, res) => {
       return res.status(400).json({ message: 'Invalid start/end date' });
     }
 
-    const user    = await User.findById(req.user.id);
+    const user = await User.findById(req.user.id);
     if (!user) return res.status(404).json({ message: 'User not found' });
-    const isAdmin = user.role === 'admin';
+    
+    // Check if user has admin privileges to create challenges
+    const hasAdminAccess = hasAdminPrivileges(user.role);
+    const canAutoApprove = canManageChallenges(user.role); // All admin roles can auto-approve
+
+    // Optional: Restrict challenge creation to admin roles only
+    if (!hasAdminAccess) {
+      return res.status(403).json({ message: 'Only admin users can create challenges' });
+    }
 
     const challenge = await Challenge.create({
       title,
@@ -48,13 +67,13 @@ router.post('/', verifyToken, async (req, res) => {
       endDate:   end,
       createdBy: req.user.id,
       whyParticipate,
-      approved:  isAdmin,
+      approved:  canAutoApprove, // auto-approve for admin/admin_full, not for challenge_admin
     });
 
     // Send in-app notification
     await createNotification(
       req.user.id,
-      `Your challenge "${challenge.title}" has been created${isAdmin ? ' and approved.' : ' and is pending approval.'}`,
+      `Your challenge "${challenge.title}" has been created${canAutoApprove ? ' and approved.' : ' and is pending approval.'}`,
       `/challenges/${challenge._id}`,
       'generic',
       challenge._id
@@ -65,11 +84,11 @@ router.post('/', verifyToken, async (req, res) => {
       req.user.id,
       challenge.title,
       challenge._id.toString(),
-      isAdmin
+      canAutoApprove
     );
 
     return res.status(201).json({
-      message: `Challenge created.${isAdmin ? ' Approved.' : ' Pending approval.'}`,
+      message: `Challenge created.${canAutoApprove ? ' Approved.' : ' Pending approval.'}`,
       challenge
     });
 
@@ -87,7 +106,8 @@ router.get('/', verifyToken, async (req, res) => {
     const user = await User.findById(req.user.id);
     if (!user) return res.status(404).json({ message: 'User not found' });
 
-    const filter = user.role === 'admin' ? {} : { approved: true };
+    // Admin users can see all challenges, regular users see only approved ones
+    const filter = hasAdminPrivileges(user.role) ? {} : { approved: true };
     const list = await Challenge.find(filter)
       .populate('createdBy', 'name email')
       .populate('participants', 'name email');
@@ -112,7 +132,9 @@ router.get('/:id', verifyToken, async (req, res) => {
 
     const user = await User.findById(req.user.id);
     if (!user) return res.status(404).json({ message: 'User not found' });
-    if (!challenge.approved && user.role !== 'admin') {
+    
+    // Admin users can view any challenge, regular users only approved ones
+    if (!challenge.approved && !hasAdminPrivileges(user.role)) {
       return res.status(403).json({ message: 'You are not authorized to view this challenge' });
     }
 
@@ -227,7 +249,7 @@ router.post('/:id/join', verifyToken, async (req, res) => {
 
 
 /* ──────────────────────────────────────────────────────────────────────── */
-/*  GET    /api/challenges/joined → list user’s joined challenges         */
+/*  GET    /api/challenges/joined → list user's joined challenges         */
 /* ──────────────────────────────────────────────────────────────────────── */
 router.get('/joined', verifyToken, async (req, res) => {
   try {
@@ -249,8 +271,8 @@ router.get('/joined', verifyToken, async (req, res) => {
 router.patch('/:id/approve', verifyToken, async (req, res) => {
   try {
     const user = await User.findById(req.user.id);
-    if (user.role !== 'admin') {
-      return res.status(403).json({ message: 'Only admins can approve challenges' });
+    if (!canManageChallenges(user.role)) {
+      return res.status(403).json({ message: 'Only challenge_admin, admin and admin_full users can approve challenges' });
     }
 
     const challenge = await Challenge.findByIdAndUpdate(
@@ -286,8 +308,8 @@ router.patch('/:id/approve', verifyToken, async (req, res) => {
 router.patch('/:id/decline', verifyToken, async (req, res) => {
   try {
     const user = await User.findById(req.user.id);
-    if (user.role !== 'admin') {
-      return res.status(403).json({ message: 'Only admins can decline challenges' });
+    if (!canManageChallenges(user.role)) {
+      return res.status(403).json({ message: 'Only challenge_admin, admin and admin_full users can decline challenges' });
     }
 
     // 1. Update the challenge status
@@ -331,8 +353,8 @@ router.patch('/:id/decline', verifyToken, async (req, res) => {
 router.get('/declined', verifyToken, async (req, res) => {
   try {
     const user = await User.findById(req.user.id);
-    if (user.role !== 'admin') {
-      return res.status(403).json({ message: 'Only admins can view declined challenges' });
+    if (!canManageChallenges(user.role)) {
+      return res.status(403).json({ message: 'Only challenge_admin, admin and admin_full users can view declined challenges' });
     }
     const declinedChallenges = await Challenge.find({ declined: true }).sort({ createdAt: -1 });
     res.json(declinedChallenges);
@@ -596,14 +618,14 @@ router.patch('/:id/quit', verifyToken, async (req, res) => {
     await challenge.save();
 
     if (challenge.createdBy.toString() !== req.user.id) {
-  await sendPushNotification(
-    challenge.createdBy,
-    `Participant Left`,
-    `${req.user.name} quit your challenge "${challenge.title}".`,
-    { type: 'challenge_quit', challengeId: challenge._id }
-  );
-}
-
+      const { sendPushNotification } = require('../services/pushNotifications');
+      await sendPushNotification(
+        challenge.createdBy,
+        `Participant Left`,
+        `${req.user.name} quit your challenge "${challenge.title}".`,
+        { type: 'challenge_quit', challengeId: challenge._id }
+      );
+    }
 
     // ⑥ Notify quitting user
     await createNotification(
@@ -658,6 +680,86 @@ router.get('/rewards', verifyToken, async (req, res) => {
     return respond500(res, 'Error fetching rewards', error);
   }
 });
+
+// PUT /api/challenges/:id  → update a challenge (admin-only)
+router.put('/:id', verifyToken, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id);
+    if (!canManageChallenges(user.role)) {
+      return res.status(403).json({ message: 'Only challenge_admin, admin and admin_full users can edit challenges' });
+    }
+
+    const { title, description, startDate, endDate, whyParticipate } = req.body;
+
+    // basic validation if dates are provided
+    let updates = {};
+    if (title !== undefined) updates.title = title;
+    if (description !== undefined) updates.description = description;
+    if (whyParticipate !== undefined) updates.whyParticipate = whyParticipate;
+
+    if (startDate !== undefined) {
+      const s = new Date(startDate);
+      if (isNaN(s)) return res.status(400).json({ message: 'Invalid startDate' });
+      updates.startDate = s;
+    }
+    if (endDate !== undefined) {
+      const e = new Date(endDate);
+      if (isNaN(e)) return res.status(400).json({ message: 'Invalid endDate' });
+      updates.endDate = e;
+    }
+    if (updates.startDate && updates.endDate && updates.startDate >= updates.endDate) {
+      return res.status(400).json({ message: 'startDate must be before endDate' });
+    }
+
+    const challenge = await Challenge.findByIdAndUpdate(
+      req.params.id,
+      updates,
+      { new: true }
+    );
+    if (!challenge) return res.status(404).json({ message: 'Challenge not found' });
+
+    return res.json({ message: 'Challenge updated', challenge });
+  } catch (err) {
+    return respond500(res, 'Error updating challenge', err);
+  }
+});
+
+// DELETE /api/challenges/:id → delete a challenge (admin-only)
+router.delete('/:id', verifyToken, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id);
+    if (!canManageChallenges(user.role)) {
+      return res.status(403).json({ message: 'Only challenge_admin, admin and admin_full users can delete challenges' });
+    }
+
+    const challenge = await Challenge.findById(req.params.id);
+    if (!challenge) return res.status(404).json({ message: 'Challenge not found' });
+
+    // Clean up participation records (optional but recommended)
+    await UserChallenge.deleteMany({ challengeId: challenge._id });
+
+    // Remove the challenge itself
+    await Challenge.deleteOne({ _id: challenge._id });
+
+    // Optional: notify creator that their challenge was removed by admin
+    try {
+      await createNotification(
+        challenge.createdBy,
+        `Your challenge "${challenge.title}" was removed by an admin.`,
+        `/challenges`,
+        'deleted',
+        challenge._id
+      );
+    } catch (e) {
+      console.error('[Delete Notification Error]', e);
+    }
+
+    return res.json({ message: 'Challenge deleted' });
+  } catch (err) {
+    return respond500(res, 'Error deleting challenge', err);
+  }
+});
+
 
 
 module.exports = router;

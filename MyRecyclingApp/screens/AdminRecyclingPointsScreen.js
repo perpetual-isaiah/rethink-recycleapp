@@ -149,6 +149,9 @@ export default function AdminRecyclingPointsScreen() {
       field === 'address' ? 'Address' :
       field.charAt(0).toUpperCase() + field.slice(1);
 
+    const isTextArea = ['address','materials','tags'].includes(field);
+    const isNumeric = ['lat','lng'].includes(field);
+
     return (
       <View key={field} style={styles.inputGroup}>
         <Text style={styles.inputLabel}>{label}</Text>
@@ -157,9 +160,10 @@ export default function AdminRecyclingPointsScreen() {
           placeholderTextColor="#999"
           value={form[field]}
           onChangeText={text => setForm({ ...form, [field]: text })}
-          style={styles.input}
-          multiline={['address','materials','tags'].includes(field)}
-          keyboardType={['lat','lng'].includes(field) ? 'numeric' : 'default'}
+          style={[styles.input, isTextArea && styles.textArea]}
+          multiline={isTextArea}
+          textAlignVertical={isTextArea ? 'top' : 'center'}
+          keyboardType={isNumeric ? 'numeric' : 'default'}
         />
       </View>
     );
@@ -244,37 +248,42 @@ export default function AdminRecyclingPointsScreen() {
           </View>
         )}
       />
-      <Modal visible={modalVisible} animationType="slide">
-        <SafeAreaView style={styles.modalSafeArea}>
-          <KeyboardAvoidingView
-            style={styles.modalContainer}
-            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-            keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 20}
-          >
-            <View style={styles.modalHeader}>
-              <Text style={styles.modalTitle}>{form.id ? 'Edit Point' : 'New Point'}</Text>
-              <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.closeBtn}>
-                <Text style={styles.closeText}>✕</Text>
-              </TouchableOpacity>
-            </View>
-            <ScrollView 
-              contentContainerStyle={styles.modalContent} 
-              keyboardShouldPersistTaps="handled"
-              showsVerticalScrollIndicator={true}
-              contentInsetAdjustmentBehavior="automatic"
-            >
-              {['name','address','city','region','lat','lng','materials','tags'].map(renderFormField)}
-              <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.saveBtn} onPress={savePoint}>
-                  <Text style={styles.saveText}>{form.id ? 'Update' : 'Create'}</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.cancelBtn} onPress={() => setModalVisible(false)}>
-                  <Text style={styles.cancelText}>Cancel</Text>
+      
+      <Modal visible={modalVisible} animationType="slide" onRequestClose={() => setModalVisible(false)}>
+        <KeyboardAvoidingView 
+          style={styles.modalKeyboardContainer}
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+          keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 25}
+        >
+          <SafeAreaView style={styles.modalSafeArea}>
+            <View style={styles.modalContainer}>
+              <View style={styles.modalHeader}>
+                <Text style={styles.modalTitle}>{form.id ? 'Edit Point' : 'New Point'}</Text>
+                <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.closeBtn}>
+                  <Text style={styles.closeText}>✕</Text>
                 </TouchableOpacity>
               </View>
-            </ScrollView>
-          </KeyboardAvoidingView>
-        </SafeAreaView>
+              
+              <ScrollView 
+                style={styles.modalScrollView}
+                contentContainerStyle={styles.modalContent} 
+                keyboardShouldPersistTaps="handled"
+                showsVerticalScrollIndicator={true}
+              >
+                {['name','address','city','region','lat','lng','materials','tags'].map(renderFormField)}
+                
+                <View style={styles.buttonContainer}>
+                  <TouchableOpacity style={styles.saveBtn} onPress={savePoint}>
+                    <Text style={styles.saveText}>{form.id ? 'Update' : 'Create'}</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={styles.cancelBtn} onPress={() => setModalVisible(false)}>
+                    <Text style={styles.cancelText}>Cancel</Text>
+                  </TouchableOpacity>
+                </View>
+              </ScrollView>
+            </View>
+          </SafeAreaView>
+        </KeyboardAvoidingView>
       </Modal>
     </SafeAreaView>
   );
@@ -357,8 +366,16 @@ const styles = StyleSheet.create({
   },
   
   // Modal styles
-  modalSafeArea: { flex: 1, backgroundColor: '#fff' },
-  modalContainer: { flex: 1 },
+  modalKeyboardContainer: {
+    flex: 1,
+  },
+  modalSafeArea: { 
+    flex: 1, 
+    backgroundColor: '#fff' 
+  },
+  modalContainer: { 
+    flex: 1 
+  },
   modalHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -368,7 +385,11 @@ const styles = StyleSheet.create({
     borderBottomColor: '#E0E0E0',
     backgroundColor: '#fff'
   },
-  modalTitle: { fontSize: 18, fontWeight: '700' },
+  modalTitle: { 
+    fontSize: 18, 
+    fontWeight: '700',
+    flex: 1,
+  },
   closeBtn: {
     width: 32,
     height: 32,
@@ -377,10 +398,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
-  closeText: { fontSize: 16, color: '#666' },
+  closeText: { 
+    fontSize: 16, 
+    color: '#666' 
+  },
+  modalScrollView: {
+    flex: 1,
+  },
   modalContent: { 
-    padding: 16, 
-    paddingBottom: 100, // Extra padding to ensure content is visible above keyboard
+    padding: 16,
+    paddingBottom: 120, // Extra padding for keyboard space
     flexGrow: 1
   },
   inputGroup: {
@@ -401,6 +428,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     minHeight: 44
   },
+  textArea: {
+    minHeight: 80,
+    textAlignVertical: 'top',
+  },
   buttonContainer: {
     marginTop: 20,
     paddingTop: 20,
@@ -414,7 +445,11 @@ const styles = StyleSheet.create({
     alignItems: 'center', 
     marginBottom: 12 
   },
-  saveText: { color: '#fff', fontWeight: '600', fontSize: 16 },
+  saveText: { 
+    color: '#fff', 
+    fontWeight: '600', 
+    fontSize: 16 
+  },
   cancelBtn: {
     backgroundColor: '#F5F5F5',
     padding: 16,

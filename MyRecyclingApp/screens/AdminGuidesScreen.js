@@ -13,6 +13,8 @@ import {
   RefreshControl,
   Modal,
   SafeAreaView,
+  KeyboardAvoidingView,
+  Platform,
 } from 'react-native';
 import axios from 'axios';
 import { Ionicons } from '@expo/vector-icons';
@@ -131,71 +133,98 @@ export default function AdminGuidesScreen() {
           </View>
         )}
       />
-      {/* Edit Modal */}
+      
+      {/* Edit Modal with KeyboardAvoidingView */}
       <Modal visible={modalVisible} transparent animationType="slide" onRequestClose={() => setModalVisible(false)}>
-        <View style={styles.modalOverlay}>
-          <ScrollView contentContainerStyle={styles.modalBox} showsVerticalScrollIndicator={false}>
-            <Text style={styles.modalTitle}>Edit Guide</Text>
-            <Text style={styles.inputLabel}>Title / Label</Text>
-            <TextInput
-              style={styles.input}
-              value={editFields.label}
-              onChangeText={v => setEditFields(f => ({ ...f, label: v }))}
-            />
-            <Text style={styles.inputLabel}>Description</Text>
-            <TextInput
-              style={[styles.input, { minHeight: 70 }]}
-              value={editFields.description}
-              onChangeText={v => setEditFields(f => ({ ...f, description: v }))}
-              multiline
-            />
-            <Text style={styles.inputLabel}>Icon</Text>
-            <TextInput
-              style={styles.input}
-              value={editFields.icon}
-              onChangeText={v => setEditFields(f => ({ ...f, icon: v }))}
-            />
-            <Text style={styles.inputLabel}>Container Tag</Text>
-            <TextInput
-              style={styles.input}
-              value={editFields.containerTag}
-              onChangeText={v => setEditFields(f => ({ ...f, containerTag: v }))}
-            />
-            <Text style={styles.inputLabel}>Do's (one per line)</Text>
-            <TextInput
-              style={[styles.input, { minHeight: 60 }]}
-              value={editFields.dos}
-              onChangeText={v => setEditFields(f => ({ ...f, dos: v }))}
-              multiline
-            />
-            <Text style={styles.inputLabel}>Don'ts (one per line)</Text>
-            <TextInput
-              style={[styles.input, { minHeight: 60 }]}
-              value={editFields.donts}
-              onChangeText={v => setEditFields(f => ({ ...f, donts: v }))}
-              multiline
-            />
-            <View style={styles.modalActions}>
-              <TouchableOpacity
-                style={[styles.modalBtn, { backgroundColor: '#eee' }]}
-                onPress={() => setModalVisible(false)}
-                disabled={saving}
-              >
-                <Text style={{ color: '#333', fontWeight: '600' }}>Cancel</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={[styles.modalBtn, { backgroundColor: '#4CAF50' }]}
-                onPress={handleSave}
-                disabled={saving}
-              >
-                {saving
-                  ? <ActivityIndicator color="#fff" />
-                  : <Text style={{ color: '#fff', fontWeight: '600' }}>Save</Text>
-                }
-              </TouchableOpacity>
+        <KeyboardAvoidingView 
+          style={styles.modalOverlay} 
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+          keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 20}
+        >
+          <ScrollView 
+            contentContainerStyle={styles.modalScrollContent} 
+            showsVerticalScrollIndicator={false}
+            keyboardShouldPersistTaps="handled"
+          >
+            <View style={styles.modalBox}>
+              <Text style={styles.modalTitle}>Edit Guide</Text>
+              
+              <Text style={styles.inputLabel}>Title / Label</Text>
+              <TextInput
+                style={styles.input}
+                value={editFields.label}
+                onChangeText={v => setEditFields(f => ({ ...f, label: v }))}
+                returnKeyType="next"
+              />
+              
+              <Text style={styles.inputLabel}>Description</Text>
+              <TextInput
+                style={[styles.input, styles.multilineInput]}
+                value={editFields.description}
+                onChangeText={v => setEditFields(f => ({ ...f, description: v }))}
+                multiline
+                returnKeyType="next"
+                blurOnSubmit={true}
+              />
+              
+              <Text style={styles.inputLabel}>Icon</Text>
+              <TextInput
+                style={styles.input}
+                value={editFields.icon}
+                onChangeText={v => setEditFields(f => ({ ...f, icon: v }))}
+                returnKeyType="next"
+              />
+              
+              <Text style={styles.inputLabel}>Container Tag</Text>
+              <TextInput
+                style={styles.input}
+                value={editFields.containerTag}
+                onChangeText={v => setEditFields(f => ({ ...f, containerTag: v }))}
+                returnKeyType="next"
+              />
+              
+              <Text style={styles.inputLabel}>Do's (one per line)</Text>
+              <TextInput
+                style={[styles.input, styles.multilineInput]}
+                value={editFields.dos}
+                onChangeText={v => setEditFields(f => ({ ...f, dos: v }))}
+                multiline
+                returnKeyType="next"
+                blurOnSubmit={true}
+              />
+              
+              <Text style={styles.inputLabel}>Don'ts (one per line)</Text>
+              <TextInput
+                style={[styles.input, styles.multilineInput]}
+                value={editFields.donts}
+                onChangeText={v => setEditFields(f => ({ ...f, donts: v }))}
+                multiline
+                returnKeyType="done"
+                blurOnSubmit={true}
+              />
+              
+              <View style={styles.modalActions}>
+                <TouchableOpacity
+                  style={[styles.modalBtn, { backgroundColor: '#eee' }]}
+                  onPress={() => setModalVisible(false)}
+                  disabled={saving}
+                >
+                  <Text style={{ color: '#333', fontWeight: '600' }}>Cancel</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={[styles.modalBtn, { backgroundColor: '#4CAF50' }]}
+                  onPress={handleSave}
+                  disabled={saving}
+                >
+                  {saving
+                    ? <ActivityIndicator color="#fff" />
+                    : <Text style={{ color: '#fff', fontWeight: '600' }}>Save</Text>
+                  }
+                </TouchableOpacity>
+              </View>
             </View>
           </ScrollView>
-        </View>
+        </KeyboardAvoidingView>
       </Modal>
     </SafeAreaView>
   );
@@ -216,17 +245,69 @@ const styles = StyleSheet.create({
   guideDesc: { fontSize: 14, color: '#444', marginBottom: 6 },
   guideMeta: { fontSize: 12, color: '#666', marginRight: 16 },
   guideDoDont: { fontSize: 13, marginTop: 2 },
-  modalOverlay: { flex: 1, backgroundColor: 'rgba(30,30,30,0.35)', justifyContent: 'center', alignItems: 'center' },
+  
+  // Modal styles with keyboard handling improvements
+  modalOverlay: { 
+    flex: 1, 
+    backgroundColor: 'rgba(30,30,30,0.35)', 
+    justifyContent: 'center', 
+    alignItems: 'center' 
+  },
+  modalScrollContent: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 20,
+  },
   modalBox: {
-    backgroundColor: '#fff', borderRadius: 16, padding: 22, width: '93%',
-    maxWidth: 400, minHeight: 300, shadowColor: '#222', shadowOpacity: 0.16, shadowOffset: { width: 0, height: 4 }, elevation: 8,
+    backgroundColor: '#fff', 
+    borderRadius: 16, 
+    padding: 22, 
+    width: '93%',
+    maxWidth: 400, 
+    shadowColor: '#222', 
+    shadowOpacity: 0.16, 
+    shadowOffset: { width: 0, height: 4 }, 
+    elevation: 8,
   },
-  modalTitle: { fontSize: 18, fontWeight: '700', color: '#333', marginBottom: 14, textAlign: 'center' },
-  inputLabel: { fontSize: 13, fontWeight: '600', color: '#4CAF50', marginTop: 10, marginBottom: 3 },
+  modalTitle: { 
+    fontSize: 18, 
+    fontWeight: '700', 
+    color: '#333', 
+    marginBottom: 14, 
+    textAlign: 'center' 
+  },
+  inputLabel: { 
+    fontSize: 13, 
+    fontWeight: '600', 
+    color: '#4CAF50', 
+    marginTop: 10, 
+    marginBottom: 3 
+  },
   input: {
-    backgroundColor: '#F5F5F5', borderRadius: 8, paddingHorizontal: 13, paddingVertical: 10,
-    fontSize: 15, color: '#222', marginBottom: 6, borderWidth: 1, borderColor: '#e0e0e0',
+    backgroundColor: '#F5F5F5', 
+    borderRadius: 8, 
+    paddingHorizontal: 13, 
+    paddingVertical: 10,
+    fontSize: 15, 
+    color: '#222', 
+    marginBottom: 6, 
+    borderWidth: 1, 
+    borderColor: '#e0e0e0',
   },
-  modalActions: { flexDirection: 'row', justifyContent: 'flex-end', marginTop: 14 },
-  modalBtn: { paddingVertical: 10, paddingHorizontal: 20, borderRadius: 8, marginLeft: 10 },
+  multilineInput: {
+    minHeight: 60,
+    textAlignVertical: 'top', // Android: align text to top for multiline
+  },
+  modalActions: { 
+    flexDirection: 'row', 
+    justifyContent: 'flex-end', 
+    marginTop: 14 
+  },
+  modalBtn: { 
+    paddingVertical: 10, 
+    paddingHorizontal: 20, 
+    borderRadius: 8, 
+    marginLeft: 10 
+  },
 });
