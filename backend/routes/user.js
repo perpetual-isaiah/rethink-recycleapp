@@ -5,7 +5,6 @@ const Challenge = require('../models/Challenge');
 const verifyToken = require('../middleware/verifyToken');
 const axios = require('axios');
 
-<<<<<<< HEAD
 const bcrypt    = require('bcryptjs');
 const authorize = require('../middleware/authorizeRoles');
 // only super-admins (role === 'admin') can access /admins
@@ -17,7 +16,7 @@ router.use('/admins', verifyToken, authorize('admin', 'admin_full'));
  */
 router.get('/admins', async (req, res) => {
   try {
-    const adminRoles = [
+    const adminRoles = [ 
       'admin_full',
       'challenge_admin',
       'guide_admin',
@@ -122,8 +121,6 @@ router.delete('/admins/:adminId', async (req, res) => {
   }
 });
 
-=======
->>>>>>> 04316eed2f28bff592e5d472da6fb9c85fbaea94
 
 // POST /api/user/savePushToken - Save user's push notification token
 router.post('/savePushToken', verifyToken, async (req, res) => {
@@ -397,6 +394,47 @@ router.post('/remove-push-token', verifyToken, async (req, res) => {
   } catch (err) {
     console.error('Error removing push token:', err);
     res.status(500).json({ message: 'Error removing push token.' });
+  }
+});
+
+// DELETE /api/user
+router.delete('/', verifyToken, async (req, res) => {
+  try {
+    // Use _id instead of id for consistency
+    const userId = req.user._id || req.user.id;
+    
+    console.log(`Attempting to delete user: ${userId}`);
+
+    // Check if user exists first
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Remove user from challenge participants
+    console.log('Removing user from challenges...');
+    await Challenge.updateMany(
+      { participants: userId },
+      { $pull: { participants: userId } }
+    );
+
+    // Delete user
+    console.log('Deleting user...');
+    const deletedUser = await User.findByIdAndDelete(userId);
+    
+    if (!deletedUser) {
+      return res.status(404).json({ message: 'User not found during deletion' });
+    }
+
+    console.log(`User ${userId} deleted successfully`);
+    res.json({ message: 'Account deleted successfully' });
+    
+  } catch (error) {
+    console.error('Error deleting account:', error);
+    res.status(500).json({ 
+      message: 'Error deleting account', 
+      error: error.message 
+    });
   }
 });
 module.exports = router;

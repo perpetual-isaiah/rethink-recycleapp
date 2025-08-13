@@ -11,16 +11,19 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import * as Notifications from 'expo-notifications';
+import axios from 'axios';
 
 import SettingsRow from '../components/SettingsRow';
 import { useTheme } from '../context/ThemeContext';
 import { logoutAndReset } from '../utils/auth';
+import { API_BASE_URL } from '../config';
 
 export default function SettingsScreen() {
   const navigation = useNavigation();
   const { darkMode, toggleTheme, colors, isLoading } = useTheme();
 
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
+  const [deleting, setDeleting] = useState(false);
 
   /* Load saved preference */
   useEffect(() => {
@@ -74,6 +77,74 @@ export default function SettingsScreen() {
       JSON.stringify(next)
     );
     return true;
+  };
+
+  const confirmDelete = () => {
+    if (deleting) return;
+
+    Alert.alert(
+      'Delete Account',
+      'Are you sure you want to delete your account? This cannot be undone.',
+      [
+        { text: 'Cancel', style: 'cancel' },
+        { text: 'Yes, continue', style: 'destructive', onPress: secondConfirmDelete },
+      ]
+    );
+  };
+
+  const secondConfirmDelete = () => {
+    Alert.alert(
+      'Final Confirmation',
+      'This will permanently delete your profile, progress, and joined challenges. Proceed?',
+      [
+        { text: 'No', style: 'cancel' },
+        { text: 'Delete', style: 'destructive', onPress: handleDeleteAccount },
+      ]
+    );
+  };
+
+  const handleDeleteAccount = async () => {
+    try {
+      setDeleting(true);
+      const token = await AsyncStorage.getItem('token');
+      if (!token) {
+        Alert.alert('Not logged in', 'Please log in again.');
+        return;
+      }
+
+      // Add timeout to the request
+      await axios.delete(`${API_BASE_URL}/api/user`, {
+        headers: { Authorization: `Bearer ${token}` },
+        timeout: 30000, // 30 seconds timeout
+      });
+
+      // Clear local data and reset nav
+      await AsyncStorage.clear();
+      Alert.alert('Account Deleted', 'Your account has been removed.');
+      logoutAndReset(navigation);
+    } catch (err) {
+      console.error('Delete account error:', err);
+      
+      // Better error handling for different error types
+      let errorMessage = 'Failed to delete account';
+      
+      if (err.code === 'ECONNABORTED') {
+        errorMessage = 'Request timed out. Please check your connection and try again.';
+      } else if (err.response) {
+        // Server responded with error status
+        errorMessage = err.response.data?.message || `Server error: ${err.response.status}`;
+      } else if (err.request) {
+        // Request was made but no response received
+        errorMessage = 'No response from server. Please check your connection.';
+      } else {
+        // Something else happened
+        errorMessage = err.message || 'Unknown error occurred';
+      }
+      
+      Alert.alert('Error', errorMessage);
+    } finally {
+      setDeleting(false);
+    }
   };
 
   return (
@@ -141,11 +212,19 @@ export default function SettingsScreen() {
             label="Logout"
             icon="log-out-outline"
             danger
-           onPress={() => logoutAndReset(navigation)}
+            onPress={() => logoutAndReset(navigation)}
             colors={colors}
           />
 
-         
+          {/* Delete Account */}
+          <SettingsRow
+            label={deleting ? 'Deleting…' : 'Delete Account'}
+            icon="person-remove-outline"
+            danger
+            disabled={deleting}
+            onPress={confirmDelete}
+            colors={colors}
+          />
         </ScrollView>
       )}
     </SafeAreaView>
