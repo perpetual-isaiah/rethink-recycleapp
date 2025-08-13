@@ -1,18 +1,18 @@
 const express = require('express');
 const router = express.Router();
-const Challenge      = require('../models/Challenge');
-const User           = require('../models/User');
-const UserChallenge  = require('../models/UserChallenge');
-const Reward         = require('../models/Reward'); // was commented out
-const verifyToken    = require('../middleware/verifyToken');
+const Challenge = require('../models/Challenge');
+const User = require('../models/User');
+const UserChallenge = require('../models/UserChallenge');
+const Reward = require('../models/Reward');
+const verifyToken = require('../middleware/verifyToken');
 const { grantWelcomeReward } = require('../lib/rewardHelpers');
 const { createNotification } = require('../services/notifications');
-console.log('createNotification function:', createNotification); // sanity check
 
 const { 
   sendChallengeCreatedNotification, 
   sendChallengeJoinedNotification,
-  sendChallengeApprovedNotification 
+  sendChallengeApprovedNotification,
+  sendChallengeDeletedNotification
 } = require('../services/pushNotifications');
 
 // Helper function to check if user has admin privileges
@@ -23,7 +23,7 @@ const hasAdminPrivileges = (userRole) => {
 
 // Helper function to check if user can approve/decline challenges
 const canManageChallenges = (userRole) => {
-  const managerRoles = ['challenge_admin', 'admin', 'admin_full']; // All admin roles can manage challenges
+  const managerRoles = ['challenge_admin', 'admin', 'admin_full'];
   return managerRoles.includes(userRole);
 };
 
@@ -33,8 +33,7 @@ const respond500 = (res, msg, err) => {
   return res.status(500).json({ message: msg, error: err.message });
 };
 
-
-/*  POST   /api/challenges        → create challenge                      */
+/* POST /api/challenges → create challenge */
 router.post('/', verifyToken, async (req, res) => {
   try {
     const { title, description, startDate, endDate, whyParticipate } = req.body;
@@ -43,7 +42,7 @@ router.post('/', verifyToken, async (req, res) => {
     }
 
     const start = new Date(startDate);
-    const end   = new Date(endDate);
+    const end = new Date(endDate);
     if (isNaN(start) || isNaN(end) || start >= end) {
       return res.status(400).json({ message: 'Invalid start/end date' });
     }
@@ -51,26 +50,19 @@ router.post('/', verifyToken, async (req, res) => {
     const user = await User.findById(req.user.id);
     if (!user) return res.status(404).json({ message: 'User not found' });
     
-    // Check if user has admin privileges to create challenges
     const hasAdminAccess = hasAdminPrivileges(user.role);
-    const canAutoApprove = canManageChallenges(user.role); // All admin roles can auto-approve
-
-    // Optional: Restrict challenge creation to admin roles only
-    if (!hasAdminAccess) {
-      return res.status(403).json({ message: 'Only admin users can create challenges' });
-    }
+    const canAutoApprove = canManageChallenges(user.role);
 
     const challenge = await Challenge.create({
       title,
       description,
       startDate: start,
-      endDate:   end,
+      endDate: end,
       createdBy: req.user.id,
       whyParticipate,
-      approved:  canAutoApprove, // auto-approve for admin/admin_full, not for challenge_admin
+      approved: canAutoApprove,
     });
 
-    // Send in-app notification
     await createNotification(
       req.user.id,
       `Your challenge "${challenge.title}" has been created${canAutoApprove ? ' and approved.' : ' and is pending approval.'}`,
@@ -79,7 +71,6 @@ router.post('/', verifyToken, async (req, res) => {
       challenge._id
     );
 
-    // Send push notification
     await sendChallengeCreatedNotification(
       req.user.id,
       challenge.title,
@@ -97,16 +88,12 @@ router.post('/', verifyToken, async (req, res) => {
   }
 });
 
-
-/* ──────────────────────────────────────────────────────────────────────── */
-/*  GET    /api/challenges        → list challenges                       */
-/* ──────────────────────────────────────────────────────────────────────── */
+/* GET /api/challenges → list challenges */
 router.get('/', verifyToken, async (req, res) => {
   try {
     const user = await User.findById(req.user.id);
     if (!user) return res.status(404).json({ message: 'User not found' });
 
-    // Admin users can see all challenges, regular users see only approved ones
     const filter = hasAdminPrivileges(user.role) ? {} : { approved: true };
     const list = await Challenge.find(filter)
       .populate('createdBy', 'name email')
@@ -119,10 +106,7 @@ router.get('/', verifyToken, async (req, res) => {
   }
 });
 
-
-/* ──────────────────────────────────────────────────────────────────────── */
-/*  GET    /api/challenges/:id    → single challenge                      */
-/* ──────────────────────────────────────────────────────────────────────── */
+/* GET /api/challenges/:id → single challenge */
 router.get('/:id', verifyToken, async (req, res) => {
   try {
     const challenge = await Challenge.findById(req.params.id)
@@ -133,7 +117,6 @@ router.get('/:id', verifyToken, async (req, res) => {
     const user = await User.findById(req.user.id);
     if (!user) return res.status(404).json({ message: 'User not found' });
     
-    // Admin users can view any challenge, regular users only approved ones
     if (!challenge.approved && !hasAdminPrivileges(user.role)) {
       return res.status(403).json({ message: 'You are not authorized to view this challenge' });
     }
@@ -145,10 +128,7 @@ router.get('/:id', verifyToken, async (req, res) => {
   }
 });
 
-
-/* ──────────────────────────────────────────────────────────────────────── */
-/*  POST   /api/challenges/:id/join                                      */
-/* ──────────────────────────────────────────────────────────────────────── */
+/* POST /api/challenges/:id/join → join challenge */
 router.post('/:id/join', verifyToken, async (req, res) => {
   try {
     const challenge = await Challenge.findById(req.params.id);
@@ -160,7 +140,6 @@ router.post('/:id/join', verifyToken, async (req, res) => {
 
     const userId = req.user.id;
 
-    // Idempotent join
     let userChallenge = await UserChallenge.findOne({ userId, challengeId: challenge._id });
     if (userChallenge) {
       return res.status(200).json({
@@ -178,7 +157,6 @@ router.post('/:id/join', verifyToken, async (req, res) => {
       );
     }
 
-    // Create participation record
     userChallenge = await UserChallenge.create({
       userId,
       challengeId: challenge._id,
@@ -187,16 +165,13 @@ router.post('/:id/join', verifyToken, async (req, res) => {
       joinDate: new Date(),
     });
 
-    // Add to participants array
     if (!challenge.participants.includes(userId)) {
       challenge.participants.push(userId);
       await challenge.save();
     }
 
-    // Grant welcome reward
     const reward = await grantWelcomeReward(userId, challenge._id);
 
-    // ① Notify the **joiner**
     await createNotification(
       userId,
       `You joined the challenge: "${challenge.title}"`,
@@ -205,7 +180,6 @@ router.post('/:id/join', verifyToken, async (req, res) => {
       challenge._id
     );
 
-    // ② Notify the **creator**
     if (challenge.createdBy.toString() !== userId) {
       await createNotification(
         challenge.createdBy,
@@ -216,7 +190,6 @@ router.post('/:id/join', verifyToken, async (req, res) => {
       );
     }
 
-    // ③ Notify about **reward**, if any
     if (reward) {
       await createNotification(
         userId,
@@ -234,7 +207,6 @@ router.post('/:id/join', verifyToken, async (req, res) => {
     });
 
   } catch (err) {
-    // Duplicate key fallback
     if (err.code === 11000) {
       const uc = await UserChallenge.findOne({ userId: req.user.id, challengeId: req.params.id });
       return res.status(200).json({
@@ -247,10 +219,7 @@ router.post('/:id/join', verifyToken, async (req, res) => {
   }
 });
 
-
-/* ──────────────────────────────────────────────────────────────────────── */
-/*  GET    /api/challenges/joined → list user's joined challenges         */
-/* ──────────────────────────────────────────────────────────────────────── */
+/* GET /api/challenges/joined → list user's joined challenges */
 router.get('/joined', verifyToken, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).populate({
@@ -264,10 +233,7 @@ router.get('/joined', verifyToken, async (req, res) => {
   }
 });
 
-
-/* ──────────────────────────────────────────────────────────────────────── */
-/*  PATCH  /api/challenges/:id/approve → admin approves a challenge       */
-/* ──────────────────────────────────────────────────────────────────────── */
+/* PATCH /api/challenges/:id/approve → admin approves a challenge */
 router.patch('/:id/approve', verifyToken, async (req, res) => {
   try {
     const user = await User.findById(req.user.id);
@@ -290,7 +256,6 @@ router.patch('/:id/approve', verifyToken, async (req, res) => {
       challenge._id
     );
 
-     // Send push notification
     await sendChallengeApprovedNotification(
       challenge.createdBy,
       challenge.title,
@@ -303,8 +268,7 @@ router.patch('/:id/approve', verifyToken, async (req, res) => {
   }
 });
 
-// PATCH /api/challenges/:id/decline
-// PATCH /api/challenges/:id/decline → admin declines a challenge
+/* PATCH /api/challenges/:id/decline → admin declines a challenge */
 router.patch('/:id/decline', verifyToken, async (req, res) => {
   try {
     const user = await User.findById(req.user.id);
@@ -312,7 +276,6 @@ router.patch('/:id/decline', verifyToken, async (req, res) => {
       return res.status(403).json({ message: 'Only challenge_admin, admin and admin_full users can decline challenges' });
     }
 
-    // 1. Update the challenge status
     const challenge = await Challenge.findByIdAndUpdate(
       req.params.id,
       { approved: false, declined: true },
@@ -320,7 +283,6 @@ router.patch('/:id/decline', verifyToken, async (req, res) => {
     );
     if (!challenge) return res.status(404).json({ message: 'Challenge not found' });
 
-    // 2. Try to send notifications, but don't let errors break the API
     try {
       await createNotification(
         challenge.createdBy,
@@ -337,19 +299,16 @@ router.patch('/:id/decline', verifyToken, async (req, res) => {
         { type: 'challenge_declined', challengeId: challenge._id, challengeTitle: challenge.title }
       );
     } catch (notifErr) {
-      // Log but DON'T return error!
       console.error('[Decline Notification Error]', notifErr);
     }
 
-    // 3. Always return success if DB updated
     return res.json({ message: 'Challenge declined', challenge });
   } catch (error) {
     return respond500(res, 'Error declining challenge', error);
   }
 });
 
-
-// GET /api/challenges/declined
+/* GET /api/challenges/declined → list declined challenges */
 router.get('/declined', verifyToken, async (req, res) => {
   try {
     const user = await User.findById(req.user.id);
@@ -363,17 +322,14 @@ router.get('/declined', verifyToken, async (req, res) => {
   }
 });
 
-
-/* ──────────────────────────────────────────────────────────────────────── */
-/*  POST   /api/challenges/:id/like → toggle like & notify creator       */
-/* ──────────────────────────────────────────────────────────────────────── */
+/* POST /api/challenges/:id/like → toggle like & notify creator */
 router.post('/:id/like', verifyToken, async (req, res) => {
   try {
     const challenge = await Challenge.findById(req.params.id);
     if (!challenge) return res.status(404).json({ message: 'Challenge not found' });
 
     const userId = req.user.id;
-    const liked  = challenge.likes.some(id => id.equals(userId));
+    const liked = challenge.likes.some(id => id.equals(userId));
 
     if (liked) {
       challenge.likes.pull(userId);
@@ -400,10 +356,7 @@ router.post('/:id/like', verifyToken, async (req, res) => {
   }
 });
 
-
-/* ──────────────────────────────────────────────────────────────────────── */
-/*  POST   /api/challenges/:id/comment → add comment & notify creator     */
-/* ──────────────────────────────────────────────────────────────────────── */
+/* POST /api/challenges/:id/comment → add comment & notify creator */
 router.post('/:id/comment', verifyToken, async (req, res) => {
   try {
     const { text } = req.body;
@@ -435,10 +388,7 @@ router.post('/:id/comment', verifyToken, async (req, res) => {
   }
 });
 
-
-/* ──────────────────────────────────────────────────────────────────────── */
-/*  GET    /api/challenges/:id/comments → list comments & replies         */
-/* ──────────────────────────────────────────────────────────────────────── */
+/* GET /api/challenges/:id/comments → list comments & replies */
 router.get('/:id/comments', verifyToken, async (req, res) => {
   try {
     const challenge = await Challenge.findById(req.params.id)
@@ -451,10 +401,7 @@ router.get('/:id/comments', verifyToken, async (req, res) => {
   }
 });
 
-
-/* ──────────────────────────────────────────────────────────────────────── */
-/*  PUT    /api/challenges/:cid/comments/:cmid → edit a comment          */
-/* ──────────────────────────────────────────────────────────────────────── */
+/* PUT /api/challenges/:cid/comments/:cmid → edit a comment */
 router.put('/:challengeId/comments/:commentId', verifyToken, async (req, res) => {
   const { text } = req.body;
   if (!text) return res.status(400).json({ message: 'Comment text required' });
@@ -474,10 +421,7 @@ router.put('/:challengeId/comments/:commentId', verifyToken, async (req, res) =>
   }
 });
 
-
-/* ──────────────────────────────────────────────────────────────────────── */
-/*  DELETE /api/challenges/:cid/comments/:cmid → delete a comment        */
-/* ──────────────────────────────────────────────────────────────────────── */
+/* DELETE /api/challenges/:cid/comments/:cmid → delete a comment */
 router.delete('/:challengeId/comments/:commentId', verifyToken, async (req, res) => {
   try {
     const challenge = await Challenge.findById(req.params.challengeId);
@@ -494,10 +438,7 @@ router.delete('/:challengeId/comments/:commentId', verifyToken, async (req, res)
   }
 });
 
-
-/* ──────────────────────────────────────────────────────────────────────── */
-/*  POST   /api/challenges/:cid/comments/:cmid/replies → add a reply      */
-/* ──────────────────────────────────────────────────────────────────────── */
+/* POST /api/challenges/:cid/comments/:cmid/replies → add a reply */
 router.post('/:challengeId/comments/:commentId/replies', verifyToken, async (req, res) => {
   const { text } = req.body;
   if (!text?.trim()) return res.status(400).json({ message: 'Reply text required' });
@@ -510,7 +451,6 @@ router.post('/:challengeId/comments/:commentId/replies', verifyToken, async (req
     comment.replies.push({ user: req.user.id, text: text.trim() });
     await challenge.save();
 
-    // ④ Notify original commenter of the reply
     if (comment.user.toString() !== req.user.id) {
       await createNotification(
         comment.user,
@@ -527,10 +467,7 @@ router.post('/:challengeId/comments/:commentId/replies', verifyToken, async (req
   }
 });
 
-
-/* ──────────────────────────────────────────────────────────────────────── */
-/*  PUT    /api/challenges/:cid/:cmid/replies/:rid → edit a reply        */
-/* ──────────────────────────────────────────────────────────────────────── */
+/* PUT /api/challenges/:cid/:cmid/replies/:rid → edit a reply */
 router.put('/:challengeId/comments/:commentId/replies/:replyId', verifyToken, async (req, res) => {
   const { text } = req.body;
   if (!text) return res.status(400).json({ message: 'Reply text required' });
@@ -538,7 +475,7 @@ router.put('/:challengeId/comments/:commentId/replies/:replyId', verifyToken, as
   try {
     const challenge = await Challenge.findById(req.params.challengeId);
     const comment = challenge.comments.id(req.params.commentId);
-    const reply   = comment.replies.id(req.params.replyId);
+    const reply = comment.replies.id(req.params.replyId);
     if (!reply) return res.status(404).json({ message: 'Reply not found' });
     if (reply.user.toString() !== req.user.id) {
       return res.status(403).json({ message: 'Unauthorized' });
@@ -551,15 +488,12 @@ router.put('/:challengeId/comments/:commentId/replies/:replyId', verifyToken, as
   }
 });
 
-
-/* ──────────────────────────────────────────────────────────────────────── */
-/*  DELETE /api/challenges/:cid/:cmid/replies/:rid → delete a reply      */
-/* ──────────────────────────────────────────────────────────────────────── */
+/* DELETE /api/challenges/:cid/:cmid/replies/:rid → delete a reply */
 router.delete('/:challengeId/comments/:commentId/replies/:replyId', verifyToken, async (req, res) => {
   try {
     const challenge = await Challenge.findById(req.params.challengeId);
-    const comment   = challenge.comments.id(req.params.commentId);
-    const reply     = comment.replies.id(req.params.replyId);
+    const comment = challenge.comments.id(req.params.commentId);
+    const reply = comment.replies.id(req.params.replyId);
     if (!reply) return res.status(404).json({ message: 'Reply not found' });
     if (reply.user.toString() !== req.user.id) {
       return res.status(403).json({ message: 'Unauthorized' });
@@ -572,18 +506,12 @@ router.delete('/:challengeId/comments/:commentId/replies/:replyId', verifyToken,
   }
 });
 
-
-/* ──────────────────────────────────────────────────────────────────────── */
-/*  POST   /api/challenges/:id/complete → user marks completion         */
-/* ──────────────────────────────────────────────────────────────────────── */
+/* POST /api/challenges/:id/complete → user marks completion */
 router.post('/:id/complete', verifyToken, async (req, res) => {
   try {
     const challenge = await Challenge.findById(req.params.id);
     if (!challenge) return res.status(404).json({ message: 'Not found' });
 
-    // your completion logic here (e.g. update UserChallenge) …
-
-    // ⑤ Notify the user they completed
     await createNotification(
       req.user.id,
       `🎉 You completed "${challenge.title}"!`,
@@ -598,10 +526,7 @@ router.post('/:id/complete', verifyToken, async (req, res) => {
   }
 });
 
-
-/* ──────────────────────────────────────────────────────────────────────── */
-/*  PATCH  /api/challenges/:id/quit → user quits challenge              */
-/* ──────────────────────────────────────────────────────────────────────── */
+/* PATCH /api/challenges/:id/quit → user quits challenge */
 router.patch('/:id/quit', verifyToken, async (req, res) => {
   try {
     const challenge = await Challenge.findById(req.params.id);
@@ -610,7 +535,7 @@ router.patch('/:id/quit', verifyToken, async (req, res) => {
     const uc = await UserChallenge.findOne({ userId: req.user.id, challengeId: challenge._id });
     if (!uc) return res.status(400).json({ message: 'You are not participating' });
 
-    uc.status   = 'quit';
+    uc.status = 'quit';
     uc.quitDate = new Date();
     await uc.save();
 
@@ -627,7 +552,6 @@ router.patch('/:id/quit', verifyToken, async (req, res) => {
       );
     }
 
-    // ⑥ Notify quitting user
     await createNotification(
       req.user.id,
       `You quit the challenge: "${challenge.title}".`,
@@ -642,18 +566,12 @@ router.patch('/:id/quit', verifyToken, async (req, res) => {
   }
 });
 
-
-/* ──────────────────────────────────────────────────────────────────────── */
-/*  POST   /api/challenges/rewards/:id/claim → user claims a reward     */
-/* ──────────────────────────────────────────────────────────────────────── */
+/* POST /api/challenges/rewards/:id/claim → user claims a reward */
 router.post('/rewards/:id/claim', verifyToken, async (req, res) => {
   try {
     const reward = await Reward.findById(req.params.id);
     if (!reward) return res.status(404).json({ message: 'Reward not found' });
 
-    // your reward-claim logic…
-
-    // ⑦ Notify user of claimed reward
     await createNotification(
       req.user.id,
       `🏆 You earned a reward: "${reward.name}"!`,
@@ -668,10 +586,7 @@ router.post('/rewards/:id/claim', verifyToken, async (req, res) => {
   }
 });
 
-
-/* ──────────────────────────────────────────────────────────────────────── */
-/*  GET    /api/challenges/rewards  → list all rewards                   */
-/* ──────────────────────────────────────────────────────────────────────── */
+/* GET /api/challenges/rewards → list all rewards */
 router.get('/rewards', verifyToken, async (req, res) => {
   try {
     const rewards = await Reward.find().sort({ createdAt: -1 });
@@ -681,7 +596,7 @@ router.get('/rewards', verifyToken, async (req, res) => {
   }
 });
 
-// PUT /api/challenges/:id  → update a challenge (admin-only)
+/* PUT /api/challenges/:id → update a challenge (admin-only) */
 router.put('/:id', verifyToken, async (req, res) => {
   try {
     const user = await User.findById(req.user.id);
@@ -691,7 +606,6 @@ router.put('/:id', verifyToken, async (req, res) => {
 
     const { title, description, startDate, endDate, whyParticipate } = req.body;
 
-    // basic validation if dates are provided
     let updates = {};
     if (title !== undefined) updates.title = title;
     if (description !== undefined) updates.description = description;
@@ -724,7 +638,7 @@ router.put('/:id', verifyToken, async (req, res) => {
   }
 });
 
-// DELETE /api/challenges/:id → delete a challenge (admin-only)
+/* DELETE /api/challenges/:id → delete a challenge (admin-only) */
 router.delete('/:id', verifyToken, async (req, res) => {
   try {
     const user = await User.findById(req.user.id);
@@ -735,20 +649,28 @@ router.delete('/:id', verifyToken, async (req, res) => {
     const challenge = await Challenge.findById(req.params.id);
     if (!challenge) return res.status(404).json({ message: 'Challenge not found' });
 
-    // Clean up participation records (optional but recommended)
+    // Clean up participation records
     await UserChallenge.deleteMany({ challengeId: challenge._id });
 
     // Remove the challenge itself
     await Challenge.deleteOne({ _id: challenge._id });
 
-    // Optional: notify creator that their challenge was removed by admin
+    // Notify creator that their challenge was removed by admin
     try {
+      // In-app notification
       await createNotification(
         challenge.createdBy,
         `Your challenge "${challenge.title}" was removed by an admin.`,
         `/challenges`,
         'deleted',
         challenge._id
+      );
+
+      // Push notification
+      await sendChallengeDeletedNotification(
+        challenge.createdBy,
+        challenge.title,
+        challenge._id.toString()
       );
     } catch (e) {
       console.error('[Delete Notification Error]', e);
@@ -759,7 +681,5 @@ router.delete('/:id', verifyToken, async (req, res) => {
     return respond500(res, 'Error deleting challenge', err);
   }
 });
-
-
 
 module.exports = router;

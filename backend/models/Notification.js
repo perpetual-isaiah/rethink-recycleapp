@@ -9,7 +9,7 @@ const notificationSchema = new mongoose.Schema({
   },
   type: {
     type: String,
-    enum: ['join','complete','quit','comment','approved','reward','generic'],
+    enum: ['join','complete','quit','comment','approved','reward','generic', 'reply', 'deleted'],
     default: 'generic'
   },
   message: { type: String, required: true },

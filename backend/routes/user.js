@@ -5,11 +5,7 @@ const Challenge = require('../models/Challenge');
 const verifyToken = require('../middleware/verifyToken');
 const axios = require('axios');
 
-<<<<<<< HEAD
 const bcrypt    = require('bcryptjs');
-=======
-const bcrypt = require('bcryptjs');
->>>>>>> 98685d44bfc6d250da33512ff9075a0113ae5dc1
 const authorize = require('../middleware/authorizeRoles');
 
 // Only super-admins (role === 'admin') can manage admins
@@ -130,10 +126,6 @@ router.delete('/admins/:adminId', async (req, res) => {
   }
 });
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 98685d44bfc6d250da33512ff9075a0113ae5dc1
 // POST /api/user/savePushToken - Save user's push notification token
 router.post('/savePushToken', verifyToken, async (req, res) => {
   try {
@@ -448,8 +440,4 @@ router.delete('/', verifyToken, async (req, res) => {
     });
   }
 });
-<<<<<<< HEAD
-=======
-
->>>>>>> 98685d44bfc6d250da33512ff9075a0113ae5dc1
 module.exports = router;

@@ -1,5 +1,3 @@
-// Create a new file: services/pushNotifications.js
-
 const { Expo } = require('expo-server-sdk');
 const User = require('../models/User');
 
@@ -66,7 +64,8 @@ const sendChallengeCreatedNotification = async (userId, challengeTitle, challeng
     type: 'challenge_created',
     challengeId,
     challengeTitle,
-    isApproved
+    isApproved,
+    navigateTo: `/challenges/${challengeId}`
   };
 
   return await sendPushNotification(userId, title, body, data);
@@ -87,7 +86,8 @@ const sendChallengeJoinedNotification = async (creatorId, joinerName, challengeT
     type: 'challenge_joined',
     challengeId,
     challengeTitle,
-    joinerName
+    joinerName,
+    navigateTo: `/challenges/${challengeId}`
   };
 
   return await sendPushNotification(creatorId, title, body, data);
@@ -106,7 +106,28 @@ const sendChallengeApprovedNotification = async (userId, challengeTitle, challen
   const data = {
     type: 'challenge_approved',
     challengeId,
-    challengeTitle
+    challengeTitle,
+    navigateTo: `/challenges/${challengeId}`
+  };
+
+  return await sendPushNotification(userId, title, body, data);
+};
+
+/**
+ * Send push notification when challenge is deleted by admin
+ * @param {string} userId - Creator's user ID
+ * @param {string} challengeTitle - Title of the deleted challenge
+ * @param {string} challengeId - ID of the deleted challenge
+ */
+const sendChallengeDeletedNotification = async (userId, challengeTitle, challengeId) => {
+  const title = '🗑️ Challenge Deleted';
+  const body = `Your challenge "${challengeTitle}" was deleted by an admin`;
+  
+  const data = {
+    type: 'challenge_deleted',
+    challengeId,
+    challengeTitle,
+    navigateTo: '/challenges' // Redirect to challenges list since this one no longer exists
   };
 
   return await sendPushNotification(userId, title, body, data);
@@ -116,5 +137,6 @@ module.exports = {
   sendPushNotification,
   sendChallengeCreatedNotification,
   sendChallengeJoinedNotification,
-  sendChallengeApprovedNotification
+  sendChallengeApprovedNotification,
+  sendChallengeDeletedNotification // Add the new function to exports
 };
