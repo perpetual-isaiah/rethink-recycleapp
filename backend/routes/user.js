@@ -5,9 +5,7 @@ const Challenge = require('../models/Challenge');
 const verifyToken = require('../middleware/verifyToken');
 const axios = require('axios');
 
-
-const bcrypt    = require('bcryptjs');
-
+const bcrypt = require('bcryptjs');
 const authorize = require('../middleware/authorizeRoles');
 
 // Only super-admins (role === 'admin') can manage admins
@@ -128,10 +126,6 @@ router.delete('/admins/:adminId', async (req, res) => {
   }
 });
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 9433690 (user can now delete acct in settings)
 // POST /api/user/savePushToken - Save user's push notification token
 router.post('/savePushToken', verifyToken, async (req, res) => {
   try {
@@ -383,7 +377,7 @@ router.get('/:userId', verifyToken, async (req, res) => {
 
 router.post('/remove-push-token', verifyToken, async (req, res) => {
   try {
-    const userId = req.user.id; // Set by verifyToken
+    const userId = req.user._id; // Changed from req.user.id to req.user._id for consistency
     const { token } = req.body;
     if (!token) return res.status(400).json({ message: 'No push token provided.' });
 
@@ -415,7 +409,7 @@ router.delete('/', verifyToken, async (req, res) => {
     console.log(`Attempting to delete user: ${userId}`);
 
     // Check if user exists first
-    const user = await User.findById(userId);git
+    const user = await User.findById(userId);
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
@@ -446,4 +440,5 @@ router.delete('/', verifyToken, async (req, res) => {
     });
   }
 });
+
 module.exports = router;
