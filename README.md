@@ -148,15 +148,14 @@ CLOUDINARY_API_SECRET=your_api_secret
 
 # 7. Screenshots
 
-| Home Screen                   | Barcode Scanner               | Map Screen                  |
-| ----------------------------- | ----------------------------- | --------------------------- |
-| ![Home](screenshots/home.png) | ![Scan](screenshots/scan.png) | ![Map](screenshots/map.png) |
+| Map Screen | Community Challenges | Home Screen |
+| ---------- | -------------------- | ----------- |
+| ![Map](screenshots/IMG_5555.PNG) | ![Challenges](screenshots/IMG_5559.PNG) | ![Home](screenshots/IMG_5562.PNG) |
 
-| Challenges & Rewards                     | Community Chat                |
-| ---------------------------------------- | ----------------------------- |
-| ![Challenges](screenshots/challenge.png) | ![Chat](screenshots/chat.png) |
+| Community Chat | Rewards |
+| -------------- | ------- |
+| ![Chat](screenshots/IMG_5560.PNG) | ![Rewards](screenshots/IMG_5566.PNG) |
 
----
 
 # 8. License
 
